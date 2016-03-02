@@ -133,6 +133,22 @@
       "updated": "2015-11-12"
     },
     {
+      "name": "Ampersand.js",
+      "files": [
+        "ampersand.svg"
+      ],
+      "shortname": "ampersand",
+      "url": "https://ampersandjs.com/",
+      "tags": [
+        "mvc framework",
+        "javascript"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-03-02"
+    },
+    {
       "name": "Android",
       "files": [
         "android-icon.svg",
@@ -553,6 +569,22 @@
       ],
       "updated": "2015-08-04",
       "edited": true
+    },
+    {
+      "name": "Aurelia",
+      "files": [
+        "aurelia.svg"
+      ],
+      "shortname": "aurelia",
+      "url": "http://aurelia.io/",
+      "tags": [
+        "mvc framework",
+        "javascript"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-03-02"
     },
     {
       "name": "Aurora",
@@ -2663,6 +2695,26 @@
         "DevOps"
       ],
       "updated": "2015-11-09",
+      "edited": true
+    },
+    {
+      "name": "ContainerShip",
+      "files": [
+        "containership.svg"
+      ],
+      "shortname": "containership",
+      "url": "https://containership.io/",
+      "tags": [
+        "code deployment",
+        "docker",
+        "containers",
+        "PaaS",
+        "vectorized"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-02",
       "edited": true
     },
     {
@@ -6770,6 +6822,22 @@
       "edited": true
     },
     {
+      "name": "Launchrock",
+      "files": [
+        "launchrock.svg"
+      ],
+      "shortname": "launchrock",
+      "url": "https://www.launchrock.com/",
+      "tags": [
+        "landing pages",
+        "marketing"
+      ],
+      "categories": [
+        "business"
+      ],
+      "updated": "2016-03-02"
+    },
+    {
       "name": "Leafjet",
       "files": [
         "leafjet.svg"
@@ -8165,7 +8233,7 @@
       "categories": [
         "developers"
       ],
-      "updated": "2015-06-11",
+      "updated": "2016-03-02",
       "favorite": true
     },
     {
@@ -9524,6 +9592,23 @@
       "edited": true
     },
     {
+      "name": "Qordoba",
+      "files": [
+        "qordoba.svg"
+      ],
+      "shortname": "qordoba",
+      "url": "https://www.qordoba.com/",
+      "tags": [
+        "translation service",
+        "vectorized"
+      ],
+      "categories": [
+        "business"
+      ],
+      "updated": "2016-03-02",
+      "edited": true
+    },
+    {
       "name": "Quay",
       "files": [
         "quay.svg"
@@ -9747,7 +9832,7 @@
       "shortname": "react",
       "url": "https://facebook.github.io/react/",
       "tags": [
-        "mvc framework",
+        "front-end framework",
         "javascript",
         "facebook"
       ],
@@ -9962,6 +10047,24 @@
         "developers"
       ],
       "updated": "2015-07-05"
+    },
+    {
+      "name": "Riot",
+      "files": [
+        "riot.svg"
+      ],
+      "shortname": "riotjs",
+      "url": "http://riotjs.com/",
+      "tags": [
+        "front-end framework",
+        "javascript",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-03-02",
+      "edited": true
     },
     {
       "name": "rkt",
@@ -11866,6 +11969,24 @@
         "developers"
       ],
       "updated": "2015-08-05"
+    },
+    {
+      "name": "Tutum",
+      "files": [
+        "tutum.svg"
+      ],
+      "shortname": "tutum",
+      "url": "https://www.tutum.co/",
+      "tags": [
+        "code deployment",
+        "docker",
+        "containers",
+        "PaaS"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-02"
     },
     {
       "name": "Tux",
