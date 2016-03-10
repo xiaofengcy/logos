@@ -265,6 +265,21 @@
       "favorite": true
     },
     {
+      "name": "Apigee",
+      "files": [
+        "apigee.svg"
+      ],
+      "shortname": "apigee",
+      "url": "http://apigee.com/",
+      "tags": [
+        "api tools"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-10"
+    },
+    {
       "name": "APItools",
       "files": [
         "apitools.svg"
@@ -2290,6 +2305,22 @@
         "DevOps"
       ],
       "updated": "2015-11-26"
+    },
+    {
+      "name": "ClusterHQ",
+      "files": [
+        "clusterhq.svg"
+      ],
+      "shortname": "clusterhq",
+      "url": "https://clusterhq.com/",
+      "tags": [
+        "docker",
+        "containers"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-10"
     },
     {
       "name": "Cobalt",
@@ -4673,6 +4704,23 @@
       "updated": "2015-07-07"
     },
     {
+      "name": "Giant Swarm",
+      "files": [
+        "giantswarm.svg"
+      ],
+      "shortname": "giantswarm",
+      "url": "https://giantswarm.io/",
+      "tags": [
+        "docker",
+        "containers",
+        "PaaS"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-10"
+    },
+    {
       "name": "Git",
       "files": [
         "git-icon.svg",
@@ -5111,6 +5159,23 @@
         "geeks"
       ],
       "updated": "2015-10-29"
+    },
+    {
+      "name": "Graylog",
+      "files": [
+        "graylog.svg"
+      ],
+      "shortname": "graylog",
+      "url": "https://www.graylog.org/",
+      "tags": [
+        "log manager",
+        "vectorized"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-10",
+      "edited": true
     },
     {
       "name": "Groove",
@@ -9626,6 +9691,22 @@
       "edited": true
     },
     {
+      "name": "quobyte",
+      "files": [
+        "quobyte.svg"
+      ],
+      "shortname": "quobyte",
+      "url": "http://www.quobyte.com/",
+      "tags": [
+        "cloud computing",
+        "cloud storage"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-10"
+    },
+    {
       "name": "Quora",
       "files": [
         "quora.svg"
@@ -11512,6 +11593,24 @@
       "updated": "2015-07-05"
     },
     {
+      "name": "Sysdig",
+      "files": [
+        "sysdig.svg"
+      ],
+      "shortname": "sysdig",
+      "url": "http://www.sysdig.org/",
+      "tags": [
+        "monitoring",
+        "server monitoring",
+        "docker",
+        "containers"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-10"
+    },
+    {
       "name": "T3",
       "files": [
         "t3.svg"
@@ -12858,6 +12957,23 @@
         "publishers"
       ],
       "updated": "2015-06-11"
+    },
+    {
+      "name": "Workboard",
+      "files": [
+        "workboard.svg"
+      ],
+      "shortname": "workboard",
+      "url": "http://www.workboard.com/",
+      "tags": [
+        "team management",
+        "team collaboration"
+      ],
+      "categories": [
+        "business",
+        "teams"
+      ],
+      "updated": "2016-03-10"
     },
     {
       "name": "WP engine",
