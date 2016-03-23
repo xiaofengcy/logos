@@ -35,6 +35,22 @@
       "updated": "2015-10-29"
     },
     {
+      "name": "6px",
+      "files": [
+        "6px.svg"
+      ],
+      "shortname": "6px",
+      "url": "https://6px.io/",
+      "tags": [
+        "image processing",
+        "SaaS"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-03-23"
+    },
+    {
       "name": "AdRoll",
       "files": [
         "adroll.svg"
@@ -133,6 +149,21 @@
       "updated": "2015-11-12"
     },
     {
+      "name": "Algolia",
+      "files": [
+        "algolia.svg"
+      ],
+      "shortname": "algolia",
+      "url": "https://www.algolia.com/",
+      "tags": [
+        "search service"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-03-23"
+    },
+    {
       "name": "Ampersand.js",
       "files": [
         "ampersand.svg"
@@ -164,6 +195,22 @@
         "geeks"
       ],
       "updated": "2015-07-26"
+    },
+    {
+      "name": "AngelList",
+      "files": [
+        "angellist.svg"
+      ],
+      "shortname": "angellist",
+      "url": "https://angel.co/",
+      "tags": [
+        "startups",
+        "investment"
+      ],
+      "categories": [
+        "business"
+      ],
+      "updated": "2016-03-23"
     },
     {
       "name": "Angular",
@@ -808,7 +855,7 @@
       "shortname": "aws-cloudsearch",
       "url": "https://aws.amazon.com/cloudsearch/",
       "tags": [
-        "search server",
+        "search service",
         "IaaS"
       ],
       "categories": [
@@ -2338,6 +2385,24 @@
       "updated": "2016-01-04"
     },
     {
+      "name": "Cockpit",
+      "files": [
+        "cockpit.svg"
+      ],
+      "shortname": "cockpit",
+      "url": "http://getcockpit.com/",
+      "tags": [
+        "cms",
+        "api",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-03-23",
+      "edited": true
+    },
+    {
       "name": "CocoaPods",
       "files": [
         "cocoapods.svg"
@@ -3356,6 +3421,21 @@
       ],
       "updated": "2015-06-25",
       "favorite": true
+    },
+    {
+      "name": "Discord",
+      "files": [
+        "discord.svg"
+      ],
+      "shortname": "discord",
+      "url": "https://discordapp.com/",
+      "tags": [
+        "group chat"
+      ],
+      "categories": [
+        "geeks"
+      ],
+      "updated": "2016-03-23"
     },
     {
       "name": "Disqus",
@@ -6412,6 +6492,21 @@
       "edited": true
     },
     {
+      "name": "Juju",
+      "files": [
+        "juju.svg"
+      ],
+      "shortname": "juju",
+      "url": "http://juju.ubuntu.com/",
+      "tags": [
+        "service orchestration"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-23"
+    },
+    {
       "name": "Kafka",
       "files": [
         "kafka.svg"
@@ -7431,6 +7526,25 @@
         "developers"
       ],
       "updated": "2015-09-24"
+    },
+    {
+      "name": "Mantl",
+      "files": [
+        "mantl.svg"
+      ],
+      "shortname": "mantl",
+      "url": "https://mantl.io/",
+      "tags": [
+        "containers",
+        "docker",
+        "microservices",
+        "vectorized"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-23",
+      "edited": true
     },
     {
       "name": "MAPS.ME",
@@ -11568,7 +11682,7 @@
       "shortname": "swiftype",
       "url": "https://swiftype.com/",
       "tags": [
-        "search engine"
+        "search service"
       ],
       "categories": [
         "developers"
