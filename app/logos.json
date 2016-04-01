@@ -3807,6 +3807,22 @@
       "updated": "2015-07-05"
     },
     {
+      "name": "ElasticBox",
+      "files": [
+        "elasticbox.svg"
+      ],
+      "shortname": "elasticbox",
+      "url": "https://elasticbox.com/",
+      "tags": [
+        "code deployment",
+        "PaaS"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-31"
+    },
+    {
       "name": "Elasticsearch",
       "files": [
         "elasticsearch.svg"
@@ -4125,6 +4141,25 @@
         "DevOps"
       ],
       "updated": "2015-07-15",
+      "edited": true
+    },
+    {
+      "name": "Exponent",
+      "files": [
+        "exponent.svg"
+      ],
+      "shortname": "exponent",
+      "url": "https://exponentjs.com/",
+      "tags": [
+        "application framework",
+        "mobile",
+        "react native",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-03-31",
       "edited": true
     },
     {
@@ -9597,6 +9632,24 @@
       "updated": "2015-09-01"
     },
     {
+      "name": "Prospect",
+      "files": [
+        "prospect.svg"
+      ],
+      "shortname": "prospect",
+      "url": "https://prospect.io/",
+      "tags": [
+        "crm",
+        "slaes prospect",
+        "vectorized"
+      ],
+      "categories": [
+        "business"
+      ],
+      "updated": "2016-03-31",
+      "edited": true
+    },
+    {
       "name": "Prott",
       "files": [
         "prott.svg"
@@ -10447,6 +10500,21 @@
       "updated": "2015-09-17"
     },
     {
+      "name": "Runnable",
+      "files": [
+        "runnable.svg"
+      ],
+      "shortname": "runnable",
+      "url": "https://runnable.io/",
+      "tags": [
+        "sandbox environment"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-31"
+    },
+    {
       "name": "RunAbove",
       "files": [
         "run-above.svg"
@@ -10852,6 +10920,23 @@
       "edited": true
     },
     {
+      "name": "Shipit",
+      "files": [
+        "shipit.svg"
+      ],
+      "shortname": "shipit",
+      "url": "https://github.com/shipitjs/shipit",
+      "tags": [
+        "code deployment",
+        "vectorized"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-03-31",
+      "edited": true
+    },
+    {
       "name": "Shogun",
       "files": [
         "shogun.svg"
@@ -10882,6 +10967,23 @@
         "business"
       ],
       "updated": "2015-08-17"
+    },
+    {
+      "name": "Sidekick",
+      "files": [
+        "sidekick.svg"
+      ],
+      "shortname": "sidekick",
+      "url": "http://www.getsidekick.com/",
+      "tags": [
+        "email tools",
+        "vectorized"
+      ],
+      "categories": [
+        "geeks"
+      ],
+      "updated": "2016-03-31",
+      "edited": true
     },
     {
       "name": "Sidekiq",
@@ -12349,6 +12451,22 @@
         "business"
       ],
       "updated": "2016-02-18"
+    },
+    {
+      "name": "ndertow",
+      "files": [
+        "undertow.svg"
+      ],
+      "shortname": "undertow",
+      "url": "http://undertow.io/",
+      "tags": [
+        "web server",
+        "java"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-03-31"
     },
     {
       "name": "UnitJS",
