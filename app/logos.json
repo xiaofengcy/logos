@@ -4893,6 +4893,23 @@
       "favorite": true
     },
     {
+      "name": "GitKraken",
+      "files": [
+        "gitkraken.svg"
+      ],
+      "shortname": "gitkraken",
+      "url": "https://www.gitkraken.com/",
+      "tags": [
+        "git",
+        "desktop app"
+      ],
+      "categories": [
+        "developers",
+        "teams"
+      ],
+      "updated": "2016-04-11"
+    },
+    {
       "name": "Gitlab",
       "files": [
         "gitlab.svg"
@@ -7295,6 +7312,23 @@
       "updated": "2015-11-19"
     },
     {
+      "name": "Lookback",
+      "files": [
+        "lookback.svg"
+      ],
+      "shortname": "lookback",
+      "url": "https://lookback.io/",
+      "tags": [
+        "ux testing",
+        "user feedback"
+      ],
+      "categories": [
+        "designers",
+        "business"
+      ],
+      "updated": "2016-04-11"
+    },
+    {
       "name": "Loopback",
       "files": [
         "loopback.svg"
@@ -8413,6 +8447,27 @@
         "DevOps"
       ],
       "updated": "2015-06-14"
+    },
+    {
+      "name": "Nodal",
+      "files": [
+        "nodal.svg"
+      ],
+      "shortname": "nodal",
+      "url": "http://www.nodaljs.com/",
+      "tags": [
+        "web server",
+        "web app framework",
+        "microframework",
+        "node.js",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-04-11",
+      "edited": true,
+      "favorite": true
     },
     {
       "name": "Nodejitsu",
@@ -10231,6 +10286,23 @@
       "updated": "2015-08-13"
     },
     {
+      "name": "Remergr",
+      "files": [
+        "remergr.svg"
+      ],
+      "shortname": "remergr",
+      "url": "https://remergr.io/",
+      "tags": [
+        "github",
+        "github tools"
+      ],
+      "categories": [
+        "developers",
+        "teams"
+      ],
+      "updated": "2016-04-11"
+    },
+    {
       "name": "RequireJS",
       "files": [
         "require.svg"
@@ -11019,6 +11091,25 @@
       "updated": "2015-07-04"
     },
     {
+      "name": "Siphon",
+      "files": [
+        "siphon.svg"
+      ],
+      "shortname": "siphon",
+      "url": "https://getsiphon.com/",
+      "tags": [
+        "cross-platform",
+        "application framework",
+        "mobile",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-04-11",
+      "edited": true
+    },
+    {
       "name": "SitePoint",
       "files": [
         "sitepoint.svg"
@@ -11322,6 +11413,22 @@
       ],
       "updated": "2015-07-05",
       "edited": true
+    },
+    {
+      "name": "SQLdep",
+      "files": [
+        "sqldep.svg"
+      ],
+      "shortname": "sqldep",
+      "url": "https://sqldep.com/",
+      "tags": [
+        "database",
+        "sql"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-04-11"
     },
     {
       "name": "SQLite",
@@ -13521,13 +13628,33 @@
         "project manager",
         "agile",
         "kanban",
-        "github"
+        "github",
+        "github tools"
       ],
       "categories": [
         "developers",
         "teams"
       ],
       "updated": "2015-07-15"
+    },
+    {
+      "name": "Zest",
+      "files": [
+        "zest.svg"
+      ],
+      "shortname": "zest",
+      "url": "http://zestdocs.org/",
+      "tags": [
+        "documentation",
+        "offline tools",
+        "desktop app",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-04-11",
+      "edited": true
     },
     {
       "name": "ZigBee",
@@ -13577,7 +13704,8 @@
         "project manager",
         "agile",
         "kanban",
-        "github"
+        "github",
+        "github tools"
       ],
       "categories": [
         "developers",
