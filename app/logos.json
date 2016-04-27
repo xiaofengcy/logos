@@ -2472,6 +2472,25 @@
       "updated": "2015-07-09"
     },
     {
+      "name": "codebeat",
+      "files": [
+        "codebeat.svg"
+      ],
+      "shortname": "codebeat",
+      "url": "https://codebeat.co/",
+      "tags": [
+        "code review",
+        "swift",
+        "go",
+        "ruby",
+        "python"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-04-26"
+    },
+    {
       "name": "codecademy",
       "files": [
         "codecademy.svg"
@@ -3173,6 +3192,23 @@
       "updated": "2015-08-10"
     },
     {
+      "name": "Cycle.js",
+      "files": [
+        "cyclejs.svg"
+      ],
+      "shortname": "cyclejs",
+      "url": "http://cycle.js.org/",
+      "tags": [
+        "framework",
+        "reactive",
+        "javascript"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-04-26"
+    },
+    {
       "name": "D3",
       "files": [
         "d3.svg"
@@ -3337,6 +3373,22 @@
         "DevOps"
       ],
       "updated": "2015-07-09"
+    },
+    {
+      "name": "deppbot",
+      "files": [
+        "deppbot.svg"
+      ],
+      "shortname": "deppbot",
+      "url": "https://www.deppbot.com/",
+      "tags": [
+        "security",
+        "ruby"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-04-26"
     },
     {
       "name": "Derby",
@@ -3904,6 +3956,22 @@
         "sharing"
       ],
       "updated": "2015-09-26"
+    },
+    {
+      "name": "elm",
+      "files": [
+        "elm.svg"
+      ],
+      "shortname": "elm",
+      "url": "http://elm-lang.org/",
+      "tags": [
+        "language",
+        "functional"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-04-26"
     },
     {
       "name": "Emacs",
@@ -8909,6 +8977,23 @@
       "updated": "2015-07-21"
     },
     {
+      "name": "Opsee",
+      "files": [
+        "opsee.svg"
+      ],
+      "shortname": "opsee",
+      "url": "https://opsee.com/",
+      "tags": [
+        "monitoring",
+        "server monitoring"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-04-26",
+      "edited": true
+    },
+    {
       "name": "Optimizely",
       "files": [
         "optimizely.svg"
@@ -9859,6 +9944,24 @@
         "developers"
       ],
       "updated": "2015-06-11"
+    },
+    {
+      "name": "Pyup",
+      "files": [
+        "pyup.svg"
+      ],
+      "shortname": "pyup",
+      "url": "https://pyup.io/",
+      "tags": [
+        "build tool",
+        "python",
+        "vectorized"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-04-26",
+      "edited": true
     },
     {
       "name": "Q",
@@ -11646,6 +11749,23 @@
       "edited": true
     },
     {
+      "name": "Strider",
+      "files": [
+        "strider.svg"
+      ],
+      "shortname": "strider",
+      "url": "http://stridercd.com/",
+      "tags": [
+        "continuous integration",
+        "code deployment",
+        "open source"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-04-26"
+    },
+    {
       "name": "Stripe",
       "files": [
         "stripe.svg"
@@ -11706,9 +11826,9 @@
       "shortname": "styleci",
       "url": "https://styleci.io/",
       "tags": [
-        "php",
         "continuous integration",
-        "code review"
+        "code review",
+        "php"
       ],
       "categories": [
         "developers"
