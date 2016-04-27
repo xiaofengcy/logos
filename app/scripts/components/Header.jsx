@@ -163,9 +163,10 @@ class Header extends React.Component {
             <a
               href="#" className={props.state.tag ? ' tagged' : ''}
               onClick={props.onClickShowTagCloud}>
-              {!props.state.tag ?
-               <span><Icon id="cloud" />Tags</span> :
-               <span>#{props.state.tag}<Icon id="times-circle" /></span>}
+              {!props.state.tag
+                ? <span><Icon id="cloud" />Tags</span>
+                : <span>#{props.state.tag}<Icon id="times-circle" /></span>
+              }
             </a>
           </li>
         );
@@ -235,17 +236,15 @@ class Header extends React.Component {
             </a>
             <ul>
               {categories.map((d, i) =>
-                (
-                  <li
-                    key={i}
-                    className={(d.key === props.state.category ? 'active' : '') + (d.key === 'categories' ? ' faded' : '')}>
-                    <a
-                      href="#" onClick={this.onClickChangeCategory}
-                      data-value={d.key}>
-                      {d.title} {(d.value > 0 ? `(${d.value})` : '')}
-                    </a>
-                  </li>
-                )
+                (<li
+                  key={i}
+                  className={(d.key === props.state.category ? 'active' : '') + (d.key === 'categories' ? ' faded' : '')}>
+                  <a
+                    href="#" onClick={this.onClickChangeCategory}
+                    data-value={d.key}>
+                    {d.title} {(d.value > 0 ? `(${d.value})` : '')}
+                  </a>
+                </li>)
               )}
             </ul>
           </span>
@@ -257,7 +256,7 @@ class Header extends React.Component {
       <header
         className={['main-header', props.state.categoryMenuVisible ? 'show-menu' : '', props.state.tagCloudVisible ? 'show-tags' : ''].join(' ')}>
         <a href="#" className="logo" data-value="logo" onClick={props.onClickChangeView}>
-          <img src="media/svg-porn.svg" />
+          <img src="media/svg-porn.svg" alt="SVGPorn" />
         </a>
         <h3>{props.state.category === 'categories' ? props.state.logos.length : props.visible} high quality svg logos</h3>
         {categories}
@@ -288,13 +287,13 @@ class Header extends React.Component {
                 name="search"
                 value={props.state.search}
                 onChange={props.onSearch} />
-                  <span className="input-icon">
-                    {props.state.search ?
-                     <a href="#" onClick={props.onSearch}>
-                       <Icon id="times-circle" />
-                     </a> :
-                     <Icon id="search" />}
-                  </span>
+              <span className="input-icon">
+                {props.state.search ?
+                 (<a href="#" onClick={props.onSearch}>
+                   <Icon id="times-circle" />
+                 </a>) :
+                  <Icon id="search" />}
+              </span>
             </div>
           </li>
         </ul>
