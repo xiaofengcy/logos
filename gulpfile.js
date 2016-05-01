@@ -1,4 +1,4 @@
-/*eslint-disable no-var, one-var, func-names, indent, prefer-arrow-callback, object-shorthand, no-console, no-multi-spaces, require-jsdoc */
+/*eslint-disable no-var, one-var, func-names, indent, prefer-arrow-callback, object-shorthand, no-console, newline-per-chained-call, one-var-declaration-per-line, prefer-template, vars-on-top  */
 var gulp               = require('gulp'),
     $                  = require('gulp-load-plugins')(),
     _orderBy           = require('lodash/orderBy'),
@@ -10,6 +10,7 @@ var gulp               = require('gulp'),
     exec               = require('child_process').exec,
     fs                 = require('fs'),
     historyApiFallback = require('connect-history-api-fallback'),
+    lazypipe           = require('lazypipe'),
     merge              = require('merge-stream'),
     path               = require('path'),
     runSequence        = require('run-sequence'),
@@ -17,7 +18,7 @@ var gulp               = require('gulp'),
     vinylPaths         = require('vinyl-paths'),
     watchify           = require('watchify');
 
-var isProduction = function () {
+var isProduction = function() {
       return process.env.NODE_ENV === 'production';
     },
     middleware   = historyApiFallback({}),
@@ -41,11 +42,11 @@ function watchifyTask(options) {
     bundler = watchify(bundler);
   }
 
-  rebundle = function () {
+  rebundle = function() {
     var stream = bundler.bundle();
 
     if (options.watch) {
-      stream.on('error', function (err) {
+      stream.on('error', function(err) {
         console.log(err);
       });
     }
@@ -53,8 +54,11 @@ function watchifyTask(options) {
     stream
       .pipe(source('app.js'))
       .pipe(buffer())
+      .pipe($.sourcemaps.init({ loadMaps: true }))
+      // Add transformation tasks to the pipeline here.
+      .pipe($.sourcemaps.write('./'))
       .pipe(gulp.dest('.tmp/assets'))
-      .pipe($.tap(function () {
+      .pipe($.tap(function() {
         if (iteration === 0 && options.cb) {
           options.cb();
         }
@@ -67,14 +71,14 @@ function watchifyTask(options) {
 }
 
 // Scripts
-gulp.task('scripts', function (cb) {
+gulp.task('scripts', function(cb) {
   return watchifyTask({
     watch: !isProduction(),
     cb: cb
   });
 });
 
-gulp.task('lint', function () {
+gulp.task('lint', function() {
   return gulp.src('app/scripts/**/*')
     .pipe($.eslint({
       useEslintrc: true
@@ -83,11 +87,11 @@ gulp.task('lint', function () {
     .pipe($.eslint.failOnError());
 });
 
-gulp.task('modernizr', function (cb) {
+gulp.task('modernizr', function(cb) {
   return exec('./node_modules/.bin/modernizr -c .modernizr.json -d .tmp/assets/modernizr.js', cb);
 });
 
-gulp.task('styles', function () {
+gulp.task('styles', function() {
   return gulp.src('app/styles/main.scss')
     .pipe($.plumber())
     .pipe($.sass.sync({
@@ -101,7 +105,7 @@ gulp.task('styles', function () {
     .pipe(browserSync.stream());
 });
 
-gulp.task('media', function () {
+gulp.task('media', function() {
   return gulp.src(['**/*.{jpg,gif,png}'], { cwd: 'app/media/' })
     .pipe($.imagemin({
       verbose: true,
@@ -114,7 +118,7 @@ gulp.task('media', function () {
     }));
 });
 
-gulp.task('icons', function () {
+gulp.task('icons', function() {
   gulp.src('**/*.svg', { cwd: 'app/media/icons' })
     .pipe($.svgSprite({
       mode: {
@@ -129,7 +133,7 @@ gulp.task('icons', function () {
     .pipe(gulp.dest('app/media'));
 });
 
-gulp.task('readme', function () {
+gulp.task('readme', function() {
   var json  = JSON.parse(fs.readFileSync('./app/logos.json')),
       logos = _orderBy(json.items, ['updated', 'name'], ['desc', 'asc']);
 
@@ -143,28 +147,30 @@ gulp.task('readme', function () {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('copy', function () {
+gulp.task('copy', function() {
   return gulp.src('app/media/**/*')
     .pipe(gulp.dest('.tmp'));
 });
 
-gulp.task('bundle', function () {
+gulp.task('bundle', function() {
   var html,
       extras,
       media,
       logos;
 
   html = gulp.src('app/*.html')
-    .pipe($.useref())
+    .pipe($.useref({}, lazypipe().pipe($.sourcemaps.init, { loadMaps: true })))
     .pipe($.if('*.css', $.cssmin()))
     .pipe($.if('*.js', $.uglify()))
+    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('dist'))
     .pipe($.size({
       title: 'HTML'
     }));
 
   extras = gulp.src([
-      'app/favicon.ico'
+      'app/favicon.ico',
+      'app/.htaccess'
     ])
     .pipe(gulp.dest('dist'))
     .pipe($.size({
@@ -190,7 +196,7 @@ gulp.task('bundle', function () {
   return merge(html, extras, media, logos);
 });
 
-gulp.task('sizer', function () {
+gulp.task('sizer', function() {
   return gulp.src('dist/**/*')
     .pipe($.size({
       title: 'Build',
@@ -198,11 +204,11 @@ gulp.task('sizer', function () {
     }));
 });
 
-gulp.task('assets', function (cb) {
+gulp.task('assets', function(cb) {
   runSequence('styles', 'scripts', 'modernizr', cb);
 });
 
-gulp.task('clean', function (cb) {
+gulp.task('clean', function(cb) {
   var target = ['.tmp/*'];
   if (isProduction()) {
     target.push('dist/*');
@@ -211,8 +217,8 @@ gulp.task('clean', function (cb) {
   return del(target, cb);
 });
 
-gulp.task('get-commit', function (cb) {
-  exec('git log -1 --pretty=%s && git log -1 --pretty=%b', function (err, stdout) {
+gulp.task('get-commit', function(cb) {
+  exec('git log -1 --pretty=%s && git log -1 --pretty=%b', function(err, stdout) {
     var parts = stdout.replace('\n\n', '').split('\n');
 
     commitMessage = parts[0];
@@ -224,7 +230,7 @@ gulp.task('get-commit', function (cb) {
   });
 });
 
-gulp.task('gh-master', function () {
+gulp.task('gh-master', function() {
   var clean,
       push;
 
@@ -246,7 +252,7 @@ gulp.task('gh-master', function () {
   return merge(clean, push);
 });
 
-gulp.task('deploy-site', ['build'], function () {
+gulp.task('deploy-site', ['build'], function() {
   return gulp.src('dist/**', {
       dot: true
     })
@@ -261,11 +267,11 @@ gulp.task('deploy-site', ['build'], function () {
     }));
 });
 
-gulp.task('deploy-master', function (cb) {
+gulp.task('deploy-master', function(cb) {
   runSequence(['get-commit', 'readme'], 'gh-master', cb);
 });
 
-gulp.task('serve', ['assets'], function () {
+gulp.task('serve', ['assets'], function() {
   browserSync.init({
     notify: true,
     logPrefix: 'logos',
@@ -279,19 +285,19 @@ gulp.task('serve', ['assets'], function () {
     }
   });
 
-  gulp.watch('app/styles/**/*.scss', function (e) {
+  gulp.watch('app/styles/**/*.scss', function(e) {
     if (e.type === 'changed') {
       gulp.start('styles');
     }
   });
 
   gulp.watch('app/logos.json', ['readme']);
-  gulp.watch(['app/*.html', '.tmp/assets/app.js', 'app/media/**/*', 'app/logos.json']).on('change', function () {
+  gulp.watch(['app/*.html', '.tmp/assets/app.js', 'app/media/**/*', 'app/logos.json']).on('change', function() {
     browserSync.reload();
   });
 });
 
-gulp.task('build', function (cb) {
+gulp.task('build', function(cb) {
   process.env.NODE_ENV = 'production';
   runSequence('clean', 'lint', 'readme', 'assets', ['media', 'bundle'], 'sizer', cb);
 });
