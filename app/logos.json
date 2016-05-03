@@ -295,6 +295,24 @@
       "edited": true
     },
     {
+      "name": "api.ai",
+      "files": [
+        "api-ai.svg"
+      ],
+      "shortname": "api-ai",
+      "url": "https://api.ai/",
+      "tags": [
+        "voice",
+        "speech",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-03",
+      "edited": true
+    },
+    {
       "name": "Apiary",
       "files": [
         "apiary.svg"
@@ -5704,6 +5722,23 @@
       "updated": "2015-06-24"
     },
     {
+      "name": "Heroku Redis",
+      "files": [
+        "heroku-redis.svg"
+      ],
+      "shortname": "heroku-redis",
+      "url": "https://www.heroku.com/redis",
+      "tags": [
+        "database",
+        "redis",
+        "code hosting"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-03"
+    },
+    {
       "name": "Hexo",
       "files": [
         "hexo.svg"
@@ -7314,6 +7349,24 @@
         "DevOps"
       ],
       "updated": "2015-07-21"
+    },
+    {
+      "name": "Locent",
+      "files": [
+        "locent.svg"
+      ],
+      "shortname": "locent",
+      "url": "https://locent.com/",
+      "tags": [
+        "sms",
+        "health",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-03",
+      "edited": true
     },
     {
       "name": "Lodash",
@@ -9622,6 +9675,24 @@
       "updated": "2015-07-06"
     },
     {
+      "name": "Preact",
+      "files": [
+        "preact.svg"
+      ],
+      "shortname": "preact",
+      "url": "https://preactjs.com/",
+      "tags": [
+        "front-end framework",
+        "javascript",
+        "react"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-03",
+      "edited": true
+    },
+    {
       "name": "Precursor",
       "files": [
         "precursor.svg"
@@ -10352,6 +10423,41 @@
       ],
       "updated": "2015-12-10",
       "edited": true
+    },
+    {
+      "name": "Redspread",
+      "files": [
+        "redspread.svg"
+      ],
+      "shortname": "redspread",
+      "url": "https://redspread.com/",
+      "tags": [
+        "containers",
+        "docker",
+        "kubbernets"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-05-03"
+    },
+    {
+      "name": "Redux",
+      "files": [
+        "redux.svg"
+      ],
+      "shortname": "redux",
+      "url": "http://redux.js.org/",
+      "tags": [
+        "state container",
+        "react",
+        "javascript"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-03",
+      "favorite": true
     },
     {
       "name": "Refactor.io",
@@ -11110,6 +11216,22 @@
       ],
       "updated": "2016-03-31",
       "edited": true
+    },
+    {
+      "name": "Shippable",
+      "files": [
+        "shippable.svg"
+      ],
+      "shortname": "shippable",
+      "url": "https://www.shippable.com/",
+      "tags": [
+        "continuous integration",
+        "code deployment"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-05-03"
     },
     {
       "name": "Shogun",
