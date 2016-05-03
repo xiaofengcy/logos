@@ -34,7 +34,7 @@
     "connect": "^3.4",
     "connect-history-api-fallback": "^1.2",
     "del": "^2.2",
-    "eslint": "^2.8",
+    "eslint": "^2.9",
     "eslint-config-airbnb": "^8.0",
     "eslint-plugin-import": "^1.6",
     "eslint-plugin-jsdoc": "^2.3",
