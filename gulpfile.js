@@ -32,7 +32,7 @@ function watchifyTask(options) {
     entries: path.join(__dirname, '/app/scripts/main.js'),
     insertGlobals: options.watch,
     cache: {},
-    // debug: options.watch,
+    debug: true,
     packageCache: {},
     fullPaths: false,
     extensions: ['.jsx']
@@ -54,9 +54,6 @@ function watchifyTask(options) {
     stream
       .pipe(source('app.js'))
       .pipe(buffer())
-      .pipe($.sourcemaps.init({ loadMaps: true }))
-      // Add transformation tasks to the pipeline here.
-      .pipe($.sourcemaps.write('./'))
       .pipe(gulp.dest('.tmp/assets'))
       .pipe($.tap(function() {
         if (iteration === 0 && options.cb) {
@@ -94,6 +91,7 @@ gulp.task('modernizr', function(cb) {
 gulp.task('styles', function() {
   return gulp.src('app/styles/main.scss')
     .pipe($.plumber())
+    .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       precision: 4
     }).on('error', $.sass.logError))
@@ -101,6 +99,7 @@ gulp.task('styles', function() {
     .pipe($.autoprefixer({
       browsers: ['last 4 versions']
     }))
+    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/assets'))
     .pipe(browserSync.stream());
 });
@@ -158,11 +157,16 @@ gulp.task('bundle', function() {
       media,
       logos;
 
+  var compress = lazypipe()
+    .pipe($.filelog)
+    .pipe($.sourcemaps.init, { loadMaps: true })
+    .pipe($.if, '*.js', $.uglify())
+    .pipe($.if, '*.css', $.cssmin())
+    .pipe($.sourcemaps.write, '.');
+
   html = gulp.src('app/*.html')
-    .pipe($.useref({}, lazypipe().pipe($.sourcemaps.init, { loadMaps: true })))
-    .pipe($.if('*.css', $.cssmin()))
-    .pipe($.if('*.js', $.uglify()))
-    .pipe($.sourcemaps.write('.'))
+    .pipe($.useref())
+    .pipe($.if('**/*.{css,js}', compress()))
     .pipe(gulp.dest('dist'))
     .pipe($.size({
       title: 'HTML'
@@ -300,6 +304,16 @@ gulp.task('serve', ['assets'], function() {
 gulp.task('build', function(cb) {
   process.env.NODE_ENV = 'production';
   runSequence('clean', 'lint', 'readme', 'assets', ['media', 'bundle'], 'sizer', cb);
+});
+
+gulp.task('build', function(cb) {
+  process.env.NODE_ENV = 'production';
+  runSequence('clean', 'lint', 'readme', 'assets', ['media', 'bundle'], 'sizer', cb);
+});
+
+gulp.task('prebuild', function(cb) {
+  process.env.NODE_ENV = 'production';
+  runSequence('scripts', ['bundle'], cb);
 });
 
 gulp.task('default', ['serve']);
