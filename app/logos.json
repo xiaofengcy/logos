@@ -614,7 +614,7 @@
       "categories": [
         "teams"
       ],
-      "updated": "2015-07-18"
+      "updated": "2016-05-11"
     },
     {
       "name": "Atom",
@@ -2796,6 +2796,21 @@
       "edited": true
     },
     {
+      "name": "Concourse",
+      "files": [
+        "concourse.svg"
+      ],
+      "shortname": "concourse",
+      "url": "https://concourse.ci/",
+      "tags": [
+        "continuous integration"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-11"
+    },
+    {
       "name": "concrete5",
       "files": [
         "concrete5.svg"
@@ -3141,6 +3156,21 @@
         "geeks"
       ],
       "updated": "2015-07-27"
+    },
+    {
+      "name": "Crystal",
+      "files": [
+        "crystal.svg"
+      ],
+      "shortname": "crystal",
+      "url": "http://crystal-lang.org/",
+      "tags": [
+        "language"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-11"
     },
     {
       "name": "CSS3",
@@ -6768,6 +6798,24 @@
       "edited": true
     },
     {
+      "name": "Kemal",
+      "files": [
+        "kemal.svg"
+      ],
+      "shortname": "kemal",
+      "url": "http://kemalcr.com/",
+      "tags": [
+        "web framework",
+        "crystal",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-11",
+      "edited": true
+    },
+    {
       "name": "Khan Academy",
       "files": [
         "khan_academy.svg"
@@ -7283,6 +7331,22 @@
         "business"
       ],
       "updated": "2015-07-26"
+    },
+    {
+      "name": "linkerd",
+      "files": [
+        "linkerd.svg"
+      ],
+      "shortname": "linkerd",
+      "url": "https://linkerd.io/",
+      "tags": [
+        "microservices",
+        "rpc"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-11"
     },
     {
       "name": "Linode",
@@ -9913,6 +9977,22 @@
       "edited": true
     },
     {
+      "name": "Pug",
+      "files": [
+        "pug.svg"
+      ],
+      "shortname": "pug",
+      "url": "https://github.com/pugjs/pug",
+      "tags": [
+        "template",
+        "preprocessor"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-11"
+    },
+    {
       "name": "Puppet",
       "files": [
         "puppet.svg"
@@ -10334,6 +10414,25 @@
         "developers"
       ],
       "updated": "2015-09-24",
+      "edited": true
+    },
+    {
+      "name": "ReactiveX",
+      "files": [
+        "reactivex.svg"
+      ],
+      "shortname": "reactivex",
+      "url": "http://reactivex.io/",
+      "tags": [
+        "architecture",
+        "observer",
+        "pattern",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-11",
       "edited": true
     },
     {
