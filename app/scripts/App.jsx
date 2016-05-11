@@ -4,6 +4,7 @@ import { autobind } from 'core-decorators';
 import _filter from 'lodash/filter';
 import _orderBy from 'lodash/orderBy';
 import _take from 'lodash/take';
+import _escapeRegExp from 'lodash/escapeRegExp';
 
 import Storage from './utils/Storage';
 import json from '../logos.json';
@@ -285,7 +286,7 @@ class App extends React.Component {
 
     db.forEach((d, i) => {
       if (state.search) {
-        hidden = !d.name.match(new RegExp(state.search, 'i'));
+        hidden = !d.name.match(new RegExp(_escapeRegExp(state.search), 'i'));
       }
       else if (state.tag) {
         hidden = d.tags.indexOf(state.tag) === -1;
