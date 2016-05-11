@@ -11,8 +11,8 @@ Since I optimize all the files manually I won't accept pull requests with new lo
 Please add your requests in the issues preferably with links to the vector files.
 
 ## Tips for working with SVGs
-• Always convert borders to paths. They use a fixed size and behave strangely when resized.
-• Join all the paths into one and use it as a background/mask. Or at least overlap your paths.
+* Always convert borders to paths. They use a fixed size and behave strangely when resized.
+* Join all the paths into one and use it as a background/mask. Or at least overlap your paths.
 
 *All logos appearing on the site are the property of their respective owners.*
 
@@ -176,4 +176,4 @@ Please add your requests in the issues preferably with links to the vector files
 
 [View all on svgporn.com](http://svgporn.com)
 
-\* Converted from raster image, svg font or adapted from complex AI files.
+\* Converted from raster image, svg font or adapted from complex files.
