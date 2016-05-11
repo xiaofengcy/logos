@@ -158,7 +158,6 @@ gulp.task('bundle', function() {
       logos;
 
   var compress = lazypipe()
-    .pipe($.filelog)
     .pipe($.sourcemaps.init, { loadMaps: true })
     .pipe($.if, '*.js', $.uglify())
     .pipe($.if, '*.css', $.cssmin())
