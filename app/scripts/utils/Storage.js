@@ -10,7 +10,13 @@
  * @param {string} name
  * @returns {Object}
  */
-export const getItem = (name) => JSON.parse(localStorage.getItem(name));
+export function getItem(name) {
+  if (typeof localStorage !== 'undefined') {
+    return JSON.parse(localStorage.getItem(name));
+  }
+
+  return false;
+}
 
 /**
  * Set Item.
@@ -19,9 +25,11 @@ export const getItem = (name) => JSON.parse(localStorage.getItem(name));
  * @param {string} name
  * @param {Object} value
  */
-export const setItem = (name, value) => {
-  localStorage.setItem(name, JSON.stringify(value));
-};
+export function setItem(name, value) {
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem(name, JSON.stringify(value));
+  }
+}
 
 /**
  * Remove Item.
@@ -29,17 +37,25 @@ export const setItem = (name, value) => {
  * @function
  * @param {string} name
  */
-export const removeItem = (name) => {
+export function removeItem(name) {
+  if (typeof localStorage === 'undefined') {
+    return;
+  }
+
   localStorage.removeItem(name);
-};
+}
 
 /**
  * Clear All.
  *
  * @function
  */
-export const clearAll = () => {
+export function clearAll() {
+  if (typeof localStorage === 'undefined') {
+    return;
+  }
+
   localStorage.clear();
-};
+}
 
 export default { getItem, setItem, removeItem, clearAll };

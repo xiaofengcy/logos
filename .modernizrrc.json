@@ -52,6 +52,7 @@
     "test/network/fetch",
     "test/script/async",
     "test/script/defer",
+    "test/storage/localstorage",
     "test/svg/asimg",
     "test/svg/filters",
     "test/svg/inline"

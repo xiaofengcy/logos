@@ -85,7 +85,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('modernizr', function(cb) {
-  return exec('./node_modules/.bin/modernizr -c .modernizr.json -d .tmp/assets/modernizr.js', cb);
+  return exec('./node_modules/.bin/modernizr -c .modernizrrc.json -d .tmp/assets/modernizr.js', cb);
 });
 
 gulp.task('styles', function() {
@@ -296,6 +296,7 @@ gulp.task('serve', ['assets'], function() {
   });
 
   gulp.watch('app/logos.json', ['readme']);
+  gulp.watch('.modernizrrc.json', ['modernizr']);
   gulp.watch(['app/*.html', '.tmp/assets/app.js', 'app/media/**/*', 'app/logos.json']).on('change', function() {
     browserSync.reload();
   });
@@ -304,16 +305,6 @@ gulp.task('serve', ['assets'], function() {
 gulp.task('build', function(cb) {
   process.env.NODE_ENV = 'production';
   runSequence('clean', 'lint', 'readme', 'assets', ['media', 'bundle'], 'sizer', cb);
-});
-
-gulp.task('build', function(cb) {
-  process.env.NODE_ENV = 'production';
-  runSequence('clean', 'lint', 'readme', 'assets', ['media', 'bundle'], 'sizer', cb);
-});
-
-gulp.task('prebuild', function(cb) {
-  process.env.NODE_ENV = 'production';
-  runSequence('scripts', ['bundle'], cb);
 });
 
 gulp.task('default', ['serve']);
