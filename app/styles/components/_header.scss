@@ -20,7 +20,12 @@
     }
 
     @include lg {
+      padding-bottom: 12%;
       width: 50%;
+    }
+
+    @include xl {
+      padding-bottom: 10%;
     }
 
     img {
@@ -28,7 +33,7 @@
     }
   }
 
-  h3 {
+  h1 {
     color: $link-color;
     font-size: 1.8rem;
     margin: 1rem 1.5rem 0.5rem;
@@ -424,17 +429,39 @@
     }
   }
 
-  .social {
-    margin-top: 1rem;
-    text-align: center;
+  .links {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    @include sm-only {
+      > * {
+        margin-bottom: 1.5rem;
+      }
+
+      .stickers {
+        flex-basis: 100%;
+        margin: 0;
+        order: 1;
+        width: 9.5rem;
+      }
+    }
 
     @include md {
-      text-align: right;
+      flex-wrap: nowrap;
+    }
+
+    img {
+      height: 3.5rem;
+      max-width: 100%;
+      width: auto;
     }
   }
 
   .menu,
-  .social {
+  .links {
     margin-left: auto;
     margin-right: auto;
     width: 100%;

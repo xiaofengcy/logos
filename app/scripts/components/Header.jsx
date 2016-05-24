@@ -258,7 +258,7 @@ class Header extends React.Component {
         <a href="#" className="logo" data-value="logo" onClick={props.onClickChangeView}>
           <img src="media/svg-porn.svg" alt="SVGPorn" />
         </a>
-        <h3>{props.state.category === 'categories' ? props.state.logos.length : props.visible} high quality svg logos</h3>
+        <h1>{props.state.category === 'categories' ? props.state.logos.length : props.visible} high quality svg logos</h1>
         {categories}
         <ul className="menu">
           {output.tagsMenu}
@@ -292,12 +292,25 @@ class Header extends React.Component {
                  (<a href="#" onClick={props.onSearch}>
                    <Icon id="times-circle" />
                  </a>) :
-                  <Icon id="search" />}
+                 <Icon id="search" />}
               </span>
             </div>
           </li>
         </ul>
-        <div className="social">
+        <div className="links">
+          <iframe
+            src="https://ghbtns.com/github-btn.html?user=gilbarbara&repo=logos&type=star&count=true"
+            className="github"
+            frameBorder="0"
+            scrolling="0"
+            width="110px"
+            height="30px"></iframe>
+          <a
+            href="https://www.stickermule.com/user/1070739693/stickers"
+            className="stickers"
+            target="_blank">
+            <img src="media/stickers.svg" alt="Stickers" />
+          </a>
           <a
             href="https://twitter.com/svgporn"
             className="twitter-follow-button"
