@@ -1,10 +1,9 @@
 SVG Logos
 ====================
 #### A collection of 800+ svg vector logos.
-[View All](http://svgporn.com)
+All the logos are optimized (removed duplicated paths / excessive grouping / empty defs, linting, etc).
 
-The logos are optimized (removed duplicated paths / excessive groups / empty defs, linting, etc).<br/>
-Almost 100 logos were recreated from rastered images #vectorized.
+[View All](http://svgporn.com)
 
 ## Contributing
 Since I optimize all the files manually I won't accept pull requests with new logos.
