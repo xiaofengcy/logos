@@ -106,9 +106,8 @@
       "shortname": "airbrake",
       "url": "https://airbrake.io/",
       "tags": [
-        "log manager",
-        "monitoring",
-        "server monitoring"
+        "exception tracker",
+        "monitoring"
       ],
       "categories": [
         "DevOps"
@@ -1854,6 +1853,24 @@
         "business"
       ],
       "updated": "2015-07-29"
+    },
+    {
+      "name": "Bugsnag",
+      "files": [
+        "bugsnag.svg"
+      ],
+      "shortname": "bugsnag",
+      "url": "https://bugsnag.com/",
+      "tags": [
+        "exception tracker",
+        "monitoring",
+        "vectorized"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-05-24",
+      "edited": true
     },
     {
       "name": "C",
@@ -5327,6 +5344,38 @@
       "edited": true
     },
     {
+      "name": "Graphene",
+      "files": [
+        "graphene.svg"
+      ],
+      "shortname": "graphene",
+      "url": "http://graphene-python.org/",
+      "tags": [
+        "graphql",
+        "python"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-24"
+    },
+    {
+      "name": "GraphQL",
+      "files": [
+        "graphql.svg"
+      ],
+      "shortname": "graphql",
+      "url": "http://graphql.org/",
+      "tags": [
+        "query language"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-24",
+      "favorite": true
+    },
+    {
       "name": "Grails",
       "files": [
         "grails.svg"
@@ -7530,6 +7579,22 @@
       "updated": "2015-07-18"
     },
     {
+      "name": "Losant",
+      "files": [
+        "losant.svg"
+      ],
+      "shortname": "losant",
+      "url": "https://www.losant.com/",
+      "tags": [
+        "iot",
+        "hardware"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-05-24"
+    },
+    {
       "name": "Lotus",
       "files": [
         "lotus.svg"
@@ -9267,6 +9332,22 @@
       "favorite": true
     },
     {
+      "name": "Passbolt",
+      "files": [
+        "passbolt.svg"
+      ],
+      "shortname": "passbolt",
+      "url": "https://www.passbolt.com/",
+      "tags": [
+        "password manager",
+        "browser extension"
+      ],
+      "categories": [
+        "teams"
+      ],
+      "updated": "2016-05-24"
+    },
+    {
       "name": "Passport",
       "files": [
         "passport.svg"
@@ -9849,7 +9930,7 @@
       "shortname": "productboard",
       "url": "https://www.productboard.com/",
       "tags": [
-        "project management",
+        "project manager",
         "CDN",
         "vectorized"
       ],
@@ -10738,8 +10819,8 @@
       "shortname": "rollbar",
       "url": "https://rollbar.com/",
       "tags": [
-        "monitoring",
-        "server monitoring"
+        "exception tracker",
+        "monitoring"
       ],
       "categories": [
         "DevOps"
@@ -11256,7 +11337,7 @@
       "shortname": "sentry",
       "url": "https://getsentry.com/welcome/",
       "tags": [
-        "log manager"
+        "exception tracker"
       ],
       "categories": [
         "DevOps"
@@ -11281,6 +11362,24 @@
         "developers"
       ],
       "updated": "2015-09-11",
+      "edited": true
+    },
+    {
+      "name": "Sherlock",
+      "files": [
+        "sherlock.svg"
+      ],
+      "shortname": "sherlock",
+      "url": "https://sherlock.knowtify.io/",
+      "tags": [
+        "customer analytics",
+        "analytics",
+        "vectorized"
+      ],
+      "categories": [
+        "business"
+      ],
+      "updated": "2016-05-24",
       "edited": true
     },
     {
@@ -11930,6 +12029,22 @@
       ],
       "updated": "2015-09-24",
       "edited": true
+    },
+    {
+      "name": "stickermule",
+      "files": [
+        "stickermule.svg"
+      ],
+      "shortname": "stickermule",
+      "url": "https://www.stickermule.com/",
+      "tags": [
+        "stickers",
+        "magnets"
+      ],
+      "categories": [
+        "geeks"
+      ],
+      "updated": "2016-05-24"
     },
     {
       "name": "StopLight",
