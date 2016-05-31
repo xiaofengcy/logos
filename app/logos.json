@@ -399,16 +399,17 @@
         "appcode.svg"
       ],
       "shortname": "appcode",
-      "url": "https://www.jetbrains.com/objc/",
+      "url": "https://www.jetbrains.com/appcode/",
       "tags": [
         "code editor",
         "IDE",
-        "objective c"
+        "objective c",
+        "jetbrains"
       ],
       "categories": [
         "developers"
       ],
-      "updated": "2015-09-17"
+      "updated": "2016-05-30"
     },
     {
       "name": "AppDynamics",
@@ -2212,12 +2213,13 @@
         "code editor",
         "IDE",
         "c",
-        "c++"
+        "c++",
+        "jetbrains"
       ],
       "categories": [
         "developers"
       ],
-      "updated": "2015-09-17"
+      "updated": "2016-05-30"
     },
     {
       "name": "Clojure",
@@ -6241,12 +6243,13 @@
       "tags": [
         "code editor",
         "IDE",
-        "java"
+        "java",
+        "jetbrains"
       ],
       "categories": [
         "developers"
       ],
-      "updated": "2015-09-17"
+      "updated": "2016-05-30"
     },
     {
       "name": "Intercom",
@@ -6513,12 +6516,13 @@
       "url": "https://www.jetbrains.com/",
       "tags": [
         "code editor",
-        "IDE"
+        "IDE",
+        "jetbrains"
       ],
       "categories": [
         "developers"
       ],
-      "updated": "2015-06-13"
+      "updated": "2016-05-30"
     },
     {
       "name": "Jhipster",
@@ -9545,12 +9549,13 @@
       "tags": [
         "code editor",
         "IDE",
-        "php"
+        "php",
+        "jetbrains"
       ],
       "categories": [
         "developers"
       ],
-      "updated": "2015-09-17"
+      "updated": "2016-05-30"
     },
     {
       "name": "Picasa",
@@ -10155,12 +10160,13 @@
       "tags": [
         "code editor",
         "IDE",
-        "python"
+        "python",
+        "jetbrains"
       ],
       "categories": [
         "developers"
       ],
-      "updated": "2015-09-17"
+      "updated": "2016-05-30"
     },
     {
       "name": "Python",
@@ -10953,12 +10959,13 @@
       "tags": [
         "code editor",
         "IDE",
-        "ruby"
+        "ruby",
+        "jetbrains"
       ],
       "categories": [
         "developers"
       ],
-      "updated": "2015-09-17"
+      "updated": "2016-05-30"
     },
     {
       "name": "Runnable",
@@ -13564,12 +13571,13 @@
         "code editor",
         "IDE",
         "javascript",
-        "node.js"
+        "node.js",
+        "jetbrains"
       ],
       "categories": [
         "developers"
       ],
-      "updated": "2015-09-17"
+      "updated": "2016-05-30"
     },
     {
       "name": "Weebly",
@@ -14007,7 +14015,7 @@
         "developers",
         "teams"
       ],
-      "updated": "2015-07-21"
+      "updated": "2016-05-30"
     },
     {
       "name": "YouTube",
