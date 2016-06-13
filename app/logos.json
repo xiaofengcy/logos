@@ -4208,7 +4208,7 @@
       "updated": "2015-06-25"
     },
     {
-      "name": "Eslint",
+      "name": "ESLint",
       "files": [
         "eslint.svg"
       ],
@@ -4222,7 +4222,7 @@
       "categories": [
         "developers"
       ],
-      "updated": "2015-06-11",
+      "updated": "2016-06-13",
       "favorite": true
     },
     {
@@ -4459,12 +4459,13 @@
       "tags": [
         "database",
         "realtime",
-        "DBaaS"
+        "DBaaS",
+        "vectorized"
       ],
       "categories": [
         "developers"
       ],
-      "updated": "2015-06-13",
+      "updated": "2016-06-13",
       "edited": true
     },
     {
@@ -5700,6 +5701,23 @@
         "developers"
       ],
       "updated": "2015-06-24"
+    },
+    {
+      "name": "Hashnode",
+      "files": [
+        "hashnode.svg"
+      ],
+      "shortname": "hashnode",
+      "url": "https://hashnode.com/",
+      "tags": [
+        "community",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-06-13",
+      "edited": true
     },
     {
       "name": "Haskell",
@@ -7590,7 +7608,7 @@
       "shortname": "losant",
       "url": "https://www.losant.com/",
       "tags": [
-        "iot",
+        "IoT",
         "hardware"
       ],
       "categories": [
@@ -8301,6 +8319,25 @@
       "updated": "2015-07-23"
     },
     {
+      "name": "MobX",
+      "files": [
+        "mobx.svg"
+      ],
+      "shortname": "mobx",
+      "url": "https://mobxjs.github.io/mobx/",
+      "tags": [
+        "state container",
+        "react",
+        "javascript",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-06-13",
+      "edited": true
+    },
+    {
       "name": "Mocha",
       "files": [
         "mocha.svg"
@@ -8318,7 +8355,7 @@
       "categories": [
         "developers"
       ],
-      "updated": "2015-06-11",
+      "updated": "2016-06-13",
       "edited": true
     },
     {
@@ -9686,6 +9723,25 @@
         "teams"
       ],
       "updated": "2015-12-10",
+      "edited": true
+    },
+    {
+      "name": "PlatformIO",
+      "files": [
+        "platformio.svg"
+      ],
+      "shortname": "platformio",
+      "url": "http://platformio.org/",
+      "tags": [
+        "IDE",
+        "IoT",
+        "hardware",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-06-13",
       "edited": true
     },
     {
@@ -12177,6 +12233,22 @@
         "developers"
       ],
       "updated": "2015-07-30"
+    },
+    {
+      "name": "stylelint",
+      "files": [
+        "stylelint.svg"
+      ],
+      "shortname": "stylelint",
+      "url": "http://stylelint.io/",
+      "tags": [
+        "linter",
+        "css"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-06-13"
     },
     {
       "name": "Stylus",
