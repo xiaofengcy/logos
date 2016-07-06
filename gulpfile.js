@@ -91,7 +91,7 @@ gulp.task('modernizr', function(cb) {
 gulp.task('styles', function() {
   return gulp.src('app/styles/main.scss')
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
+    .pipe($.sourcemaps.init({ loadMaps: true }))
     .pipe($.sass.sync({
       precision: 4
     }).on('error', $.sass.logError))

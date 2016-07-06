@@ -2,6 +2,7 @@
  * localStorage Helper
  * @module Storage
  */
+import store from 'store';
 
 /**
  * Get Item.
@@ -11,11 +12,11 @@
  * @returns {Object}
  */
 export function getItem(name) {
-  if (typeof localStorage !== 'undefined') {
-    return JSON.parse(localStorage.getItem(name));
+  if (!store.enabled) {
+    return false;
   }
 
-  return false;
+  return JSON.parse(localStorage.getItem(name));
 }
 
 /**
@@ -26,9 +27,11 @@ export function getItem(name) {
  * @param {Object} value
  */
 export function setItem(name, value) {
-  if (typeof localStorage !== 'undefined') {
-    localStorage.setItem(name, JSON.stringify(value));
+  if (!store.enabled) {
+    return;
   }
+
+  localStorage.setItem(name, JSON.stringify(value));
 }
 
 /**
@@ -38,7 +41,7 @@ export function setItem(name, value) {
  * @param {string} name
  */
 export function removeItem(name) {
-  if (typeof localStorage === 'undefined') {
+  if (!store.enabled) {
     return;
   }
 
@@ -51,7 +54,7 @@ export function removeItem(name) {
  * @function
  */
 export function clearAll() {
-  if (typeof localStorage === 'undefined') {
+  if (!store.enabled) {
     return;
   }
 

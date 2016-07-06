@@ -8349,8 +8349,7 @@
         "unit testing",
         "bdd",
         "tdd",
-        "javascript",
-        "vectorized"
+        "javascript"
       ],
       "categories": [
         "developers"
