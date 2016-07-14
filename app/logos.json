@@ -4458,7 +4458,7 @@
       "url": "https://www.firebase.com/",
       "tags": [
         "database",
-        "realtime",
+        "real-time",
         "DBaaS",
         "vectorized"
       ],
@@ -4783,6 +4783,22 @@
         "developers"
       ],
       "updated": "2015-10-26"
+    },
+    {
+      "name": "Forest",
+      "files": [
+        "forest.svg"
+      ],
+      "shortname": "forest",
+      "url": "http://www.forestadmin.com/",
+      "tags": [
+        "database tools",
+        "cms"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-07-13"
     },
     {
       "name": "Forever",
@@ -5753,6 +5769,23 @@
       "favorite": true
     },
     {
+      "name": "Haxl",
+      "files": [
+        "haxl.svg"
+      ],
+      "shortname": "haxl",
+      "url": "https://github.com/facebook/Haxl",
+      "tags": [
+        "api tools",
+        "haskell",
+        "facebook"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-07-13"
+    },
+    {
       "name": "HBase",
       "files": [
         "hbase.svg"
@@ -6249,7 +6282,7 @@
       "categories": [
         "sharing"
       ],
-      "updated": "2015-07-24"
+      "updated": "2016-07-13"
     },
     {
       "name": "IntelliJ IDEA",
@@ -6285,7 +6318,7 @@
       "categories": [
         "business"
       ],
-      "updated": "2015-08-03",
+      "updated": "2016-07-13",
       "favorite": true
     },
     {
@@ -6929,7 +6962,7 @@
       "url": "http://www.kinto-storage.org/",
       "tags": [
         "database",
-        "realtime"
+        "real-time"
       ],
       "categories": [
         "developers"
@@ -9032,6 +9065,22 @@
       "updated": "2015-09-28"
     },
     {
+      "name": "opbeat",
+      "files": [
+        "opbeat.svg"
+      ],
+      "shortname": "opbeat",
+      "url": "https://opbeat.com/",
+      "tags": [
+        "exception tracker",
+        "javascript"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-07-13"
+    },
+    {
       "name": "Open Graph",
       "files": [
         "open-graph.svg"
@@ -9346,7 +9395,7 @@
       "url": "https://parse.com/",
       "tags": [
         "database",
-        "realtime",
+        "real-time",
         "mBaaS"
       ],
       "categories": [
@@ -10195,7 +10244,7 @@
       "tags": [
         "cloud computing",
         "api",
-        "realtime",
+        "real-time",
         "database",
         "vectorized"
       ],
@@ -10792,7 +10841,7 @@
       "url": "http://www.rethinkdb.com/",
       "tags": [
         "database",
-        "realtime",
+        "real-time",
         "vectorized"
       ],
       "categories": [
@@ -12281,6 +12330,23 @@
       "updated": "2015-07-06"
     },
     {
+      "name": "Supergiant",
+      "files": [
+        "supergiant.svg"
+      ],
+      "shortname": "supergiant",
+      "url": "http://supergiant.io/",
+      "tags": [
+        "docker",
+        "containers",
+        "kubernets"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-07-13"
+    },
+    {
       "name": "Supersonic",
       "files": [
         "supersonic.svg"
@@ -13630,6 +13696,23 @@
         "developers"
       ],
       "updated": "2015-10-01"
+    },
+    {
+      "name": "WebSocket",
+      "files": [
+        "websocket.svg"
+      ],
+      "shortname": "websocket",
+      "url": "https://www.w3.org/TR/websockets/",
+      "tags": [
+        "real-time communication",
+        "protocol",
+        "technology"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-07-13"
     },
     {
       "name": "WebStorm",
