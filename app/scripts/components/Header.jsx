@@ -309,12 +309,6 @@ class Header extends React.Component {
             width="110px"
             height="30px"></iframe>
           <a
-            href="https://www.stickermule.com/user/1070739693/stickers"
-            className="stickers"
-            target="_blank">
-            <img src="media/stickers.svg" alt="Stickers" />
-          </a>
-          <a
             href="https://twitter.com/svgporn"
             className="twitter-follow-button"
             data-show-count="false"
