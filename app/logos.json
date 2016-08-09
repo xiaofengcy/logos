@@ -3310,6 +3310,23 @@
       "updated": "2015-12-10"
     },
     {
+      "name": "Dashlane",
+      "files": [
+        "dashlane.svg"
+      ],
+      "shortname": "dashlane",
+      "url": "https://www.dashlane.com/",
+      "tags": [
+        "password manager",
+        "desktop app",
+        "mobile app"
+      ],
+      "categories": [
+        "geeks"
+      ],
+      "updated": "2016-08-08"
+    },
+    {
       "name": "Dart",
       "files": [
         "dart.svg"
@@ -4604,7 +4621,7 @@
         "developers",
         "designers"
       ],
-      "updated": "2015-07-04"
+      "updated": "2016-08-08"
     },
     {
       "name": "flickr",
@@ -5150,6 +5167,21 @@
       "favorite": true
     },
     {
+      "name": "Go",
+      "files": [
+        "gopher.svg"
+      ],
+      "shortname": "go",
+      "url": "https://golang.org/",
+      "tags": [
+        "language"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2015-07-04"
+    },
+    {
       "name": "Google",
       "files": [
         "google-icon.svg",
@@ -5313,19 +5345,22 @@
       "updated": "2015-08-10"
     },
     {
-      "name": "Go",
+      "name": "Gordon",
       "files": [
-        "gopher.svg"
+        "gordon.svg"
       ],
-      "shortname": "go",
-      "url": "https://golang.org/",
+      "shortname": "gordon",
+      "url": "https://github.com/jorgebastida/gordon",
       "tags": [
-        "language"
+        "development toolkit",
+        "lambdas",
+        "aws",
+        "vectorized"
       ],
       "categories": [
-        "developers"
+        "DevOps"
       ],
-      "updated": "2015-07-04"
+      "updated": "2016-08-08"
     },
     {
       "name": "GNU",
@@ -8188,6 +8223,24 @@
       "updated": "2015-07-05"
     },
     {
+      "name": "Mern",
+      "files": [
+        "mern.svg"
+      ],
+      "shortname": "mern",
+      "url": "http://mern.io/",
+      "tags": [
+        "boilerplate",
+        "scaffolding",
+        "cli",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-08-08"
+    },
+    {
       "name": "Mesos",
       "files": [
         "mesos.svg"
@@ -8878,6 +8931,22 @@
       "updated": "2015-07-14"
     },
     {
+      "name": "Noysi",
+      "files": [
+        "noysi.svg"
+      ],
+      "shortname": "noysi",
+      "url": "https://noysi.com/",
+      "tags": [
+        "group chat",
+        "team collaboration",
+      ],
+      "categories": [
+        "teams"
+      ],
+      "updated": "2016-08-08"
+    },
+    {
       "name": "Nomad",
       "files": [
         "nomad.svg"
@@ -9482,6 +9551,25 @@
         "business"
       ],
       "updated": "2015-08-12"
+    },
+    {
+      "name": "Pepperoni",
+      "files": [
+        "pepperoni.svg"
+      ],
+      "shortname": "pepperoni",
+      "url": "http://getpepperoni.com/",
+      "tags": [
+        "react native",
+        "boilerplate",
+        "scaffolding",
+        "cli",
+        "mobile"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-08-08"
     },
     {
       "name": "Percona",
@@ -11355,6 +11443,22 @@
       "edited": true
     },
     {
+      "name": "Seneca",
+      "files": [
+        "seneca.svg"
+      ],
+      "shortname": "seneca",
+      "url": "http://senecajs.org/",
+      "tags": [
+        "microservices",
+        "node.js"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-08-08"
+    },
+    {
       "name": "Segment",
       "files": [
         "segment.svg"
@@ -13160,7 +13264,7 @@
       "updated": "2016-02-18"
     },
     {
-      "name": "ndertow",
+      "name": "Undertow",
       "files": [
         "undertow.svg"
       ],
@@ -13226,6 +13330,23 @@
       ],
       "updated": "2015-10-19",
       "edited": true
+    },
+    {
+      "name": "Upwork",
+      "files": [
+        "upwork.svg"
+      ],
+      "shortname": "upwork",
+      "url": "https://www.upwork.com/",
+      "tags": [
+        "jobs",
+        "freelancers"
+      ],
+      "categories": [
+        "developers",
+        "designers"
+      ],
+      "updated": "2016-08-08"
     },
     {
       "name": "UserTesting",
