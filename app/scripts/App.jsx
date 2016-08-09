@@ -326,19 +326,17 @@ class App extends React.Component {
             onClickChangeColumns={this.onClickChangeColumns}
             onSearch={this.searchLogos}
             onClickShowTagCloud={this.onClickShowTags}
-            state={
-              {
-                logos: state.logos,
-                category: state.category,
-                categoryMenuVisible: state.categoryMenuVisible,
-                columns: state.columns,
-                favorites,
-                heading,
-                search: state.search,
-                tag: state.tag,
-                tagCloudVisible: state.tagCloudVisible
-              }
-            }
+            state={{
+              logos: state.logos,
+              category: state.category,
+              categoryMenuVisible: state.categoryMenuVisible,
+              columns: state.columns,
+              favorites,
+              heading,
+              search: state.search,
+              tag: state.tag,
+              tagCloudVisible: state.tagCloudVisible
+            }}
             toggleCategoryMenu={this.toggleCategoryMenuVisibility}
             trackEvent={this.trackEvent}
             visible={visible} />

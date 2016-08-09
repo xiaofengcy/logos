@@ -254,7 +254,10 @@ class Header extends React.Component {
 
     return (
       <header
-        className={['main-header', props.state.categoryMenuVisible ? 'show-menu' : '', props.state.tagCloudVisible ? 'show-tags' : ''].join(' ')}>
+        className={[
+          'main-header', props.state.categoryMenuVisible ? 'show-menu' : '',
+          props.state.tagCloudVisible ? 'show-tags' : ''
+        ].join(' ')}>
         <a href="#" className="logo" data-value="logo" onClick={props.onClickChangeView}>
           <img src="media/svg-porn.svg" alt="SVGPorn" />
         </a>
