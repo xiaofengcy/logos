@@ -364,9 +364,9 @@
     {
       "name": "Apollo",
       "files": [
-        "apollo.svg"
+        "apollostack.svg"
       ],
-      "shortname": "apollo",
+      "shortname": "apollostack",
       "url": "http://www.apollostack.com/",
       "tags": [
         "graphql",
