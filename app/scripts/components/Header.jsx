@@ -45,7 +45,7 @@ class Header extends React.Component {
     if (config.features.categories) {
       this.props.state.logos.forEach((d) => {
         d.categories.forEach((t) => {
-          if (!categories.hasOwnProperty(t)) {
+          if (!{}.hasOwnProperty.call(categories, t)) {
             categories[t] = 0;
           }
           categories[t]++;
@@ -62,7 +62,7 @@ class Header extends React.Component {
     if (config.features.tags) {
       this.props.state.logos.forEach((d) => {
         d.tags.forEach((t) => {
-          if (!tags.hasOwnProperty(t)) {
+          if (!{}.hasOwnProperty.call(tags, t)) {
             tags[t] = 0;
           }
           tags[t]++;
@@ -81,7 +81,7 @@ class Header extends React.Component {
       });
     }
 
-    vars.button = ReactDOM.findDOMNode(this.refs.twitterButton);
+    vars.button = ReactDOM.findDOMNode(this.twitter);
     vars.js = document.createElement('script');
     vars.js.id = 'twitter-wjs';
     vars.js.src = `${(/^http:/.test(document.location) ? 'http' : 'https')}://platform.twitter.com/widgets.js`;
@@ -161,7 +161,7 @@ class Header extends React.Component {
         output.tagsMenu = (
           <li className="menu__tags">
             <a
-              href="#" className={props.state.tag ? ' tagged' : ''}
+              href="#tags" className={props.state.tag ? ' tagged' : ''}
               onClick={props.onClickShowTagCloud}>
               {!props.state.tag
                 ? <span><Icon id="cloud" />Tags</span>
@@ -203,7 +203,7 @@ class Header extends React.Component {
                 return (
                   <a
                     key={i}
-                    href="#" className={classes} data-tag={d.key}
+                    href="#tag" className={classes} data-tag={d.key}
                     onClick={this.onClickTag}>
                     {`#${d.key} (${d.value})`}
                   </a>
@@ -229,7 +229,7 @@ class Header extends React.Component {
           <span className="categories__menu">
               for
             <a
-              href="#" className="categories__toggle" data-category={props.state.category}
+              href="#categories" className="categories__toggle" data-category={props.state.category}
               onClick={this.onClickShowCategories}>
               {props.state.category !== 'categories' ? props.state.category : ''}
               <Icon id="navicon" />
@@ -240,7 +240,7 @@ class Header extends React.Component {
                   key={i}
                   className={(d.key === props.state.category ? 'active' : '') + (d.key === 'categories' ? ' faded' : '')}>
                   <a
-                    href="#" onClick={this.onClickChangeCategory}
+                    href={`#${d.title}`} onClick={this.onClickChangeCategory}
                     data-value={d.key}>
                     {d.title} {(d.value > 0 ? `(${d.value})` : '')}
                   </a>
@@ -258,7 +258,7 @@ class Header extends React.Component {
           'main-header', props.state.categoryMenuVisible ? 'show-menu' : '',
           props.state.tagCloudVisible ? 'show-tags' : ''
         ].join(' ')}>
-        <a href="#" className="logo" data-value="logo" onClick={props.onClickChangeView}>
+        <a href="#home" className="logo" data-value="logo" onClick={props.onClickChangeView}>
           <img src="media/svg-porn.svg" alt="SVGPorn" />
         </a>
         <h1>{props.state.category === 'categories' ? props.state.logos.length : props.visible} high quality svg logos</h1>
@@ -268,14 +268,15 @@ class Header extends React.Component {
           <li className="menu__columns">
             <div className="switch">
               <a
-                href="#"
+                href="#switch-down"
                 className={props.state.columns < 2 ? 'disabled' : ''}
                 data-column="-1"
                 onClick={props.onClickChangeColumns}>
                 -
               </a>
               <a
-                href="#" className={props.state.columns > 4 ? 'disabled' : ''}
+                href="#switch-down"
+                lassName={props.state.columns > 4 ? 'disabled' : ''}
                 data-column="1"
                 onClick={props.onClickChangeColumns}>
                 +
@@ -292,7 +293,7 @@ class Header extends React.Component {
                 onChange={props.onSearch} />
               <span className="input-icon">
                 {props.state.search ?
-                 (<a href="#" onClick={props.onSearch}>
+                 (<a href="#clean" onClick={props.onSearch}>
                    <Icon id="times-circle" />
                  </a>) :
                  <Icon id="search" />}
@@ -307,21 +308,22 @@ class Header extends React.Component {
             frameBorder="0"
             scrolling="0"
             width="110px"
-            height="30px"></iframe>
+            height="30px" />
           <a
             href="https://twitter.com/svgporn"
             className="twitter-follow-button"
             data-show-count="false"
-            ref="twitterButton">
+            ref={c => (this.twitter = c)}>
             Follow @svgporn
           </a>
         </div>
         {output.tagCloud}
-        <div className="overlay" onClick={props.toggleCategoryMenu}></div>
+        <div className="overlay" onClick={props.toggleCategoryMenu} />
         {props.state.heading ? <h3 className="heading">{props.state.heading}<br />
-          <a href="#" data-value="all" onClick={props.onClickChangeView}>View All</a>
+          <a href="#all" data-value="all" onClick={props.onClickChangeView}>View All</a>
           <a
-            href="#" data-value={props.state.favorites ? 'latest' : 'favorites'}
+            href={`#${props.state.favorites ? 'latest' : 'favorites'}`}
+            data-value={props.state.favorites ? 'latest' : 'favorites'}
             onClick={props.onClickChangeView}>
             {props.state.favorites ? 'Latest' : 'Favorites'}
           </a>

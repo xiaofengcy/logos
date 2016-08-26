@@ -29,7 +29,7 @@ function watchifyTask(options) {
 
   bundler = browserify({
     basedir: '.',
-    entries: path.join(__dirname, '/app/scripts/main.js'),
+    entries: path.join(__dirname, '/app/scripts/main.jsx'),
     insertGlobals: options.watch,
     cache: {},
     debug: true,

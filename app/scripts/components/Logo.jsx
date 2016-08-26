@@ -55,7 +55,7 @@ class Logo extends React.Component {
 
           <div className="tags">{
             info.tags.map((t, i) =>
-              (<a key={i} href="#" onClick={props.onClickTag} data-tag={t}>#{t}</a>)
+              (<a key={i} href="#tag" onClick={props.onClickTag} data-tag={t}>#{t}</a>)
             )
           }</div>
         </div>

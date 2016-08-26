@@ -6,7 +6,7 @@ import _orderBy from 'lodash/orderBy';
 import _take from 'lodash/take';
 import _escapeRegExp from 'lodash/escapeRegExp';
 
-import Storage from './utils/Storage';
+import { getItem, setItem } from './utils/Storage';
 import json from '../logos.json';
 
 import Header from './components/Header';
@@ -32,8 +32,8 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    const category = Storage.getItem('category');
-    const columns = Storage.getItem('columns');
+    const category = getItem('category');
+    const columns = getItem('columns');
 
     this.setState({
       category: category && category !== 'everybody' && this.state.category !== category ? category : this.state.category,
@@ -119,7 +119,7 @@ class App extends React.Component {
     this.setState({
       columns: num
     });
-    Storage.setItem('columns', num);
+    setItem('columns', num);
   }
 
   @autobind
@@ -145,7 +145,7 @@ class App extends React.Component {
     });
 
     if (value !== 'everybody') {
-      Storage.setItem('category', value);
+      setItem('category', value);
     }
   }
 
@@ -240,7 +240,7 @@ class App extends React.Component {
     const newDuration = duration / 10 < 500 ? duration : 500;
 
     const difference = to - element.scrollTop;
-    const perTick = difference / duration * 10;
+    const perTick = difference / (duration * 10);
     let timeout;
 
     if (newDuration < 0) {
@@ -249,7 +249,7 @@ class App extends React.Component {
     }
 
     timeout = setTimeout(() => {
-      element.scrollTop = element.scrollTop + perTick;
+      element.scrollTop += perTick;
 
       if (element.scrollTop === to) {
         clearTimeout(timeout);
@@ -348,7 +348,7 @@ class App extends React.Component {
           <Footer />
         </div>
         <a
-          href="#"
+          href="#top"
           onClick={this.scrollTop}
           className={`scroll-top${(state.scrollable ? ' visible' : '')}`}>
           <Icon id="caret-up" />
