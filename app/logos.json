@@ -362,6 +362,23 @@
       "edited": true
     },
     {
+      "name": "Apollo",
+      "files": [
+        "apollo.svg"
+      ],
+      "shortname": "apollo",
+      "url": "http://www.apollostack.com/",
+      "tags": [
+        "graphql",
+        "react",
+        "redux"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-08-26"
+    },
+    {
       "name": "Appbase",
       "files": [
         "appbase.svg"
@@ -566,6 +583,22 @@
         "business"
       ],
       "updated": "2015-12-14"
+    },
+    {
+      "name": "AppVeyor",
+      "files": [
+        "appveyor.svg"
+      ],
+      "shortname": "appveyor",
+      "url": "https://www.appveyor.com/",
+      "tags": [
+        "continuous integration",
+        "code deployment"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-08-26"
     },
     {
       "name": "ArangoDB",
@@ -3444,6 +3477,23 @@
       "edited": true
     },
     {
+      "name": "Dependency CI",
+      "files": [
+        "dependencyci.svg"
+      ],
+      "shortname": "dependencyci",
+      "url": "https://dependencyci.com/",
+      "tags": [
+        "continuous integration",
+        "dependencies",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-08-26"
+    },
+    {
       "name": "Deploy",
       "files": [
         "deploy.svg"
@@ -4920,6 +4970,22 @@
       "favorite": true
     },
     {
+      "name": "Front",
+      "files": [
+        "frontapp.svg"
+      ],
+      "shortname": "frontapp",
+      "url": "https://frontapp.com/",
+      "tags": [
+        "e-mail",
+        "team collaboration"
+      ],
+      "categories": [
+        "teams"
+      ],
+      "updated": "2016-08-26"
+    },
+    {
       "name": "Gauge",
       "files": [
         "gaugeio.svg"
@@ -4946,7 +5012,8 @@
       "url": "https://geekbot.io/",
       "tags": [
         "team collaboration",
-        "standup"
+        "standup",
+        "slack"
       ],
       "categories": [
         "teams",
@@ -9608,6 +9675,23 @@
       "updated": "2015-10-29"
     },
     {
+      "name": "Perf Rocks",
+      "files": [
+        "perf-rocks.svg"
+      ],
+      "shortname": "perf-rocks",
+      "url": "http://perf.rocks/",
+      "tags": [
+        "web performance",
+        "optimization",
+        "community"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-08-26"
+    },
+    {
       "name": "Periscope",
       "files": [
         "periscope.svg"
@@ -11391,6 +11475,23 @@
       "updated": "2015-07-02"
     },
     {
+      "name": "Scaphold",
+      "files": [
+        "scaphold.svg"
+      ],
+      "shortname": "scaphold",
+      "url": "https://scaphold.io/",
+      "tags": [
+        "graphql",
+        "react",
+        "SaaS"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-08-26"
+    },
+    {
       "name": "Scribd",
       "files": [
         "scribd.svg"
@@ -11525,7 +11626,7 @@
         "developers",
         "business"
       ],
-      "updated": "2015-07-27"
+      "updated": "2016-08-26"
     },
     {
       "name": "sensu",
@@ -11904,6 +12005,21 @@
       ],
       "updated": "2015-06-24",
       "favorite": true
+    },
+    {
+      "name": "Snupps",
+      "files": [
+        "snupps.svg"
+      ],
+      "shortname": "snupps",
+      "url": "https://www.snupps.com/",
+      "tags": [
+        "social network"
+      ],
+      "categories": [
+        "sharing"
+      ],
+      "updated": "2016-08-26"
     },
     {
       "name": "Socket.io",
