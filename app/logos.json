@@ -1777,6 +1777,7 @@
       "url": "https://www.browserstack.com/",
       "tags": [
         "cross browser testing",
+        "browser automation",
         "mobile"
       ],
       "categories": [
@@ -5420,7 +5421,7 @@
       "url": "https://github.com/jorgebastida/gordon",
       "tags": [
         "development toolkit",
-        "lambdas",
+        "lambda",
         "aws",
         "vectorized"
       ],
@@ -6010,22 +6011,6 @@
       "edited": true
     },
     {
-      "name": "Hoodie",
-      "files": [
-        "hoodie.svg"
-      ],
-      "shortname": "hoodie",
-      "url": "http://hood.ie/",
-      "tags": [
-        "full-stack framework",
-        "javascript"
-      ],
-      "categories": [
-        "developers"
-      ],
-      "updated": "2015-07-30"
-    },
-    {
       "name": "HHVM",
       "files": [
         "hhvm.svg"
@@ -6094,6 +6079,42 @@
         "developers"
       ],
       "updated": "2016-02-18",
+      "edited": true
+    },
+    {
+      "name": "Hoodie",
+      "files": [
+        "hoodie.svg"
+      ],
+      "shortname": "hoodie",
+      "url": "http://hood.ie/",
+      "tags": [
+        "full-stack framework",
+        "javascript"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2015-07-30"
+    },
+    {
+      "name": "Horizon",
+      "files": [
+        "horizon.svg"
+      ],
+      "shortname": "horizon",
+      "url": "https://horizon.io/",
+      "tags": [
+        "real-time",
+        "database",
+        "rethinkdb",
+        "javascript",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-09-05",
       "edited": true
     },
     {
@@ -6209,6 +6230,24 @@
       ],
       "updated": "2016-01-07",
       "edited": true
+    },
+    {
+      "name": "HyperDev",
+      "files": [
+        "hyperdev.svg"
+      ],
+      "shortname": "hyperdev",
+      "url": "https://hyperdev.com/about/",
+      "tags": [
+        "sandbox",
+        "playground",
+        "hosting",
+        "javascript"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-09-05"
     },
     {
       "name": "IEEE",
@@ -8892,6 +8931,26 @@
       "updated": "2015-06-14"
     },
     {
+      "name": "Nightwatch.js",
+      "files": [
+        "nightwatch.svg"
+      ],
+      "shortname": "nightwatch",
+      "url": "http://nightwatchjs.org/",
+      "tags": [
+        "cross browser testing",
+        "browser automation",
+        "selenium",
+        "javascript",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-09-05",
+      "edited": true
+    },
+    {
       "name": "Nodal",
       "files": [
         "nodal.svg"
@@ -10287,6 +10346,26 @@
       "edited": true
     },
     {
+      "name": "Protactor",
+      "files": [
+        "protactor.svg"
+      ],
+      "shortname": "protactor",
+      "url": "http://www.protractortest.org/",
+      "tags": [
+        "testing framework",
+        "unit testing",
+        "cross browser testing",
+        "angular",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-09-05",
+      "edited": true
+    },
+    {
       "name": "Prott",
       "files": [
         "prott.svg"
@@ -11005,6 +11084,25 @@
       "updated": "2015-09-08"
     },
     {
+      "name": "rest.li",
+      "files": [
+        "rest-li.svg"
+      ],
+      "shortname": "rest-li",
+      "url": "https://github.com/linkedin/rest.li",
+      "tags": [
+        "rest framework",
+        "api tools",
+        "java",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-09-05",
+      "edited": true
+    },
+    {
       "name": "RethinkDB",
       "files": [
         "rethinkdb.svg"
@@ -11452,12 +11550,15 @@
       "url": "https://saucelabs.com/",
       "tags": [
         "cross browser testing",
+        "browser automation",
         "selenium"
       ],
       "categories": [
         "developers"
       ],
-      "updated": "2015-10-21"
+      "updated": "2015-10-21",
+      "edited": true,
+      "favorite": true
     },
     {
       "name": "Scala",
@@ -11679,6 +11780,27 @@
       ],
       "updated": "2015-09-11",
       "edited": true
+    },
+    {
+      "name": "Serverless",
+      "files": [
+        "serveless.svg"
+      ],
+      "shortname": "serveless",
+      "url": "https://github.com/serverless/serverless",
+      "tags": [
+        "task processor",
+        "lambda",
+        "aws",
+        "microservices",
+        "vectorized"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-09-05",
+      "edited": true,
+      "favorite": true
     },
     {
       "name": "Sherlock",
@@ -14387,6 +14509,21 @@
         "business"
       ],
       "updated": "2015-10-19"
+    },
+    {
+      "name": "Yandex",
+      "files": [
+        "yandex-ru.svg"
+      ],
+      "shortname": "yandex-ru",
+      "url": "https://www.yandex.ru/",
+      "tags": [
+        "search engine"
+      ],
+      "categories": [
+        "geeks"
+      ],
+      "updated": "2016-09-05"
     },
     {
       "name": "YouTrack",
