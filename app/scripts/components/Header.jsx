@@ -276,7 +276,7 @@ class Header extends React.Component {
               </a>
               <a
                 href="#switch-down"
-                lassName={props.state.columns > 4 ? 'disabled' : ''}
+                className={props.state.columns > 4 ? 'disabled' : ''}
                 data-column="1"
                 onClick={props.onClickChangeColumns}>
                 +
