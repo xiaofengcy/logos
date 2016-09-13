@@ -1563,6 +1563,23 @@
       "updated": "2015-07-09"
     },
     {
+      "name": "Bluemix",
+      "files": [
+        "bluemix.svg"
+      ],
+      "shortname": "bluemix",
+      "url": "https://console.ng.bluemix.net/",
+      "tags": [
+        "docker",
+        "containers",
+        "CaaS"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-09-13"
+    },
+    {
       "name": "Bluetooth",
       "files": [
         "bluetooth.svg"
@@ -4311,6 +4328,26 @@
       "updated": "2015-11-26"
     },
     {
+      "name": "Ethereum",
+      "files": [
+        "ethereum.svg"
+      ],
+      "shortname": "ethereum",
+      "url": "https://www.ethereum.org/",
+      "tags": [
+        "distributed computing",
+        "blockchain",
+        "virtual machine",
+        "virtual currency"
+      ],
+      "categories": [
+        "developers",
+        "DevOps"
+      ],
+      "edited": true,
+      "updated": "2016-09-13"
+    },
+    {
       "name": "Ethnio",
       "files": [
         "ethnio.svg"
@@ -5248,6 +5285,22 @@
         "developers"
       ],
       "updated": "2015-07-04"
+    },
+    {
+      "name": "GoCD",
+      "files": [
+        "gocd.svg"
+      ],
+      "shortname": "gocd",
+      "url": "https://www.go.cd/",
+      "tags": [
+        "content delivery",
+        "continuous integration"
+      ],
+      "categories": [
+        "DevOps"
+      ],
+      "updated": "2016-09-13"
     },
     {
       "name": "Google",
@@ -8680,6 +8733,21 @@
       "updated": "2015-07-31"
     },
     {
+      "name": "Monero",
+      "files": [
+        "monero.svg"
+      ],
+      "shortname": "monero",
+      "url": "https://getmonero.org/",
+      "tags": [
+        "virtual currency"
+      ],
+      "categories": [
+        "geeks"
+      ],
+      "updated": "2016-09-13"
+    },
+    {
       "name": "Mono",
       "files": [
         "mono.svg"
@@ -11019,6 +11087,22 @@
       "edited": true
     },
     {
+      "name": "Reindex",
+      "files": [
+        "reindex.svg"
+      ],
+      "shortname": "reindex",
+      "url": "https://www.reindex.io/",
+      "tags": [
+        "graphql",
+        "SaaS"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "updated": "2016-09-13"
+    },
+    {
       "name": "Relay",
       "files": [
         "relay.svg"
@@ -12858,6 +12942,23 @@
       "updated": "2015-07-05"
     },
     {
+      "name": "Snyk",
+      "files": [
+        "snyk.svg"
+      ],
+      "shortname": "snyk",
+      "url": "https://snyk.io/",
+      "tags": [
+        "continuous integration",
+        "dependency monitoring"
+      ],
+      "categories": [
+        "developers"
+      ],
+      "edited": true,
+      "updated": "2016-09-13"
+    },
+    {
       "name": "Sysdig",
       "files": [
         "sysdig.svg"
@@ -14091,6 +14192,25 @@
         "developers"
       ],
       "updated": "2016-05-30"
+    },
+    {
+      "name": "WebTorrent",
+      "files": [
+        "webtorrent.svg"
+      ],
+      "shortname": "webtorrent",
+      "url": "https://webtorrent.io/",
+      "tags": [
+        "p2p",
+        "torrent",
+        "streaming",
+        "desktop app"
+      ],
+      "categories": [
+        "geeks",
+        "developers"
+      ],
+      "updated": "2016-09-13"
     },
     {
       "name": "Weebly",
