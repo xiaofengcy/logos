@@ -52,7 +52,8 @@ export const ActionTypes = keyMirror({
   UPDATE_CATEGORIES_FAILURE: undefined,
   FILTER_ITEMS: undefined,
   SHOW_ALERT: undefined,
-  HIDE_ALERT: undefined
+  HIDE_ALERT: undefined,
+  DETECT_MOBILE: undefined,
 });
 
 /**
@@ -61,5 +62,5 @@ export const ActionTypes = keyMirror({
  */
 export const XHR = keyMirror({
   SUCCESS: undefined,
-  FAIL: undefined
+  FAIL: undefined,
 });

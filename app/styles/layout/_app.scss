@@ -3,7 +3,8 @@
 
   &__main {
     min-height: 100vh;
-    padding: ($header-height + $grid-gutter-width) 0 ($footer-height + $grid-gutter-width);
+    padding-bottom: $grid-gutter-width;
+    padding-top: $header-height;
   }
 
   &__container {

@@ -28,7 +28,7 @@ export class FormItem extends React.Component {
     pristine: React.PropTypes.bool.isRequired,
     reset: React.PropTypes.func.isRequired,
     submitting: React.PropTypes.bool.isRequired,
-    tags: React.PropTypes.array.isRequired
+    tags: React.PropTypes.array.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;
@@ -47,7 +47,7 @@ export class FormItem extends React.Component {
 
     const row = {
       id: item.id,
-      item: formData
+      item: formData,
     };
 
     const diffTags = diffArrays(item.tags, formData.tags);
@@ -72,7 +72,7 @@ export class FormItem extends React.Component {
   }
 
   renderDateTimePicker({ input, label }) {
-    const date = moment(input.value || new Date()).toDate();
+    const date = input.value ? moment(input.value).toDate() : null;
     delete input.value;
 
     return (
@@ -83,7 +83,8 @@ export class FormItem extends React.Component {
           onBlur={() => input.onBlur()}
           defaultValue={date}
           format="YYYY-MM-DD"
-          time={false} />
+          time={false}
+        />
       </div>
     );
   }
@@ -106,7 +107,8 @@ export class FormItem extends React.Component {
           onCreate={val => input.onChange(input.value.concat(name === 'files' && !val.includes('.svg') ? `${val}.svg` : val))}
           tagComponent={tagComponent}
           name={name}
-          data={data} />
+          data={data}
+        />
       </div>);
   }
 
@@ -141,55 +143,65 @@ export class FormItem extends React.Component {
           name="name"
           label="Name"
           type="text"
-          component={this.renderField} />
+          component={this.renderField}
+        />
         <Field
           name="shortname"
           label="Shortname (unique)"
           type="text"
-          component={this.renderField} />
+          component={this.renderField}
+        />
         <Field
           name="url"
           label="URL"
           type="text"
-          component={this.renderField} />
+          component={this.renderField}
+        />
         <Field
           name="categories"
           label="Categories"
           component={this.renderMultiselect}
-          data={categories} />
+          data={categories}
+        />
         <Field
           name="tags"
           label="Tags"
           component={this.renderMultiselect}
-          data={tags} />
+          data={tags}
+        />
         <Field
           name="files"
           label="Files"
           component={this.renderMultiselect}
-          data={item.files} />
+          data={item.files}
+        />
         <Field
           name="updated"
           label="Updated"
-          component={this.renderDateTimePicker} />
+          component={this.renderDateTimePicker}
+        />
 
         <div className="row">
           <div className="col-xs-12 col-sm-4">
             <Field
               name="favorite"
               label="Favorite"
-              component={this.renderInputSwitch} />
+              component={this.renderInputSwitch}
+            />
           </div>
           <div className="col-xs-12 col-sm-4">
             <Field
               name="edited"
               label="Edited"
-              component={this.renderInputSwitch} />
+              component={this.renderInputSwitch}
+            />
           </div>
           <div className="col-xs-12 col-sm-4">
             <Field
               name="vectorized"
               label="Vectorized"
-              component={this.renderInputSwitch} />
+              component={this.renderInputSwitch}
+            />
           </div>
         </div>
 
@@ -197,12 +209,14 @@ export class FormItem extends React.Component {
           <button
             className="btn btn-primary btn-icon"
             type="submit"
-            disabled={pristine || invalid || submitting}>
+            disabled={pristine || invalid || submitting}
+          >
             <i
               className={cx({
                 'i-paper-plane': !submitting,
-                'i-circle-o-notch i-spin': submitting
-              })} />
+                'i-circle-o-notch i-spin': submitting,
+              })}
+            />
             <span>Save</span>
           </button>
 
@@ -210,7 +224,8 @@ export class FormItem extends React.Component {
             className="btn btn-outline-primary btn-icon"
             type="button"
             disabled={pristine}
-            onClick={reset}>
+            onClick={reset}
+          >
             <i className="i-undo" />
             <span>Reset</span>
           </button>
@@ -259,5 +274,5 @@ const validate = values => {
 
 export default reduxForm({
   form: 'formItem',
-  validate
+  validate,
 })(FormItem);

@@ -8,7 +8,7 @@ import { login } from 'actions';
 export class Login extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
-    user: React.PropTypes.object.isRequired
+    user: React.PropTypes.object.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;
@@ -37,7 +37,8 @@ export class Login extends React.Component {
               href="#login"
               onClick={this.onClickLogin}
               className="btn btn-lg btn-primary btn-icon"
-              data-provider="github">
+              data-provider="github"
+            >
               <i className="i-github" />
               <span>Login</span>
             </a>
@@ -46,7 +47,8 @@ export class Login extends React.Component {
               href="#login"
               onClick={this.onClickLogin}
               className="btn btn-lg btn-primary btn-icon"
-              data-provider="facebook">
+              data-provider="facebook"
+            >
               <i className="i-facebook" />
               <span>Login</span>
             </a>

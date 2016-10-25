@@ -12,7 +12,7 @@ import { ActionTypes } from 'constants/index';
  */
 export function initFirebase() {
   return {
-    type: ActionTypes.CONNECT_FIREBASE_REQUEST
+    type: ActionTypes.CONNECT_FIREBASE_REQUEST,
   };
 }
 
@@ -23,7 +23,7 @@ export function initFirebase() {
  */
 export function connectLogos() {
   return {
-    type: ActionTypes.CONNECT_LOGOS_REQUEST
+    type: ActionTypes.CONNECT_LOGOS_REQUEST,
   };
 }
 
@@ -34,7 +34,7 @@ export function connectLogos() {
  */
 export function connectTags() {
   return {
-    type: ActionTypes.CONNECT_TAGS_REQUEST
+    type: ActionTypes.CONNECT_TAGS_REQUEST,
   };
 }
 
@@ -45,7 +45,7 @@ export function connectTags() {
  */
 export function connectCategories() {
   return {
-    type: ActionTypes.CONNECT_CATEGORIES_REQUEST
+    type: ActionTypes.CONNECT_CATEGORIES_REQUEST,
   };
 }
 
@@ -63,7 +63,7 @@ export function updateLogos(payload, callback) {
     type: ActionTypes.UPDATE_LOGOS_REQUEST,
     payload,
     meta: {
-      callback
-    }
+      callback,
+    },
   };
 }

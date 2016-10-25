@@ -22,7 +22,7 @@ export function goTo(pathname, options = {}) {
   return push({
     pathname,
     search: options.search,
-    state: options.state
+    state: options.state,
   });
 }
 
@@ -40,7 +40,7 @@ export function showAlert(status, message, withTimeout = true) {
     type: ActionTypes.SHOW_ALERT,
     status,
     message,
-    withTimeout
+    withTimeout,
   };
 }
 
@@ -51,7 +51,7 @@ export function showAlert(status, message, withTimeout = true) {
  */
 export function hideAlert() {
   return {
-    type: ActionTypes.HIDE_ALERT
+    type: ActionTypes.HIDE_ALERT,
   };
 }
 
@@ -63,6 +63,15 @@ export function hideAlert() {
 export function filterItems(payload) {
   return {
     type: ActionTypes.FILTER_ITEMS,
-    payload
+    payload,
+  };
+}
+
+export function detectMobile(isMobile) {
+  return {
+    type: ActionTypes.DETECT_MOBILE,
+    payload: {
+      isMobile,
+    },
   };
 }

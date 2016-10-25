@@ -10,7 +10,7 @@ export const userState = {
   data: {},
   running: false,
   ready: false,
-  rehydrated: false
+  rehydrated: false,
 };
 
 export default {
@@ -19,7 +19,7 @@ export default {
       return {
         ...state,
         ...action.payload.user,
-        rehydrated: true
+        rehydrated: true,
       };
     },
     [ActionTypes.USER_LOGIN_REQUEST](state) {
@@ -33,7 +33,7 @@ export default {
     },
     [ActionTypes.USER_LOGOUT_SUCCESS]() {
       return { ...userState, rehydrated: true };
-    }
-  })
+    },
+  }),
 };
 

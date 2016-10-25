@@ -12,7 +12,7 @@ function setup() {
     app: appState,
     children: [<div key="1" className="child">Hello</div>, <div key="2" className="child">World</div>],
     dispatch: () => {},
-    firebase: firebaseState
+    firebase: firebaseState,
   };
 
   return shallow(<AppPublic {...props} />);

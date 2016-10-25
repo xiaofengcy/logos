@@ -43,32 +43,32 @@ else {
     port: 3000,
     notify: true,
     logPrefix: 'sia',
-    proxy: 'http://localhost:3030'
+    proxy: 'http://localhost:3030',
   }, {
-    reload: false
+    reload: false,
   });
 }
 
 var config = merge.smart(webpackConfig, {
   output: {
     filename: '[name].js',
-    publicPath: 'http://localhost:' + (args[0] === 'test:ui' ? 3030 : 3000) + '/'
+    publicPath: 'http://localhost:' + (args[0] === 'test:ui' ? 3030 : 3000) + '/',
   },
   entry: {
     bundle: [
       'webpack-dev-server/client?http://localhost:3030',
       'webpack/hot/only-dev-server',
       'react-hot-loader/patch',
-      './scripts/main.jsx'
+      './scripts/main.jsx',
     ],
-    modernizr: './scripts/vendor/modernizr-custom.js'
+    modernizr: './scripts/vendor/modernizr-custom.js',
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    envPlugin
-  ]
+    envPlugin,
+  ],
 });
 
 var compiler = webpack(config);
@@ -89,7 +89,7 @@ compiler.plugin('emit', function(compilation, callback) {
 
     var nightwatch = spawn(path.join(__dirname, '../node_modules/.bin/nightwatch'), [
       '-c',
-      path.join(__dirname, '../test/lib/nightwatch.conf.js')
+      path.join(__dirname, '../test/lib/nightwatch.conf.js'),
     ]);
 
     nightwatch.stdout.on('data', data => {
@@ -113,7 +113,7 @@ new WebpackDevServer(compiler, {
   noInfo: true,
   hot: true,
   historyApiFallback: true,
-  stats: { colors: true }
+  stats: { colors: true },
 }).listen(3030, 'localhost', function(err) {
   if (err) {
     console.log('err', err);

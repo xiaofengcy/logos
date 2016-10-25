@@ -82,7 +82,7 @@ export function datasetToObject(elem: Element) {
 export function trackEvent(category, type, label) {
   const options = {
     eventCategory: category,
-    eventAction: type
+    eventAction: type,
   };
 
   if (label) {

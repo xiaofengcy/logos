@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
 import cx from 'classnames';
 import _reduce from 'lodash/reduce';
-import _sortBy from 'lodash/sortBy';
+import _orderBy from 'lodash/orderBy';
 import Waypoint from 'react-waypoint';
 import { shouldComponentUpdate, trackEvent } from 'utils/helpers';
 
 import { filterItems } from 'actions';
-import Loader from 'components/Loader';
-import Toolbar from 'components/Toolbar';
-import Item from 'components/Item';
+
+import Header from './components/Header';
+import Item from './components/Item';
 
 @autobind
 export class Items extends React.Component {
@@ -18,18 +18,26 @@ export class Items extends React.Component {
     super(props);
 
     this.imagePath = `${location.origin}/logos/`;
+
+    this.viewTypes = {
+      all: 'All Logos',
+      favorites: 'Favorites',
+      latest: 'Latest',
+      vectorized: 'Vectorized',
+    };
+
     this.state = {
       limit: 50,
       logos: [],
       page: 1,
-      scrollable: false
+      scrollable: false,
     };
   }
 
   static propTypes = {
     app: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired,
-    firebase: React.PropTypes.object.isRequired
+    firebase: React.PropTypes.object.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;
@@ -44,6 +52,10 @@ export class Items extends React.Component {
   componentDidMount() {
     document.body.addEventListener('keydown', this.handleKeyboard);
     window.addEventListener('scroll', this.handleScroll);
+
+    if (!this.props.firebase.ready) {
+      document.querySelector('.app--public').classList.add('app--loading');
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -53,12 +65,19 @@ export class Items extends React.Component {
     if (!prevData.ready && firebase.ready) {
       this.setProperties();
       this.setLogos();
+      document.querySelector('.app--public').classList.remove('app--loading');
+
       return;
     }
 
-    if (prevFilter.view !== filter.view || filter.tag || filter.category || filter.search) {
+    if (
+      prevFilter.view !== filter.view
+      || (filter.tag || prevFilter.tag !== filter.tag)
+      || (filter.category || prevFilter.category !== filter.category)
+      || (filter.search || prevFilter.category !== filter.category)
+    ) {
       this.setState({
-        page: 1
+        page: 1,
       }, this.setLogos);
     }
 
@@ -77,12 +96,12 @@ export class Items extends React.Component {
 
   setProperties() {
     const { categories, tags } = this.props.firebase;
-    this.tags = _reduce(tags.children, (res, val) => {
+    this.tags = _reduce(tags.data, (res, val) => {
       res[val.name] = val.count;
       return res;
     }, {});
 
-    this.categories = _reduce(categories.children, (res, val) => {
+    this.categories = _reduce(categories.data, (res, val) => {
       res[val.name] = val.count;
       return res;
     }, {});
@@ -94,19 +113,19 @@ export class Items extends React.Component {
 
     switch (filter.view) {
       case 'favorites': {
-        logos = _sortBy([...firebase.logos.children], d => d.shortname).filter(d => d.favorite);
+        logos = _orderBy([...firebase.logos.data], ['shortname'], ['asc']).filter(d => d.favorite);
         break;
       }
       case 'vectorized': {
-        logos = _sortBy([...firebase.logos.children], d => d.shortname).filter(d => d.vectorized);
+        logos = _orderBy([...firebase.logos.data], ['shortname'], ['asc']).filter(d => d.vectorized);
         break;
       }
       case 'all': {
-        logos = _sortBy([...firebase.logos.children], d => d.shortname);
+        logos = _orderBy([...firebase.logos.data], ['shortname'], ['asc']);
         break;
       }
       default: {
-        logos = [...firebase.logos.children];
+        logos = _orderBy([...firebase.logos.data], ['updated', 'name'], ['desc', 'asc']);
         break;
       }
     }
@@ -122,7 +141,7 @@ export class Items extends React.Component {
     }
 
     this.setState({
-      logos
+      logos,
     });
   }
 
@@ -159,12 +178,12 @@ export class Items extends React.Component {
     const { app: { filter } } = this.props;
     if ((document.body.scrollTop >= 1000 && document.body.clientHeight > 4000) && !filter.showTags && !this.state.scrollable) {
       this.setState({
-        scrollable: true
+        scrollable: true,
       });
     }
     else if (e.target.body.scrollTop < 1000 && this.state.scrollable) {
       this.setState({
-        scrollable: false
+        scrollable: false,
       });
     }
   }
@@ -208,12 +227,19 @@ export class Items extends React.Component {
     this.scrollTo(document.body, 0, window.scrollY / 10 < 500 ? window.scrollY / 10 : 500);
 
     this.props.dispatch(filterItems({ tag: name }));
-    trackEvent('tag', 'info', name);
+    trackEvent('tag', 'click', name);
+  }
+
+  handleCleanFilter(e) {
+    e.preventDefault();
+    const { dispatch } = this.props;
+
+    dispatch(filterItems({}));
   }
 
   handleWaypoint() {
     this.setState({
-      page: this.state.page + 1
+      page: this.state.page + 1,
     });
   }
 
@@ -228,15 +254,14 @@ export class Items extends React.Component {
   }
 
   render() {
-    const { app, firebase, dispatch } = this.props;
     const { limit, logos, page } = this.state;
+    const { app, firebase, dispatch } = this.props;
+    const { filter } = app;
     const options = {
       empty: false,
-      hidden: []
+      hidden: [],
     };
-    const output = {
-      items: (<Loader />)
-    };
+    const output = {};
 
     if (firebase.ready) {
       const items = logos.slice(0, limit * page).map(d =>
@@ -245,26 +270,54 @@ export class Items extends React.Component {
         )
       );
 
-      output.toolbar = (
-        <Toolbar
-          app={app}
-          firebase={firebase}
-          dispatch={dispatch}
-          handleClickTag={this.handleClickTag}
-          handleChangeColumns={this.handleChangeColumns} />);
+      if (filter.category) {
+        output.filteredTitle = `[${filter.category}]`;
+      }
+      else if (filter.tag) {
+        output.filteredTitle = `#${filter.tag}`;
+      }
+      else if (filter.search) {
+        output.filteredTitle = `results for: ${filter.search}`;
+      }
+
+      if (filter.category || filter.tag || filter.search) {
+        output.title = (<h2>
+          <span>{output.filteredTitle} ({logos.length})</span>
+          <a href="#remove" onClick={this.handleCleanFilter}><i className="i-times-circle" /></a>
+        </h2>);
+      }
+      else if (filter.view !== 'all' && filter.view !== 'latest') {
+        output.title = (
+          <h2>
+            <span>{this.viewTypes[filter.view]} ({logos.length})</span>
+          </h2>);
+      }
+
+      output.heading = (
+        <div className="app__items__heading">{output.title}</div>
+      );
 
       output.logos = (
         <ul
-          className={cx(`app__images col-${app.filter.columns}`, {
-            empty: options.empty
-          })}>
+          className={cx(`app__images col-${filter.columns}`, {
+            empty: options.empty,
+          })}
+        >
           {items}
         </ul>
       );
     }
+
     return (
       <div key="Items" className="app__items app__route">
-        {output.toolbar}
+        <Header
+          app={app}
+          dispatch={dispatch}
+          firebase={firebase}
+          handleClickTag={this.handleClickTag}
+          handleChangeColumns={this.handleChangeColumns}
+        />
+        {output.heading}
         {output.logos}
         {this.renderWaypoint()}
       </div>
@@ -275,7 +328,7 @@ export class Items extends React.Component {
 function mapStateToProps(state) {
   return {
     app: state.app,
-    firebase: state.firebase
+    firebase: state.firebase,
   };
 }
 

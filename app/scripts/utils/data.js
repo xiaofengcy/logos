@@ -21,6 +21,6 @@ export function diffArrays(oldData:Array, newData:Array):Object {
 
   return {
     added,
-    removed
+    removed,
   };
 }

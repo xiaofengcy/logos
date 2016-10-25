@@ -3,7 +3,7 @@ Object {
   "message": "",
   "status": "",
   "visible": false,
-  "withTimeout": true
+  "withTimeout": true,
 }
 `;
 
@@ -12,22 +12,23 @@ Object {
   "message": "hello",
   "status": "success",
   "visible": true,
-  "withTimeout": true
+  "withTimeout": true,
 }
 `;
 
 exports[`App should handle persist/REHYDRATE with payload 1`] = `
 Object {
   "filter": Object {
-    "showTags": false
+    "showTags": false,
   },
+  "isMobile": false,
   "notifications": Object {
     "message": "",
     "status": "",
     "visible": false,
-    "withTimeout": true
+    "withTimeout": true,
   },
-  "rehydrated": true
+  "rehydrated": true,
 }
 `;
 
@@ -40,15 +41,16 @@ Object {
     "showTags": false,
     "tag": "",
     "view": "latest",
-    "viewBefore": ""
+    "viewBefore": "",
   },
+  "isMobile": false,
   "notifications": Object {
     "message": "",
     "status": "",
     "visible": false,
-    "withTimeout": true
+    "withTimeout": true,
   },
-  "rehydrated": true
+  "rehydrated": true,
 }
 `;
 
@@ -61,14 +63,15 @@ Object {
     "showTags": false,
     "tag": "",
     "view": "latest",
-    "viewBefore": ""
+    "viewBefore": "",
   },
+  "isMobile": false,
   "notifications": Object {
     "message": "",
     "status": "",
     "visible": false,
-    "withTimeout": true
+    "withTimeout": true,
   },
-  "rehydrated": false
+  "rehydrated": false,
 }
 `;

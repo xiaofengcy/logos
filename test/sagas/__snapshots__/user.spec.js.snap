@@ -3,11 +3,11 @@ Object {
   "@@redux-saga/IO": true,
   "CALL": Object {
     "args": Array [
-      "github"
+      "github",
     ],
     "context": null,
-    "fn": [Function mockConstructor]
-  }
+    "fn": [Function],
+  },
 }
 `;
 
@@ -17,8 +17,8 @@ Object {
   "CALL": Object {
     "args": Array [],
     "context": null,
-    "fn": [Function mockConstructor]
-  }
+    "fn": [Function],
+  },
 }
 `;
 
@@ -35,13 +35,13 @@ Object {
           "email": undefined,
           "photoURL": undefined,
           "refreshToken": undefined,
-          "uid": undefined
-        }
+          "uid": undefined,
+        },
       },
-      "type": "USER_LOGIN_SUCCESS"
+      "type": "USER_LOGIN_SUCCESS",
     },
-    "channel": null
-  }
+    "channel": null,
+  },
 }
 `;
 
@@ -55,15 +55,15 @@ Object {
           Object {
             "pathname": "/cms",
             "search": undefined,
-            "state": undefined
-          }
+            "state": undefined,
+          },
         ],
-        "method": "push"
+        "method": "push",
       },
-      "type": "@@router/CALL_HISTORY_METHOD"
+      "type": "@@router/CALL_HISTORY_METHOD",
     },
-    "channel": null
-  }
+    "channel": null,
+  },
 }
 `;
 
@@ -73,8 +73,8 @@ Object {
   "CALL": Object {
     "args": Array [],
     "context": null,
-    "fn": [Function mockConstructor]
-  }
+    "fn": [Function],
+  },
 }
 `;
 
@@ -83,10 +83,10 @@ Object {
   "@@redux-saga/IO": true,
   "PUT": Object {
     "action": Object {
-      "type": "USER_LOGOUT_SUCCESS"
+      "type": "USER_LOGOUT_SUCCESS",
     },
-    "channel": null
-  }
+    "channel": null,
+  },
 }
 `;
 
@@ -100,14 +100,14 @@ Object {
           Object {
             "pathname": "/",
             "search": undefined,
-            "state": undefined
-          }
+            "state": undefined,
+          },
         ],
-        "method": "push"
+        "method": "push",
       },
-      "type": "@@router/CALL_HISTORY_METHOD"
+      "type": "@@router/CALL_HISTORY_METHOD",
     },
-    "channel": null
-  }
+    "channel": null,
+  },
 }
 `;

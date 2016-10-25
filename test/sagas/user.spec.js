@@ -8,7 +8,7 @@ jest.mock('utils/firebaseClient', () =>
     connectRoles: mockConnectRoles,
     signInWithCredential: mockSignInWithCredential,
     signInWithPopup: mockSignInWithPopup,
-    signOut: mockSignOut
+    signOut: mockSignOut,
   })
 );
 
@@ -21,7 +21,7 @@ describe('user', () => {
     expect(generator.next().value).toMatchSnapshot();
     expect(generator.next({
       credential: {},
-      user: {}
+      user: {},
     }).value).toMatchSnapshot();
     expect(generator.next().value).toMatchSnapshot();
     expect(generator.next().value).toMatchSnapshot();

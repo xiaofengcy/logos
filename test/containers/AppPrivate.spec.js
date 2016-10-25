@@ -9,7 +9,7 @@ function setup() {
     dispatch: () => {},
     children: [<div key="1" className="child">Hello</div>, <div key="2" className="child">World</div>],
     location: {},
-    user: {}
+    user: {},
   };
 
   return shallow(<AppPrivate {...props} />);

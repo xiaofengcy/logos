@@ -20,7 +20,8 @@ const Loader = ({ pulse }) => {
             cy="50"
             r="20"
             fill="none"
-            strokeWidth="2" />
+            strokeWidth="2"
+          />
         </svg>
       </div>
     );
@@ -30,11 +31,11 @@ const Loader = ({ pulse }) => {
 };
 
 Loader.propTypes = {
-  pulse: React.PropTypes.bool.isRequired
+  pulse: React.PropTypes.bool.isRequired,
 };
 
 Loader.defaultProps = {
-  pulse: true
+  pulse: true,
 };
 
 export default Loader;

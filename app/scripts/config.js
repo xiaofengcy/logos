@@ -15,7 +15,7 @@ const config = {
     databaseURL: 'https://logos-c87b5.firebaseio.com',
     storageBucket: '',
   },
-  startReactotron: false
+  startReactotron: false,
 };
 
 export default config;

@@ -5,12 +5,12 @@ Object {
       Object {
         "pathname": "/login",
         "search": undefined,
-        "state": undefined
-      }
+        "state": undefined,
+      },
     ],
-    "method": "push"
+    "method": "push",
   },
-  "type": "@@router/CALL_HISTORY_METHOD"
+  "type": "@@router/CALL_HISTORY_METHOD",
 }
 `;
 
@@ -21,11 +21,11 @@ Object {
       Object {
         "pathname": "/cms",
         "search": undefined,
-        "state": undefined
-      }
+        "state": undefined,
+      },
     ],
-    "method": "push"
+    "method": "push",
   },
-  "type": "@@router/CALL_HISTORY_METHOD"
+  "type": "@@router/CALL_HISTORY_METHOD",
 }
 `;

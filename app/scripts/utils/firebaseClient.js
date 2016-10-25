@@ -51,12 +51,12 @@ export function connectLogos() {
 
       dispatch({
         type: ActionTypes.CONNECT_LOGOS_UPDATE,
-        payload: { children: data.reverse() }
+        payload: { data: data.reverse(), updated: Date.now() },
       });
     }, error => {
       dispatch({
         type: ActionTypes.CONNECT_LOGOS_FAILURE,
-        payload: { error }
+        payload: { error, updated: Date.now() },
       });
       reject();
     });
@@ -69,20 +69,20 @@ export function connectTags() {
   return new Promise((resolve, reject) => {
     tags.on('value', snapshot => {
       resolve();
-      const children = [];
+      const data = [];
 
       snapshot.forEach(child => {
-        children.push({ id: child.getKey(), ...child.val() });
+        data.push({ id: child.getKey(), ...child.val() });
       });
 
       dispatch({
         type: ActionTypes.CONNECT_TAGS_UPDATE,
-        payload: { children }
+        payload: { data, updated: Date.now() },
       });
     }, error => {
       dispatch({
         type: ActionTypes.CONNECT_TAGS_FAILURE,
-        payload: { error }
+        payload: { error, updated: Date.now() },
       });
       reject();
     });
@@ -95,20 +95,20 @@ export function connectCategories() {
   return new Promise((resolve, reject) => {
     categories.on('value', snapshot => {
       resolve();
-      const children = [];
+      const data = [];
 
       snapshot.forEach(child => {
-        children.push({ id: child.getKey(), ...child.val() });
+        data.push({ id: child.getKey(), ...child.val() });
       });
 
       dispatch({
         type: ActionTypes.CONNECT_CATEGORIES_UPDATE,
-        payload: { children }
+        payload: { data, updated: Date.now() },
       });
     }, error => {
       dispatch({
         type: ActionTypes.CONNECT_CATEGORIES_FAILURE,
-        payload: { error }
+        payload: { error, updated: Date.now() },
       });
       reject();
     });
@@ -119,18 +119,18 @@ export function connectRoles() {
   const roles = database.ref('roles');
 
   return new Promise(resolve => {
-    roles.on('value', snapshot => {
+    roles.on('value', () => {
       resolve(
         dispatch({
           type: ActionTypes.USER_PERMISSIONS,
-          payload: { isAdmin: true }
+          payload: { isAdmin: true },
         })
       );
     }, error => {
       resolve(
         dispatch({
           type: ActionTypes.USER_PERMISSIONS,
-          payload: { isAdmin: false, error }
+          payload: { isAdmin: false, error },
         })
       );
     });
@@ -151,7 +151,7 @@ export function updateItems(payload) {
 
     if (payload.tags) {
       const tags = {};
-      data.tags.children.forEach(t => {
+      data.tags.data.forEach(t => {
         tags[t.name] = t;
       });
 
@@ -186,7 +186,7 @@ export function updateItems(payload) {
 
     if (payload.categories) {
       const categories = {};
-      data.categories.children.forEach(c => {
+      data.categories.data.forEach(c => {
         categories[c.name] = c;
       });
 
@@ -231,5 +231,5 @@ export function updateItems(payload) {
 
 export default {
   auth,
-  database
+  database,
 };

@@ -9,7 +9,7 @@ const mockDispatch = jest.fn();
 function setup(app = appState) {
   const props = {
     app,
-    dispatch: mockDispatch
+    dispatch: mockDispatch,
   };
 
   return mount(<SystemNotifications {...props} />);
@@ -33,9 +33,9 @@ describe('SystemNotifications', () => {
           status: 'success',
           message: 'Hello',
           visible: true,
-          withTimeout: true
-        }
-      }
+          withTimeout: true,
+        },
+      },
     });
 
     const body = wrapper.find('.app__notifications');
@@ -54,9 +54,9 @@ describe('SystemNotifications', () => {
           status: 'error',
           message: 'Fail',
           visible: true,
-          withTimeout: false
-        }
-      }
+          withTimeout: false,
+        },
+      },
     });
 
     const body = wrapper.find('.app__notifications');
@@ -80,9 +80,9 @@ describe('SystemNotifications', () => {
           status: 'error',
           message: 'Fail',
           visible: false,
-          withTimeout: false
-        }
-      }
+          withTimeout: false,
+        },
+      },
     });
     expect(body.hasClass('active')).toBe(false);
   });

@@ -9,7 +9,7 @@ class Modal extends React.Component {
     super(props);
 
     this.state = {
-      id: `modal-${Math.random()}`
+      id: `modal-${Math.random()}`,
     };
   }
 
@@ -24,7 +24,7 @@ class Modal extends React.Component {
     show: React.PropTypes.bool,
     showFooter: React.PropTypes.bool,
     style: React.PropTypes.object,
-    title: React.PropTypes.string
+    title: React.PropTypes.string,
   };
 
   static defaultProps = {
@@ -32,7 +32,7 @@ class Modal extends React.Component {
     backdrop: true,
     blurify: true,
     show: false,
-    showFooter: false
+    showFooter: false,
   };
 
   componentDidMount() {
@@ -80,7 +80,7 @@ class Modal extends React.Component {
 
     this.$modal.modal({
       backdrop,
-      show
+      show,
     });
 
     this.$modal.on('show.bs.modal', () => {
@@ -133,7 +133,7 @@ class Modal extends React.Component {
   renderModal() {
     const { animation, children, className, show, showFooter, style, title } = this.props;
     const opts = {
-      modalClassName: ['modal']
+      modalClassName: ['modal'],
     };
 
     if (animation) {

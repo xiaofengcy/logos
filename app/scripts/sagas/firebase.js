@@ -23,7 +23,7 @@ export function* initLogos() {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.CONNECT_LOGOS_FAILURE,
-      payload: { error }
+      payload: { error },
     });
   }
 }
@@ -40,7 +40,7 @@ export function* initTags() {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.CONNECT_TAGS_FAILURE,
-      payload: { error }
+      payload: { error },
     });
   }
 }
@@ -57,7 +57,7 @@ export function* initCategories() {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.CONNECT_CATEGORIES_FAILURE,
-      payload: { error }
+      payload: { error },
     });
   }
 }
@@ -71,17 +71,17 @@ export function* initFirebase() {
       call(initLogos),
       call(initTags),
       call(initCategories),
-      call(connectRoles)
+      call(connectRoles),
     ];
     yield put({
-      type: ActionTypes.CONNECT_FIREBASE_SUCCESS
+      type: ActionTypes.CONNECT_FIREBASE_SUCCESS,
     });
   }
   catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.CONNECT_FIREBASE_FAILURE,
-      payload: { error }
+      payload: { error },
     });
   }
 }
@@ -100,7 +100,7 @@ export function* updateLogo(action) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.UPDATE_LOGOS_FAILURE,
-      payload: { error }
+      payload: { error },
     });
   }
 }

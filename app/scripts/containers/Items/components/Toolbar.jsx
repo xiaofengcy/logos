@@ -1,25 +1,20 @@
 import React from 'react';
-import { autobind } from 'core-decorators';
+import { autobind, debounce } from 'core-decorators';
 import cx from 'classnames';
 import { shouldComponentUpdate, trackEvent, ScaleLog } from 'utils/helpers';
 
 import { filterItems } from 'actions';
-
 import Combobox from 'react-widgets/lib/Combobox';
+
 
 @autobind
 export default class Toolbar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.viewTypes = {
-      all: 'All Logos',
-      favorites: 'Favorites',
-      latest: 'Latest',
-      vectorized: 'Vectorized',
-    };
     this.state = {
-      category: 'Categories'
+      category: 'Categories',
+      search: '',
     };
   }
 
@@ -28,7 +23,7 @@ export default class Toolbar extends React.Component {
     dispatch: React.PropTypes.func.isRequired,
     firebase: React.PropTypes.object.isRequired,
     handleChangeColumns: React.PropTypes.func.isRequired,
-    handleClickTag: React.PropTypes.func.isRequired
+    handleClickTag: React.PropTypes.func.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;
@@ -39,10 +34,10 @@ export default class Toolbar extends React.Component {
       min: 1,
       max: 0,
       unit: 'rem',
-      maxSize: 4
+      maxSize: 4,
     };
 
-    tags.children.forEach(t => {
+    tags.data.forEach(t => {
       if (t.count < fScale.min) {
         fScale.min = t.count;
       }
@@ -54,7 +49,8 @@ export default class Toolbar extends React.Component {
 
     this.setState({
       category: filter.category || 'Categories',
-      fontScale: new ScaleLog(fScale)
+      fontScale: new ScaleLog(fScale),
+      search: filter.search,
     });
   }
 
@@ -67,7 +63,36 @@ export default class Toolbar extends React.Component {
       newState.category = filter.category || 'Categories';
     }
 
+    if (prevFilter.search !== filter.search) {
+      newState.search = filter.search;
+    }
+
     this.setState(newState);
+  }
+
+  @autobind
+  handleSearch(e) {
+    let search = '';
+
+    if (e.type === 'click') {
+      e.preventDefault();
+      e.currentTarget.parentNode.previousSibling.focus();
+    }
+    else if (e.type === 'change') {
+      search = e.target.value;
+    }
+
+    this.setState({ search });
+    this.executeSearch(search);
+  }
+
+  @debounce(300)
+  executeSearch(search) {
+    this.props.dispatch(filterItems({ search }));
+
+    if (search) {
+      trackEvent('search', 'submit', search);
+    }
   }
 
   handleSelectCategory(data) {
@@ -83,11 +108,11 @@ export default class Toolbar extends React.Component {
     }
 
     dispatch(filterItems({
-      showTags: !filter.showTags
+      showTags: !filter.showTags,
     }));
 
     if (!filter.showTags) {
-      trackEvent('tag-cloud', 'show');
+      trackEvent('tag-cloud', 'click');
     }
   }
 
@@ -95,48 +120,40 @@ export default class Toolbar extends React.Component {
     e.preventDefault();
     const { app: { filter }, handleChangeColumns } = this.props;
 
-    const col = Number(e.currentTarget.dataset.column);
-
-    handleChangeColumns(filter.columns + col);
+    handleChangeColumns((filter.columns || 3) + Number(e.currentTarget.dataset.column));
   }
 
   handleClickChangeView(e) {
     e.preventDefault();
 
-    const { value } = e.currentTarget.dataset;
+    const { value: view } = e.currentTarget.dataset;
 
-    this.props.dispatch(filterItems({ view: value }));
-    trackEvent('view', 'click', value);
-  }
-
-  handleCleanFilter(e) {
-    e.preventDefault();
-    const { app: { filter }, dispatch } = this.props;
-
-    dispatch(filterItems({ columns: filter.columns }));
+    this.props.dispatch(filterItems({ view }));
+    trackEvent('view', 'click', view);
   }
 
   render() {
-    const { category } = this.state;
+    const { category, search } = this.state;
     const {
       app: { filter },
       firebase: {
         tags,
-        categories
+        categories,
       },
-      handleClickTag
+      handleClickTag,
     } = this.props;
     const output = {};
     let classes;
 
-    const categoriesMenu = [{ name: 'Categories', count: 0 }].concat(categories.children);
+    const categoriesMenu = [{ name: 'Categories', count: 0 }].concat(categories.data);
 
     output.tagsMenu = (
       <li className="app__toolbar__tags">
         <a
           href="#tags"
-          className={cx('btn btn-primary btn-icon', { tagged: filter.tag })}
-          onClick={this.handleClickTags}>
+          className={cx('btn btn-white btn-icon', { tagged: filter.tag })}
+          onClick={this.handleClickTags}
+        >
           <i className="i-tags" /><span>Tags</span>
         </a>
       </li>
@@ -145,7 +162,7 @@ export default class Toolbar extends React.Component {
     output.tagCloud = (
       <div className={cx('app__toolbar__cloud', { visible: filter.showTags })} onClick={this.handleClickTags}>
         <div className="app__toolbar__cloud__wrapper">
-          {tags.children.map(d => {
+          {tags.data.map(d => {
             switch (Math.min(Math.ceil(d.count < 5 ? 0 : d.count / 10), 5)) {
               case 5:
                 classes = 'tag-size-5';
@@ -178,7 +195,8 @@ export default class Toolbar extends React.Component {
                 href="#tag"
                 className={classes}
                 data-name={d.name}
-                onClick={handleClickTag}>
+                onClick={handleClickTag}
+              >
                 {`#${d.name} (${d.count})`}
               </a>
             );
@@ -195,43 +213,41 @@ export default class Toolbar extends React.Component {
           suggest={true}
           data={categoriesMenu}
           value={category}
-          onChange={this.handleSelectCategory} />
+          onChange={this.handleSelectCategory}
+        />
       </li>
     );
 
-    output.title = this.viewTypes[filter.view];
-
-    if (filter.category) {
-      output.title = `[${filter.category}]`;
-    }
-    else if (filter.tag) {
-      output.title = `#${filter.tag}`;
-    }
-    else if (filter.search) {
-      output.title = `results for: ${filter.search}`;
-    }
-
     return (
       <div className="app__toolbar">
-        <div className="app__toolbar__heading">
-          <h1>
-            <span>{output.title}</span>
-            <a href="#remove" onClick={this.handleCleanFilter}><i className="i-times-circle" /></a>
-          </h1>
-          <div className="app__toolbar__groups btn-group btn-group-sm">
-            {Object.keys(this.viewTypes)
-              .filter(f => f !== filter.view)
-              .map(t =>
-                (<a
-                  key={t}
-                  href={`#${t}`}
-                  className="btn btn-secondary"
-                  data-value={t}
-                  onClick={this.handleClickChangeView}>
-                  {this.viewTypes[t]}
-                </a>)
-              )}
-          </div>
+        <div className="app__toolbar__search">
+          <input
+            type="text"
+            name="search"
+            value={search}
+            placeholder="Search logos"
+            onChange={this.handleSearch}
+          />
+          <span className="input-icon">
+            {filter.search ?
+             (<a href="#clean" onClick={this.handleSearch}>
+               <i className="i-remove" />
+             </a>)
+              : <i className="i-search" />
+            }
+          </span>
+        </div>
+        <div className="app__toolbar__groups">
+          <span>
+            Sort by
+            <a href="#name" data-value="all" onClick={this.handleClickChangeView}>name</a>,
+            <a href="#name" data-value="latest" onClick={this.handleClickChangeView}>latest</a>
+          </span>
+          <span>
+          Filter by
+            <a href="#name" data-value="favorites" onClick={this.handleClickChangeView}>favorites</a>,
+            <a href="#name" data-value="vectorized" onClick={this.handleClickChangeView}>vectorized</a>
+          </span>
         </div>
         <ul className="app__toolbar__menu">
           {output.categories}
@@ -242,18 +258,19 @@ export default class Toolbar extends React.Component {
                 href="#switch-down"
                 className={cx({ disabled: filter.columns < 2 })}
                 data-column="-1"
-                onClick={this.handleClickColumns}>
+                onClick={this.handleClickColumns}
+              >
                 <i className="i-minus" />
               </a>
               <a
                 href="#switch-down"
                 className={cx({ disabled: filter.columns > (window.innerWidth > 880 ? 4 : 2) })}
                 data-column="1"
-                onClick={this.handleClickColumns}>
+                onClick={this.handleClickColumns}
+              >
                 <i className="i-plus" />
               </a>
             </div>
-            <div className="keyboard">or use your keyboard</div>
           </li>
         </ul>
         {output.tagCloud}

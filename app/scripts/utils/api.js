@@ -39,13 +39,13 @@ export function request(action:Object = {}) {
 
   const headers = Object.assign({}, {
     Accept: 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   }, action.headers);
 
   return new Promise((resolve, reject) => {
     const params = {
       headers,
-      method: action.method
+      method: action.method,
     };
 
     if (params.method !== 'GET') {
@@ -83,7 +83,7 @@ export function request(action:Object = {}) {
             error.response.json().then(json => {
               reject({
                 status: XHR.FAIL,
-                data: json
+                data: json,
               });
             });
 
@@ -93,7 +93,7 @@ export function request(action:Object = {}) {
           error.response.text().then(text =>
             reject({
               status: XHR.FAIL,
-              data: text
+              data: text,
             })
           );
         }

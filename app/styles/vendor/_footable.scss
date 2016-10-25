@@ -277,7 +277,7 @@ div.footable-loader {
 .fooicon {
   content: attr(data-icon);
   display: inline-block;
-  font-family: 'icon-font-v2' !important;
+  font-family: 'icon-font-v3' !important;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-style: normal !important;
@@ -294,47 +294,47 @@ div.footable-loader {
   }
 
   &-loader:before {
-    content: '\f0fe';
+    content: '\f057';
   }
 
   &-plus:before {
-    content: '\f0f0';
+    content: '\f0f3';
   }
 
   &-minus:before {
-    content: '\f0d2';
+    content: '\f0d5';
   }
 
   &-search:before {
-    content: '\f105';
+    content: '\f109';
   }
 
   &-remove:before {
-    content: '\f058';
+    content: '\f145';
   }
 
   &-sort:before {
-    content: '\f118';
-  }
-
-  &-sort-asc:before {
-    content: '\f11b';
-  }
-
-  &-sort-desc:before {
     content: '\f11c';
   }
 
+  &-sort-asc:before {
+    content: '\f121';
+  }
+
+  &-sort-desc:before {
+    content: '\f122';
+  }
+
   &-pencil:before {
-    content: '\f0e2';
+    content: '\f0e5';
   }
 
   &-trash:before {
-    content: '\f141';
+    content: '\f149';
   }
 
   &-eye-close:before {
-    content: '\f07e';
+    content: '\f081';
   }
 
   &-flash:before {
@@ -342,7 +342,7 @@ div.footable-loader {
   }
 
   &-cog:before {
-    content: '\f05e';
+    content: '\f060';
   }
 }
 

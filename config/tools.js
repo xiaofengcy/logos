@@ -42,7 +42,7 @@ function publish() {
           return;
         }
         ghPages.publish(path.join(__dirname, '../dist'), {
-          message: commit
+          message: commit,
         }, error => {
           if (error) {
             console.log(chalk.red('Something went wrong...', error));

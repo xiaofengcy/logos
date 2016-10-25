@@ -9,7 +9,7 @@ export class AppPrivate extends React.Component {
   static propTypes = {
     children: React.PropTypes.node.isRequired,
     dispatch: React.PropTypes.func.isRequired,
-    user: React.PropTypes.object.isRequired
+    user: React.PropTypes.object.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;

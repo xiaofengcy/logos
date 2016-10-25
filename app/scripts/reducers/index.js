@@ -5,5 +5,5 @@ import user from './user';
 export default {
   ...app,
   ...firebase,
-  ...user
+  ...user,
 };

@@ -1,7 +1,7 @@
 /*eslint-disable no-console, no-prototype-builtins, no-continue */
 const jsdom = require('jsdom');
 require('source-map-support').install({
-  environment: 'node'
+  environment: 'node',
 });
 
 const doc = jsdom.jsdom('<!doctype html><html><body></body></html>', { url: 'http://localhost:3000' });
@@ -21,7 +21,7 @@ global.window.localStorage = window.sessionStorage = {
   },
   clear() {
     return this;
-  }
+  },
 };
 
 /**
@@ -71,7 +71,7 @@ function _getNodeDataAttrs(el) {
           set: val => {
             _datasetMap[datakey] = val;
             el.setAttribute(attr, val);
-          }
+          },
         });
       }(datakey));
     }
@@ -80,7 +80,7 @@ function _getNodeDataAttrs(el) {
 }
 
 Object.defineProperty(global.window.Element.prototype, 'dataset', {
-  get: () => _getNodeDataAttrs(this)
+  get: () => _getNodeDataAttrs(this),
 });
 
 // from mocha-jsdom https://github.com/rstacruz/mocha-jsdom/blob/master/index.js#L80

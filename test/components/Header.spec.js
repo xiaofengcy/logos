@@ -11,8 +11,8 @@ function setup() {
     app: appState,
     dispatch: mockDispatch,
     location: {
-      pathname: '/'
-    }
+      pathname: '/',
+    },
   };
 
   return mount(<Header {...props} />);
@@ -32,8 +32,8 @@ describe('Header', () => {
   it('should handle clicks', () => {
     wrapper.find('.app__header__logo').simulate('click');
     expect(mockDispatch.mock.calls[0][0]).toEqual({
-      type: '@@router/CALL_HISTORY_METHOD',
-      payload: { method: 'push', args: [{ pathname: '/', search: undefined, state: undefined }] }
+      type: 'FILTER_ITEMS',
+      payload: {},
     });
   });
 });

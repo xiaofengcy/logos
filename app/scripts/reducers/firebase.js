@@ -5,30 +5,33 @@ import { ActionTypes } from 'constants/index';
 
 export const firebaseState = {
   logos: {
-    children: [],
+    data: [],
     ready: false,
-    running: false
+    running: false,
+    updated: '',
   },
   tags: {
-    children: [],
+    data: [],
     ready: false,
-    running: false
+    running: false,
+    updated: '',
   },
   categories: {
-    children: [],
+    data: [],
     ready: false,
-    running: false
+    running: false,
+    updated: '',
   },
   ready: false,
   rehydrated: false,
-  running: false
+  running: false,
 };
 
 export default {
   firebase: createReducer(firebaseState, {
     [REHYDRATE](state, action) {
       return Object.assign({}, state, action.payload.firebase, {
-        rehydrated: true
+        rehydrated: true,
       });
     },
     [ActionTypes.CONNECT_LOGOS_REQUEST](state) {
@@ -84,7 +87,7 @@ export default {
     },
     [ActionTypes.CONNECT_FIREBASE_FAILURE](state) {
       return { ...state, ready: false, running: false };
-    }
-  })
+    },
+  }),
 };
 

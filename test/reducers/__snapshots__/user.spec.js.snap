@@ -6,7 +6,7 @@ Object {
   "isAdmin": false,
   "ready": true,
   "rehydrated": false,
-  "running": false
+  "running": false,
 }
 `;
 
@@ -18,7 +18,7 @@ Object {
   "isAdmin": false,
   "ready": false,
   "rehydrated": true,
-  "running": false
+  "running": false,
 }
 `;
 
@@ -31,7 +31,7 @@ Object {
   "logged": true,
   "ready": false,
   "rehydrated": true,
-  "running": false
+  "running": false,
 }
 `;
 
@@ -43,7 +43,7 @@ Object {
   "isAdmin": false,
   "ready": false,
   "rehydrated": true,
-  "running": false
+  "running": false,
 }
 `;
 
@@ -55,6 +55,6 @@ Object {
   "isAdmin": false,
   "ready": false,
   "rehydrated": false,
-  "running": false
+  "running": false,
 }
 `;

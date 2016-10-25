@@ -1,6 +1,4 @@
 .app__toolbar {
-  @include app-container();
-
   &__menu {
     align-items: center;
     display: flex;
@@ -49,57 +47,95 @@
     }
   }
 
-  &__heading {
-    text-align: center;
-
-    h1 {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      line-height: 1;
-      margin-bottom: $grid-gutter-width / 2;
-
-      > * {
-        line-height: 1;
-      }
-
-      > i {
-        font-size: $font-size-base;
-      }
-
-      a {
-        color: $body-color;
-        font-size: $font-size-base;
-      }
-    }
-  }
-
   &__switch {
     display: inline-flex;
 
     a {
-      background-color: lighten($brand-primary, 45);
-      border: 0.1rem solid lighten($brand-primary, 25);
+      @include center-child();
+      background-color: #fff;
+      border-radius: 50%;
       font-size: $font-size-sm;
-      line-height: 1;
-      padding: 0.2rem ($grid-gutter-width / 2) !important;
+      height: 3.4rem;
+      padding: 0.8rem 1rem !important;
       text-decoration: none;
+      width: 3.4rem;
 
       &.disabled {
-        border-color: lighten($brand-primary, 35);
-        color: lighten($brand-primary, 25);
-      }
-
-      &:first-child {
-        border-bottom-left-radius: 2rem;
-        border-top-left-radius: 2rem;
+        color: #ccc;
       }
 
       &:last-child {
-        border-bottom-right-radius: 2rem;
-        border-left-width: 0;
-        border-top-right-radius: 2rem;
+        margin-left: 1rem;
       }
+    }
+
+    [class^=i-] {
+      margin-top: 0.1rem;
+    }
+  }
+
+  &__groups {
+    @include ix {
+      margin: 0 auto;
+      max-width: 60rem;
+      text-align: center;
+    }
+
+    a {
+      color: #fff;
+      display: inline-block;
+      font-weight: 700;
+      margin-left: 0.3rem;
+    }
+
+    span {
+      display: block;
+      text-align: center;
+
+      @include ix {
+        display: inline-block;
+        text-align: left;
+      }
+
+      &:last-child {
+        @include ix {
+          margin-left: $grid-gutter-width;
+        }
+      }
+    }
+  }
+
+  &__search {
+    margin: 0 auto ($grid-gutter-width / 6);
+    position: relative;
+
+    @include md {
+      max-width: 60rem;
+    }
+
+    input {
+      -webkit-appearance: none;
+      border: 0;
+      border-radius: 0.5rem;
+      box-shadow: none;
+      outline: none;
+      padding-bottom: 1rem;
+      padding-left: 1.5rem;
+      padding-right: 3rem;
+      padding-top: 1rem;
+      width: 100%;
+    }
+
+    span {
+      color: $brand-primary;
+      position: absolute;
+      right: ($grid-gutter-width / 3);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    a {
+      color: $brand-primary;
     }
   }
 
@@ -112,7 +148,7 @@
     pointer-events: all;
     position: fixed;
     right: 0;
-    top: 0;
+    top: $header-height;
     transition: opacity 0.5s, visibility 0.2s;
     visibility: hidden;
     z-index: 20;

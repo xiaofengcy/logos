@@ -8,14 +8,14 @@ class Item extends React.Component {
 
     this.imagePath = `${location.origin}/logos/`;
     this.state = {
-      path: location.hostname === 'localhost' ? '../logos/' : 'http://svgporn.com/logos/'
+      path: location.hostname === 'localhost' ? '../logos/' : 'http://svgporn.com/logos/',
     };
   }
 
   static propTypes = {
     data: React.PropTypes.object.isRequired,
     handleClickTag: React.PropTypes.func.isRequired,
-    index: React.PropTypes.number.isRequired
+    index: React.PropTypes.number.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;
@@ -34,7 +34,8 @@ class Item extends React.Component {
           target="_blank"
           className="app__images__img"
           data-shortname={data.shortname}
-          onClick={this.onClickItem}>
+          onClick={this.onClickItem}
+        >
           <img src={`${this.imagePath}${data.files[index]}`} alt={data.name} className={data.shortname} />
         </a>
 
@@ -50,7 +51,8 @@ class Item extends React.Component {
             <a
               href={`${this.imagePath}${data.files[index]}`}
               className="btn btn-sm btn-outline-secondary btn-icon"
-              download={true}>
+              download={true}
+            >
               <i className="i-download" />
               <span>download</span>
             </a>

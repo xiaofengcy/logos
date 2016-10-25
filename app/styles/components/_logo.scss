@@ -1,28 +1,16 @@
 .app__logo {
-  display: inline-block;
-
-  &__large {
-    display: none;
-
-    @include md {
-      display: block;
-    }
-  }
-
-  &__icon {
-    display: block;
-
-    @include md {
-      display: none;
-    }
-  }
+  display: inline-flex;
+  justify-content: center;
 
   .isvg {
+    display: inline-block;
     line-height: 0;
+    text-align: center;
 
     svg {
       height: auto;
       max-height: 100%;
+      max-width: 90%;
     }
   }
 }

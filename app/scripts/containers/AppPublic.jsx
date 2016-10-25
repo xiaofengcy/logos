@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Transition from 'react-addons-css-transition-group';
 import { shouldComponentUpdate } from 'utils/helpers';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import Splash from 'components/Splash';
 import SystemNotifications from 'components/SystemNotifications';
 
 export class AppPublic extends React.Component {
@@ -11,13 +13,18 @@ export class AppPublic extends React.Component {
     app: React.PropTypes.object.isRequired,
     children: React.PropTypes.node.isRequired,
     dispatch: React.PropTypes.func.isRequired,
-    firebase: React.PropTypes.object.isRequired
+    firebase: React.PropTypes.object.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;
 
   render() {
     const { app, firebase, dispatch } = this.props;
+    let splash;
+
+    if (!firebase.ready) {
+      splash = (<Splash />);
+    }
 
     return (
       <div key="app" className="app app--public">
@@ -25,6 +32,14 @@ export class AppPublic extends React.Component {
         <main className="app__main">
           {this.props.children}
         </main>
+        <Transition
+          component="div"
+          transitionName="splash__animation"
+          transitionEnterTimeout={1500}
+          transitionLeaveTimeout={1500}
+        >
+          {splash}
+        </Transition>
         <Footer dispatch={dispatch} />
         <SystemNotifications />
       </div>
@@ -36,7 +51,7 @@ export class AppPublic extends React.Component {
 function mapStateToProps(state) {
   return {
     app: state.app,
-    firebase: state.firebase
+    firebase: state.firebase,
   };
 }
 

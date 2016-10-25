@@ -6,7 +6,7 @@ import { App } from 'containers/App';
 function setup() {
   const props = {
     children: <div key="1" className="child">Hello</div>,
-    dispatch: () => {}
+    dispatch: () => {},
   };
 
   return shallow(<App {...props} />);

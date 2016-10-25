@@ -14,7 +14,7 @@ import { ActionTypes } from 'constants/index';
 export function login(provider) {
   return {
     type: ActionTypes.USER_LOGIN_REQUEST,
-    payload: { provider }
+    payload: { provider },
   };
 }
 
@@ -25,7 +25,7 @@ export function login(provider) {
  */
 export function restore() {
   return {
-    type: ActionTypes.USER_RESTORE_REQUEST
+    type: ActionTypes.USER_RESTORE_REQUEST,
   };
 }
 
@@ -36,6 +36,6 @@ export function restore() {
  */
 export function logOut() {
   return {
-    type: ActionTypes.USER_LOGOUT_REQUEST
+    type: ActionTypes.USER_LOGOUT_REQUEST,
   };
 }

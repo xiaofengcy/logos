@@ -6,12 +6,15 @@ import { firebaseState } from 'reducers/firebase';
 
 function setup() {
   const props = {
+    app: {
+      isMobile: false,
+    },
     firebase: firebaseState,
     dispatch: () => {},
     location: {},
     user: {
-      isAdmin: true
-    }
+      isAdmin: true,
+    },
   };
 
   return shallow(<CMS {...props} />);

@@ -11,8 +11,8 @@ const mockGetState = jest.fn(() =>
     user: {
       isAdmin,
       ready,
-      rehydrated
-    }
+      rehydrated,
+    },
   })
 );
 
@@ -24,13 +24,13 @@ jest.mock('store', () =>
   ({
     dispatch: mockDispatch,
     getState: mockGetState,
-    subscribe: mockSubscribe
+    subscribe: mockSubscribe,
   })
 );
 
 jest.mock('scroll', () =>
   ({
-    top: mockScroll
+    top: mockScroll,
   })
 );
 

@@ -4,11 +4,12 @@ import { createReducer } from 'utils/helpers';
 import { ActionTypes } from 'constants/index';
 
 export const appState = {
+  isMobile: false,
   notifications: {
     visible: false,
     message: '',
     status: '',
-    withTimeout: true
+    withTimeout: true,
   },
   filter: {
     category: '',
@@ -17,9 +18,9 @@ export const appState = {
     showTags: false,
     tag: '',
     view: 'latest',
-    viewBefore: ''
+    viewBefore: '',
   },
-  rehydrated: false
+  rehydrated: false,
 };
 
 export default {
@@ -31,7 +32,7 @@ export default {
         ...state,
         filter: { ...filter, showTags: false },
         notifications: appState.notifications,
-        rehydrated: true
+        rehydrated: true,
       };
     },
     [ActionTypes.SHOW_ALERT](state, action) {
@@ -40,7 +41,7 @@ export default {
         visible: true,
         message: action.message,
         status: action.status,
-        withTimeout: action.withTimeout === true
+        withTimeout: action.withTimeout === true,
       };
 
       return { ...state, notifications };
@@ -49,10 +50,14 @@ export default {
       const notifications = {
         ...state.notifications,
         visible: false,
-        withTimeout: true
+        withTimeout: true,
       };
 
       return { ...state, notifications };
+    },
+    [ActionTypes.DETECT_MOBILE](state, action) {
+      const { payload } = action;
+      return { ...state, ...payload };
     },
     [ActionTypes.FILTER_ITEMS](state, action) {
       const { payload } = action;
@@ -60,7 +65,7 @@ export default {
       const viewBefore = (payload.tag || payload.category || payload.search) && state.filter.view !== 'all' ? state.filter.view : '';
       let filter;
 
-      if (typeof payload.showTags !== 'undefined') {
+      if (typeof payload.showTags !== 'undefined' || payload.columns) {
         filter = { ...state.filter, ...payload };
       }
       else {
@@ -69,11 +74,11 @@ export default {
           columns: state.filter.columns,
           view,
           viewBefore,
-          ...payload
+          ...payload,
         };
       }
 
       return { ...state, filter };
-    }
-  })
+    },
+  }),
 };

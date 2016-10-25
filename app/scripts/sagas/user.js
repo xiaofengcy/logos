@@ -31,9 +31,9 @@ export function* login(action) {
           displayName: auth.user.displayName,
           email: auth.user.email,
           photoURL: auth.user.photoURL,
-          refreshToken: auth.user.refreshToken
-        }
-      }
+          refreshToken: auth.user.refreshToken,
+        },
+      },
     });
     yield put(goTo('/cms'));
   }
@@ -41,7 +41,7 @@ export function* login(action) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.USER_LOGIN_FAILURE,
-      payload: error
+      payload: error,
     });
   }
 }
@@ -54,14 +54,14 @@ export function* restore() {
     yield call(signInWithCredential);
 
     yield put({
-      type: ActionTypes.USER_RESTORE_SUCCESS
+      type: ActionTypes.USER_RESTORE_SUCCESS,
     });
   }
   catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.USER_RESTORE_FAILURE,
-      payload: error
+      payload: error,
     });
   }
 }
@@ -74,7 +74,7 @@ export function* logout() {
     yield call(signOut);
 
     yield put({
-      type: ActionTypes.USER_LOGOUT_SUCCESS
+      type: ActionTypes.USER_LOGOUT_SUCCESS,
     });
     yield put(goTo('/'));
   }
@@ -82,7 +82,7 @@ export function* logout() {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.USER_LOGOUT_FAILURE,
-      payload: error
+      payload: error,
     });
   }
 }

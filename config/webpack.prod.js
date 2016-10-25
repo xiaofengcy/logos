@@ -9,14 +9,13 @@ var CopyPlugin = require('copy-webpack-plugin');
 var OfflinePlugin = require('offline-plugin');
 var autoprefixer = require('autoprefixer');
 
-
 var webpackConfig = require('./webpack.config');
 var NPMPackage = require('./../package');
 
 var config = merge(webpackConfig, {
   entry: {
     '/scripts/app': './scripts/main.jsx',
-    '/scripts/modernizr': './scripts/vendor/modernizr-custom.js'
+    '/scripts/modernizr': './scripts/vendor/modernizr-custom.js',
   },
   output: {
     filename: '[name].[hash].js',
@@ -27,7 +26,7 @@ var config = merge(webpackConfig, {
     new CleanPlugin(['dist'], { root: path.join(__dirname, '../') }),
     new CopyPlugin([
       { from: '.htaccess' },
-      { from: 'robots.txt' }
+      { from: 'robots.txt' },
     ]),
     new ExtractTextPlugin('/styles/app.[hash].css'),
     new HtmlPlugin({
@@ -35,19 +34,24 @@ var config = merge(webpackConfig, {
       inject: false,
       minify: {
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
       },
       mobile: true,
       template: './index.ejs',
-      title: NPMPackage.title
+      title: NPMPackage.title,
+      googleAnalytics: {
+        pageViewOnLoad: true,
+        trackingId: 'UA-64685370-1',
+      },
     }),
     new webpack.optimize.DedupePlugin(),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     new OfflinePlugin({
       relativePaths: false,
-      publicPath: '/'
+      publicPath: '/',
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
@@ -68,21 +72,21 @@ var config = merge(webpackConfig, {
                   'opera >= 23',
                   'ios >= 7',
                   'android >= 4.4',
-                  'bb >= 10'
-                ]
-              })
-            ]
+                  'bb >= 10',
+                ],
+              }),
+            ],
           };
-        }
-      }
+        },
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
-        warnings: false
-      }
-    })
-  ]
+        warnings: false,
+      },
+    }),
+  ],
 });
 
 module.exports = config;

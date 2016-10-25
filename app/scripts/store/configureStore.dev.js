@@ -10,28 +10,28 @@ import createReactotronTrackingEnhancer from 'reactotron-redux';
 
 import rootSagas from 'sagas';
 import rootReducer from 'reducers';
-import DevTools from 'components/DevTools';
 import { ActionTypes } from 'constants/index';
 
 const reducer = combineReducers(Object.assign({}, rootReducer, {
   form: formReducer,
-  routing: routerReducer
+  routing: routerReducer,
 }));
 const sagaMiddleware = createSagaMiddleware();
 
 const logger = createLogger({
   // predicate: (getState, action) => (action.type.indexOf('_REQUEST') === -1),
-  collapsed: true
+  collapsed: true,
 });
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 /* istanbul ignore next */
 const newStore = (initialState = {}) => {
-  const createStoreWithMiddleware = compose(
+  const createStoreWithMiddleware = composeEnhancers(
     applyMiddleware(sagaMiddleware, routerMiddleware(browserHistory), logger),
     createReactotronTrackingEnhancer(Reactotron, {
-      isActionImportant: action => action.type === ActionTypes.USER_LOGIN_SUCCESS
-    }),
-    DevTools.instrument()
+      isActionImportant: action => action.type === ActionTypes.USER_LOGIN_SUCCESS,
+    })
   )(createStore);
 
   const store = createStoreWithMiddleware(reducer, initialState);

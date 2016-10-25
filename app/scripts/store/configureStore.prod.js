@@ -7,7 +7,7 @@ import rootSagas from 'sagas';
 import rootReducer from 'reducers';
 
 const reducer = combineReducers(Object.assign({}, rootReducer, {
-  routing: routerReducer
+  routing: routerReducer,
 }));
 const sagaMiddleware = createSagaMiddleware();
 

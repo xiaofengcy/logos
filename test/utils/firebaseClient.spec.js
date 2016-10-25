@@ -1,6 +1,3 @@
-const mockAuth = jest.fn();
-const mockDatabase = jest.fn();
-
 jest.mock('firebase');
 
 const firebaseClient = require('utils/firebaseClient');

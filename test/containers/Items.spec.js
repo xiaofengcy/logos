@@ -12,7 +12,7 @@ function setup() {
     app: appState,
     dispatch: mockDispatch,
     firebase: firebaseState,
-    location: {}
+    location: {},
   };
 
   return shallow(<Items {...props} />);

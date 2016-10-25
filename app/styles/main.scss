@@ -1,19 +1,28 @@
+@import url('//fonts.googleapis.com/css?family=Roboto:400,700');
+
 // *** Vendor
 @import '../../node_modules/sass-mediaqueries/media-queries';
 
-// *** Base
-@import 'base/variables';
-@import 'base/icons';
-@import 'base/typography';
+// *** Variables
+@import 'variables/common';
+@import 'variables/typography';
+
 
 // *** Utilities
 @import 'utilities/functions';
 @import 'utilities/mixins';
 @import 'utilities/grid';
 
-// *** Vendor
+// *** Bootstrap
 @import 'vendor/bootstrap';
 @import 'vendor/bootstrap-theme';
+
+// *** Base
+@import 'base/animations';
+@import 'base/icons';
+@import 'base/transitions';
+
+// *** Other Vendor
 @import 'vendor/footable';
 @import 'vendor/react-widgets';
 
@@ -29,6 +38,7 @@
 @import 'components/input-switch';
 @import 'components/loader';
 @import 'components/logo';
+@import 'components/splash';
 @import 'components/toolbar';
 @import 'components/system-notifications';
 

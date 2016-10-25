@@ -2,6 +2,10 @@
   @include button-variant(#fff, #000, #000);
 }
 
+.btn-white {
+  @include button-variant($brand-primary, #fff, #fff);
+}
+
 .btn-icon {
   align-items: center;
   display: inline-flex;

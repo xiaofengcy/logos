@@ -30,14 +30,56 @@ export class CMS extends React.Component {
       favorite: false,
       edited: false,
       vectorized: false,
-      updated: null
+      updated: null,
     };
+
+    // TODO: Improve footable
+
+    this.columns = [
+      {
+        name: 'image',
+        title: 'Imagem',
+        breakpoints: 'xs sm',
+        sortable: false,
+      },
+      {
+        name: 'name',
+        title: 'Name',
+        breakpoints: 'xs sm',
+        type: 'html',
+        sortable: false,
+        filterable: false,
+      },
+      {
+        name: 'files',
+        title: 'Imagem',
+        breakpoints: 'xs sm',
+        sortable: false,
+      },
+      {
+        name: 'metadata',
+        title: 'Metadata',
+        breakpoints: 'xs sm',
+        sortable: false,
+      },
+      {
+        name: 'date',
+        title: 'Date',
+        breakpoints: 'xs sm',
+        type: 'date',
+        'format-string': 'YYYY-MM-DD',
+        filterable: false,
+        sorted: true,
+        direction: 'DESC',
+      },
+    ];
   }
 
   static propTypes = {
+    app: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired,
     firebase: React.PropTypes.object.isRequired,
-    user: React.PropTypes.object.isRequired
+    user: React.PropTypes.object.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;
@@ -50,19 +92,36 @@ export class CMS extends React.Component {
 
   componentDidMount() {
     if (this.props.firebase.ready) {
-      this.handleTable();
+      this.initTable();
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.firebase.ready && nextProps.firebase.ready) {
+    const { firebase } = this.props;
+    if (!firebase.ready && nextProps.firebase.ready) {
       this.setProperties();
+    }
+
+    if (
+      (firebase.logos.updated !== nextProps.firebase.logos.updated)
+      || (firebase.categories.updated !== nextProps.firebase.categories.updated)
+      || (firebase.tags.updated !== nextProps.firebase.tags.updated)
+    ) {
+      this.updateTable();
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (!prevProps.firebase.ready && this.props.firebase.ready) {
-      this.handleTable();
+    const { firebase: prevFirebase } = prevProps;
+    const { firebase } = this.props;
+
+    if (
+      (!prevFirebase.ready && firebase.ready)
+      || (prevFirebase.logos.updated !== firebase.logos.updated)
+      || (prevFirebase.categories.updated !== firebase.categories.updated)
+      || (prevFirebase.tags.updated !== firebase.tags.updated)
+    ) {
+      this.initTable();
     }
   }
 
@@ -84,7 +143,7 @@ export class CMS extends React.Component {
 
     this.setState({
       item: this.initialValues,
-      showModal: true
+      showModal: true,
     });
   }
 
@@ -92,11 +151,11 @@ export class CMS extends React.Component {
   handleClickEdit(e) {
     e.preventDefault();
     const data = e.currentTarget.dataset;
-    const item = this.props.firebase.logos.children.find(d => d.id === data.id);
+    const item = this.props.firebase.logos.data.find(d => d.id === data.id);
 
     this.setState({
       item,
-      showModal: true
+      showModal: true,
     });
   }
 
@@ -104,7 +163,7 @@ export class CMS extends React.Component {
   handleHideModal() {
     this.setState({
       item: undefined,
-      showModal: false
+      showModal: false,
     });
   }
 
@@ -122,21 +181,21 @@ export class CMS extends React.Component {
 
   setProperties() {
     const { categories, tags } = this.props.firebase;
-    this.tags = _reduce(tags.children, (res, val) => {
+    this.tags = _reduce(tags.data, (res, val) => {
       res[val.name] = val.count;
       return res;
     }, {});
 
-    this.categories = _reduce(categories.children, (res, val) => {
+    this.categories = _reduce(categories.data, (res, val) => {
       res[val.name] = val.count;
       return res;
     }, {});
   }
 
   @autobind
-  handleTable() {
+  initTable() {
     if (this.table) {
-      const { categories: { children: categories } } = this.props.firebase;
+      const { categories: { data: categories } } = this.props.firebase;
       const $table = $(this.table);
 
       FooTable.Categories = FooTable.Filtering.extend({
@@ -182,7 +241,7 @@ export class CMS extends React.Component {
           else {
             this.$category.val(this.def);
           }
-        }
+        },
       });
 
       $table.footable({
@@ -190,27 +249,35 @@ export class CMS extends React.Component {
           xs: 120,
           sm: 400,
           md: 768,
-          lg: 1024
+          lg: 1024,
         },
         components: {
-          filtering: FooTable.Categories
+          filtering: FooTable.Categories,
         },
         filtering: {
           enabled: true,
           min: 2,
-          space: 'OR'
+          space: 'OR',
         },
         paging: {
           enabled: true,
           limit: window.innerWidth < 400 ? 3 : 5,
           position: 'center',
-          size: 50
+          size: 50,
         },
         sorting: {
-          enabled: true
+          enabled: true,
         },
-        getWidth: () => window.innerWidth
+        getWidth: () => window.innerWidth,
       });
+    }
+  }
+
+  updateTable() {
+    const footable = $(this.table).data('__FooTable__');
+
+    if (footable) {
+      footable.destroy();
     }
   }
 
@@ -226,7 +293,8 @@ export class CMS extends React.Component {
             data-type="html"
             data-sortable="false"
             data-filterable="false"
-            data-breakpoints="xs sm">
+            data-breakpoints="xs sm"
+          >
             Files
           </th>
           <th data-type="html" data-sortable="false" data-breakpoints="xs sm">Metadata</th>
@@ -236,13 +304,14 @@ export class CMS extends React.Component {
             data-format-string="YYYY-MM-DD"
             data-filterable="false"
             data-sorted="true"
-            data-direction="DESC">
+            data-direction="DESC"
+          >
             Date
           </th>
         </tr>
       </thead>
       <tbody>
-        {logos.children.map(d =>
+        {logos.data.map(d =>
           (<tr key={d.id}>
             <td>
               <div className="app__cms__img">
@@ -264,7 +333,8 @@ export class CMS extends React.Component {
                   (<a
                     href="#filter"
                     key={i} data-name={c}
-                    onClick={this.handleClickFilter}>
+                    onClick={this.handleClickFilter}
+                  >
                     {`${c} (${this.categories[c]})`}
                   </a>))}
               </div>
@@ -285,9 +355,9 @@ export class CMS extends React.Component {
 
   render() {
     const state = this.state;
-    const { firebase, user } = this.props;
+    const { app: { isMobile }, firebase, user } = this.props;
     const output = {
-      table: (<Loader />)
+      table: (<Loader />),
     };
     let tags = [];
     let categories = [];
@@ -298,7 +368,8 @@ export class CMS extends React.Component {
           <a
             href="#create"
             className="btn btn-lg btn-primary btn-icon"
-            onClick={this.handleClickNew}>
+            onClick={this.handleClickNew}
+          >
             <i className="i-plus" />
             <span>NEW</span>
           </a>
@@ -306,8 +377,8 @@ export class CMS extends React.Component {
       );
 
       output.table = this.renderTable();
-      tags = _map(firebase.tags.children, d => d.name);
-      categories = _map(firebase.categories.children, d => d.name);
+      tags = _map(firebase.tags.data, d => d.name);
+      categories = _map(firebase.categories.data, d => d.name);
     }
 
     if (state.showModal) {
@@ -316,7 +387,8 @@ export class CMS extends React.Component {
           item={state.item}
           categories={categories}
           tags={tags}
-          hideModal={this.handleHideModal} />
+          hideModal={this.handleHideModal}
+        />
       );
     }
 
@@ -332,7 +404,7 @@ export class CMS extends React.Component {
       <div key="CMS" className="app__cms app__route">
         <header className="app__header">
           <div className="app__container">
-            <a href="#home" className="app__header__logo" onClick={this.handleClickLogo}><Logo /></a>
+            <a href="#home" className="app__header__logo" onClick={this.handleClickLogo}><Logo icon={isMobile} /></a>
             <div className="app__header__menu">
               <ul className="list-unstyled">
                 <li>
@@ -358,8 +430,10 @@ export class CMS extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    app: state.app,
     firebase: state.firebase,
-    user: state.user };
+    user: state.user,
+  };
 }
 
 export default connect(mapStateToProps)(CMS);

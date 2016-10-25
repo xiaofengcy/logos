@@ -20,9 +20,14 @@
 
   &__logo {
     line-height: 1;
+    width: 18rem;
+
+    @include md {
+      width: 20rem;
+    }
 
     .app__logo svg {
-      width: 4rem;
+      width: 18rem;
 
       @include md {
         width: 20rem;
@@ -35,8 +40,10 @@
   }
 
   &__search {
+    opacity: 0;
     padding: 0 ($grid-gutter-width / 2);
     position: relative;
+    transition: opacity 0.3s;
 
     @include md {
       margin-left: $grid-gutter-width;
@@ -45,11 +52,13 @@
     input {
       -webkit-appearance: none;
       border: 0;
-      border-radius: 2rem;
+      border-radius: 0.5rem;
       box-shadow: none;
       outline: none;
+      padding-bottom: 0.5rem;
       padding-left: 2rem;
       padding-right: $grid-gutter-width;
+      padding-top: 0.5rem;
       width: 100%;
     }
 
@@ -86,6 +95,22 @@
       + a {
         margin-left: $grid-gutter-width / 3;
       }
+    }
+  }
+
+  &--scrolled {
+    .app__header__logo {
+      @include is-only {
+        width: 4rem;
+
+        svg {
+          width: 4rem;
+        }
+      }
+    }
+
+    .app__header__search {
+      opacity: 1;
     }
   }
 }

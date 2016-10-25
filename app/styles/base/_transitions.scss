@@ -1,0 +1,25 @@
+.transition__fade {
+  will-change: opacity;
+
+  &-enter {
+    opacity: 0;
+
+    &.transition__fade-active {
+      opacity: 1;
+      transition: opacity 0.5s ease-in;
+    }
+  }
+
+  &-leave {
+    opacity: 1;
+
+    &.transition__fade-active {
+      opacity: 0;
+      transition: opacity 0s;
+
+      @include md {
+        transition: opacity 0.5s ease-in;
+      }
+    }
+  }
+}
