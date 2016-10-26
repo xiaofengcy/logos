@@ -5,7 +5,7 @@ jest.mock('expose?$!expose?jQuery!jquery', () => {});
 jest.mock('bootstrap/js/dist/modal', () => {});
 jest.mock('footable/compiled/footable', () => {});
 
-require('main');
+require('index.jsx');
 
 describe('Constants:ActionTypes', () => {
   it('should match the snapshot', () => {

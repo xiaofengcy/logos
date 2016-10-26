@@ -1,1 +1,0 @@
-exports[`Items should render properly 1`] = `"<div class=\"app__items app__route\"><div class=\"app__items__header\"><h1><span>0</span>High-quality SVG logos</h1></div></div>"`;

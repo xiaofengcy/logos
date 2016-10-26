@@ -34,9 +34,7 @@ function renderApp(RootComponent) {
   }
 }
 
-setTimeout(() => {
-  renderApp(Root);
-}, 100);
+renderApp(Root);
 
 /* istanbul ignore if  */
 if (module.hot) {

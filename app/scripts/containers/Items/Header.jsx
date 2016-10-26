@@ -2,7 +2,7 @@ import React from 'react';
 
 import Toolbar from './Toolbar';
 
-const Header = ({ app, dispatch, firebase, handleClickTag, handleChangeColumns }) => {
+const ItemsHeader = ({ app, dispatch, firebase, handleClickTag, handleChangeColumns }) => {
   let toolbar;
 
   if (firebase.ready) {
@@ -24,7 +24,7 @@ const Header = ({ app, dispatch, firebase, handleClickTag, handleChangeColumns }
   );
 };
 
-Header.propTypes = {
+ItemsHeader.propTypes = {
   app: React.PropTypes.object.isRequired,
   dispatch: React.PropTypes.func.isRequired,
   firebase: React.PropTypes.object.isRequired,
@@ -32,4 +32,4 @@ Header.propTypes = {
   handleClickTag: React.PropTypes.func.isRequired,
 };
 
-export default Header;
+export default ItemsHeader;

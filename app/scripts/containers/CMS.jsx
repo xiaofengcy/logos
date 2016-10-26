@@ -428,6 +428,7 @@ export class CMS extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 function mapStateToProps(state) {
   return {
     app: state.app,

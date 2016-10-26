@@ -59,7 +59,7 @@ var config = merge.smart(webpackConfig, {
       'webpack-dev-server/client?http://localhost:3030',
       'webpack/hot/only-dev-server',
       'react-hot-loader/patch',
-      './scripts/main.jsx',
+      './scripts/index.jsx',
     ],
     modernizr: './scripts/vendor/modernizr-custom.js',
   },

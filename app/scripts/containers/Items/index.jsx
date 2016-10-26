@@ -9,8 +9,8 @@ import { shouldComponentUpdate, trackEvent } from 'utils/helpers';
 
 import { filterItems } from 'actions';
 
-import Header from './components/Header';
-import Item from './components/Item';
+import ItemsHeader from './Header';
+import Item from './Item';
 
 @autobind
 export class Items extends React.Component {
@@ -32,6 +32,8 @@ export class Items extends React.Component {
       page: 1,
       scrollable: false,
     };
+
+    this.$app = document.querySelector('.app--public');
   }
 
   static propTypes = {
@@ -49,11 +51,12 @@ export class Items extends React.Component {
     }
   }
 
+
   componentDidMount() {
     document.body.addEventListener('keydown', this.handleKeyboard);
     window.addEventListener('scroll', this.handleScroll);
 
-    if (!this.props.firebase.ready) {
+    if (!this.props.firebase.ready && this.$app) {
       document.querySelector('.app--public').classList.add('app--loading');
     }
   }
@@ -65,7 +68,10 @@ export class Items extends React.Component {
     if (!prevData.ready && firebase.ready) {
       this.setProperties();
       this.setLogos();
-      document.querySelector('.app--public').classList.remove('app--loading');
+
+      if (this.$app) {
+        document.querySelector('.app--public').classList.remove('app--loading');
+      }
 
       return;
     }
@@ -310,7 +316,7 @@ export class Items extends React.Component {
 
     return (
       <div key="Items" className="app__items app__route">
-        <Header
+        <ItemsHeader
           app={app}
           dispatch={dispatch}
           firebase={firebase}
@@ -325,6 +331,7 @@ export class Items extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 function mapStateToProps(state) {
   return {
     app: state.app,

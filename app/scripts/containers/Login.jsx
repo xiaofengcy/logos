@@ -60,6 +60,7 @@ export class Login extends React.Component {
   }
 }
 
+/* istanbul ignore next */
 function mapStateToProps(state) {
   return { user: state.user };
 }

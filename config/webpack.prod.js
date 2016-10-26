@@ -14,7 +14,7 @@ var NPMPackage = require('./../package');
 
 var config = merge(webpackConfig, {
   entry: {
-    '/scripts/app': './scripts/main.jsx',
+    '/scripts/app': './scripts/index.jsx',
     '/scripts/modernizr': './scripts/vendor/modernizr-custom.js',
   },
   output: {

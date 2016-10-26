@@ -1,23 +1,23 @@
-import * as Actions from 'actions';
+import { goTo, showAlert, hideAlert, login, logOut } from 'actions';
 
 describe('App', () => {
   it('goTo should create an action to navigate with react-router', () => {
-    expect([Actions.goTo('/destination')]).toMatchSnapshot();
+    expect([goTo('/destination')]).toMatchSnapshot();
   });
 
   it('showAlert should return an action', () => {
-    expect(Actions.showAlert('success', 'Alright!', false)).toMatchSnapshot();
+    expect(showAlert('success', 'Alright!', false)).toMatchSnapshot();
   });
 
   it('hideAlert should return an action', () => {
-    expect(Actions.hideAlert()).toMatchSnapshot();
+    expect(hideAlert()).toMatchSnapshot();
   });
 
   it('login should return an action', () => {
-    expect(Actions.login()).toMatchSnapshot();
+    expect(login()).toMatchSnapshot();
   });
 
   it('logOut should return an action', () => {
-    expect(Actions.logOut()).toMatchSnapshot();
+    expect(logOut()).toMatchSnapshot();
   });
 });

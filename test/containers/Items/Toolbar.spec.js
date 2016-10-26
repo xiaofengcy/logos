@@ -1,25 +1,28 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
-import { Items } from 'containers/Items';
+import Toolbar from 'containers/Items/Toolbar';
 import { appState } from 'reducers/app';
 import { firebaseState } from 'reducers/firebase';
 
 const mockDispatch = jest.fn();
+const mockHandleChangeColumns = jest.fn();
+const mockHandleClickTag = jest.fn();
 
 function setup() {
   const props = {
     app: appState,
     dispatch: mockDispatch,
     firebase: firebaseState,
-    location: {},
+    handleChangeColumns: mockHandleChangeColumns,
+    handleClickTag: mockHandleClickTag,
   };
 
-  return shallow(<Items {...props} />);
+  return mount(<Toolbar {...props} />);
 }
 
-describe('Items', () => {
-  const wrapper = setup(true);
+describe('Toolbar', () => {
+  const wrapper = setup();
 
   it('should be a Component', () => {
     expect(wrapper.instance() instanceof React.Component).toBe(true);
@@ -29,3 +32,4 @@ describe('Items', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 });
+
