@@ -50,15 +50,12 @@
     }
 
     input {
-      -webkit-appearance: none;
+      appearance: none;
       border: 0;
       border-radius: 0.5rem;
       box-shadow: none;
       outline: none;
-      padding-bottom: 0.5rem;
-      padding-left: 2rem;
-      padding-right: $grid-gutter-width;
-      padding-top: 0.5rem;
+      padding: 0.5rem $grid-gutter-width 0.5rem 2rem;
       width: 100%;
     }
 

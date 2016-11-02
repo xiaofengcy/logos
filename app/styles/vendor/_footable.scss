@@ -5,6 +5,8 @@
 * @copyright Steven Usher & Brad Vincent 2015
 * @license Released under the GPLv3 license.
 */
+
+/* stylelint-disable selector-max-compound-selectors, selector-max-specificity, unit-blacklist */
 table.footable,
 table.footable-details {
   border-collapse: collapse;
@@ -125,7 +127,7 @@ table.footable {
             padding-left: 20px;
           }
 
-          input[type="checkbox"] {
+          [type='checkbox'] {
             margin-left: -20px;
             position: absolute;
           }
@@ -147,7 +149,6 @@ table.footable {
         border: 0.1rem solid $brand-primary;
         margin: 0 0 10px;
         padding: 4px 10px;
-
       }
     }
   }
@@ -264,12 +265,10 @@ div.footable-loader {
 
 @keyframes fooicon-spin-r {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
   100% {
-    -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }

@@ -1,3 +1,4 @@
+/* stylelint-disable selector-max-specificity */
 $rw-font-path: '~react-widgets/lib/fonts';
 $rw-img-path: '~react-widgets/lib/img';
 
@@ -35,7 +36,7 @@ $rw-img-path: '~react-widgets/lib/img';
   }
 }
 
-.rw-multiselect.rw-widget[name=files] {
+.rw-multiselect.rw-widget[name='files'] {
   .rw-multiselect-taglist li {
     background-color: #fff;
     border-color: #ccc;

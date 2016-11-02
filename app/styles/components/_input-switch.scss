@@ -1,10 +1,10 @@
 .u-switch {
   cursor: pointer;
-  height: 14px;
+  height: 1.4rem;
   position: relative;
   user-select: none;
   vertical-align: middle;
-  width: 24px;
+  width: 2.4rem;
 
   input {
     bottom: 0;
@@ -17,7 +17,7 @@
 
   .track {
     background-color: #ccc;
-    border-radius: 7px;
+    border-radius: 0.7rem;
     bottom: 0;
     left: 0;
     position: absolute;
@@ -27,12 +27,12 @@
 
   .button {
     background-color: #fff;
-    border-radius: 9px;
-    bottom: 2px;
-    left: 3px;
+    border-radius: 0.9rem;
+    bottom: 0.2rem;
+    left: 0.3rem;
     position: absolute;
-    right: 11px;
-    top: 2px;
+    right: 1.1rem;
+    top: 0.2rem;
     transition: all 100ms ease;
   }
 
@@ -42,8 +42,8 @@
     }
 
     .button {
-      left: 11px;
-      right: 2px;
+      left: 1.1rem;
+      right: 0.2rem;
     }
   }
 }
