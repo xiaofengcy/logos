@@ -1,22 +1,9 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]>
-<html lang="en"
-      class="ie6" <% if(htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
-<!--[if IE 7 ]>
-<html lang="en"
-      class="ie7" <% if(htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
-<!--[if IE 8 ]>
-<html lang="en"
-      class="ie8" <% if(htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
-<!--[if IE 9 ]>
-<html lang="en"
-      class="ie9" <% if(htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
 <html lang="en" class=""
   <% if(htmlWebpackPlugin.files.manifest) { %>
       manifest="<%= htmlWebpackPlugin.files.manifest %>"
   <% } %>
-> <!--<![endif]-->
+>
 <head>
   <meta charset="utf-8">
   <title><%= htmlWebpackPlugin.options.title || 'Webpack App' %></title>
@@ -62,6 +49,128 @@
 <% } %>
 <% } %>
 
+<div id="react" style="min-height: 100vh;">
+  <!-- preloader styles -->
+  <style type="text/css">
+    html {
+      -webkit-font-smoothing: antialiased;
+      font-size: 10px;
+      font-family: Roboto, sans-serif;
+      box-sizing: border-box
+    }
+
+    body {
+      background-color: #fff;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #595959
+    }
+
+    *, :after, :before {
+      box-sizing: inherit
+    }
+
+    .loader {
+      height: 50px;
+      left: 50%;
+      margin: 15px auto;
+      position: absolute;
+      top: 50%;
+      -ms-transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 50px;
+    }
+
+    .loader > div {
+      -webkit-animation: loader-pulse 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+      animation: loader-pulse 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+      border: 0 solid #fb0000;
+      border-radius: 50%;
+      box-sizing: border-box;
+      height: 0;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 0;
+    }
+
+    @-webkit-keyframes loader-pulse {
+      0% {
+        height: 0;
+        width: 0;
+      }
+
+      30% {
+        border-width: 20px;
+        height: 50px;
+        opacity: 1;
+        width: 50px;
+      }
+
+      100% {
+        border-width: 0;
+        height: 50px;
+        opacity: 0;
+        width: 50px;
+      }
+    }
+
+    @keyframes loader-pulse {
+      0% {
+        height: 0;
+        width: 0;
+      }
+
+      30% {
+        border-width: 20px;
+        height: 50px;
+        opacity: 1;
+        width: 50px;
+      }
+
+      100% {
+        border-width: 0;
+        height: 50px;
+        opacity: 0;
+        width: 50px;
+      }
+    }
+
+    .unsupported-browser {
+      background-color: #2b9591;
+      color: #fff;
+      padding: 1.5rem 3rem;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      max-width: 90%;
+      -ms-transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
+
+    .unsupported-browser a {
+      color: #5fd9b4;
+    }
+
+    #message {
+      bottom: 5%;
+      padding: 0 5rem;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+  <div class="loader">
+    <div></div>
+  </div>
+  <div id="message"></div>
+</div>
+
 <% if (htmlWebpackPlugin.options.window) { %>
 <script>
   <% for (var varName in htmlWebpackPlugin.options.window) { %>
@@ -69,6 +178,26 @@
   <% } %>
 </script>
 <% } %>
+
+<script>
+  var cb = function() {
+    var l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = '<%= htmlWebpackPlugin.files.css[0] %>';
+    var h = document.getElementsByTagName('head')[0];
+    h.parentNode.insertBefore(l, h);
+  };
+  var raf = window.requestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.msRequestAnimationFrame;
+  if (raf) {
+    raf(cb);
+  }
+  else {
+    window.addEventListener('load', cb);
+  }
+</script>
 
 <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
 <% if (chunk !== 'scripts/vendor/modernizr') { %>
