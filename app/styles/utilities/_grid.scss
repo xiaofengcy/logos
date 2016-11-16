@@ -82,3 +82,15 @@
     @content;
   }
 }
+
+@mixin xl-only {
+  @include max-screen(breakpoint-max('xl')) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @include min-screen(breakpoint-min('xxl')) {
+    @content;
+  }
+}

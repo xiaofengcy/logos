@@ -139,7 +139,7 @@
     "deploy": "node config/tools deploy",
     "publish": "node config/tools publish",
     "docs": "node config/tools docs",
-    "precommit": "node config/tools commits && npm run lint && npm test",
+    "precommit": "node config/tools commits && npm run lint && npm run lint:styles && npm test",
     "postmerge": "node config/tools update && npm update"
   },
   "engines": {
