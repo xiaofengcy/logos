@@ -43,7 +43,6 @@ var config = merge(webpackConfig, {
         trackingId: 'UA-64685370-1',
       },
     }),
-    new webpack.optimize.DedupePlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
