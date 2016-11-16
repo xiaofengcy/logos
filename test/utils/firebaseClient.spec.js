@@ -6,8 +6,7 @@ describe('firebase/signInWithPopup', () => {
   it('should fail to signInWithPopup', async() => {
     try {
       await firebaseClient.signInWithPopup('github');
-    }
-    catch (error) {
+    } catch (error) {
       expect(error.message).toBe("Cannot read property 'signInWithPopup' of undefined");
     }
   });

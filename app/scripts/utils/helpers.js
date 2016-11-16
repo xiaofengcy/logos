@@ -91,8 +91,7 @@ export function trackEvent(category, type, label) {
 
   if (typeof ga !== 'undefined') {
     ga('send', 'event', options);
-  }
-  else {
+  } else {
     console.log('trackEvent', options); //eslint-disable-line no-console
   }
 }

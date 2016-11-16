@@ -10,8 +10,7 @@ const Logo = ({ icon }) => {
     html = (<Isvg key="icon" className="app__logo__icon" src={require('assets/media/brand/icon.svg')}>
       <img src={require('assets/media/brand/icon.png')} alt={config.title} />
     </Isvg>);
-  }
-  else {
+  } else {
     html = (
       <Isvg key="full" className="app__logo__full" src={require('assets/media/brand/logo.svg')}>
         <img src={require('assets/media/brand/logo.png')} alt={config.title} />

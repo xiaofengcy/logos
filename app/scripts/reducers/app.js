@@ -67,8 +67,7 @@ export default {
 
       if (typeof payload.showTags !== 'undefined' || payload.columns) {
         filter = { ...state.filter, ...payload };
-      }
-      else {
+      } else {
         filter = {
           ...appState.filter,
           columns: state.filter.columns,

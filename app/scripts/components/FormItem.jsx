@@ -240,32 +240,23 @@ const validate = values => {
 
   if (!values.name) {
     errors.name = 'Required';
-  }
-  else if (!values.shortname) {
+  } else if (!values.shortname) {
     errors.shortname = 'Required';
-  }
-  else if (!values.url) {
+  } else if (!values.url) {
     errors.url = 'Required';
-  }
-  else if (!values.categories.length) {
+  } else if (!values.categories.length) {
     errors.categories = 'Required';
-  }
-  else if (!values.tags.length) {
+  } else if (!values.tags.length) {
     errors.tags = 'Required';
-  }
-  else if (!values.files.length) {
+  } else if (!values.files.length) {
     errors.files = 'Required';
-  }
-  else if (!values.updated) {
+  } else if (!values.updated) {
     errors.updated = 'Required';
-  }
-  else if (values.favorite === undefined) {
+  } else if (values.favorite === undefined) {
     errors.favorite = 'Required';
-  }
-  else if (values.edited === undefined) {
+  } else if (values.edited === undefined) {
     errors.edited = 'Required';
-  }
-  else if (values.vectorized === undefined) {
+  } else if (values.vectorized === undefined) {
     errors.vectorized = 'Required';
   }
 

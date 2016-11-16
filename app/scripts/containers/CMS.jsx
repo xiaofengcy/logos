@@ -226,8 +226,7 @@ export class CMS extends React.Component {
           const selected = $(this).val();
           if (selected !== self.def) {
             self.addFilter('categories', selected);
-          }
-          else {
+          } else {
             self.removeFilter('categories');
           }
           self.filter();
@@ -237,8 +236,7 @@ export class CMS extends React.Component {
           const category = this.find('categories');
           if (category instanceof FooTable.Filter) {
             this.$category.val(category.query.val());
-          }
-          else {
+          } else {
             this.$category.val(this.def);
           }
         },

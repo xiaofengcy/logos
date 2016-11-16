@@ -41,14 +41,12 @@ function navigate(nextState, transition, callback) {
   if (user.ready) {
     if (!user.isAdmin && pathname === '/cms') {
       return dispatch(goTo('/login'));
-    }
-    else if (user.isAdmin && pathname === '/login') {
+    } else if (user.isAdmin && pathname === '/login') {
       return dispatch(goTo('/cms'));
     }
 
     return scrollBefore(nextState, transition, callback);
-  }
-  else if (pathname === '/cms') {
+  } else if (pathname === '/cms') {
     return dispatch(goTo('/login'));
   }
 
@@ -64,8 +62,7 @@ function navigate(nextState, transition, callback) {
 export function checkStatus(nextState, transition, callback) {
   if (getState().user.rehydrated) {
     navigate(nextState, transition, callback);
-  }
-  else {
+  } else {
     const unsubscribe = subscribe(() => {
       if (getState().user.rehydrated) {
         unsubscribe();

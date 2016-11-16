@@ -36,8 +36,7 @@ export function* login(action) {
       },
     });
     yield put(goTo('/cms'));
-  }
-  catch (error) {
+  } catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.USER_LOGIN_FAILURE,
@@ -56,8 +55,7 @@ export function* restore() {
     yield put({
       type: ActionTypes.USER_RESTORE_SUCCESS,
     });
-  }
-  catch (error) {
+  } catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.USER_RESTORE_FAILURE,
@@ -77,8 +75,7 @@ export function* logout() {
       type: ActionTypes.USER_LOGOUT_SUCCESS,
     });
     yield put(goTo('/'));
-  }
-  catch (error) {
+  } catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.USER_LOGOUT_FAILURE,

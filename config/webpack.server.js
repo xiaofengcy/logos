@@ -36,8 +36,7 @@ if (args[0] && args[0] === 'test:ui') {
   envPlugin = new webpack.DefinePlugin({
     NIGHTWATCH: JSON.stringify(true),
   });
-}
-else {
+} else {
   envPlugin = new BrowserSyncPlugin({
     host: getIPAddress(),
     port: 3000,

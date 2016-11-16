@@ -67,8 +67,7 @@ export default class Header extends React.Component {
       this.setState({
         scrolled: true,
       });
-    }
-    else if (global.scrollY < innerHeader.height + 30 && scrolled) {
+    } else if (global.scrollY < innerHeader.height + 30 && scrolled) {
       this.setState({
         scrolled: false,
       });
@@ -82,8 +81,7 @@ export default class Header extends React.Component {
     if (e.type === 'click') {
       e.preventDefault();
       e.currentTarget.parentNode.previousSibling.focus();
-    }
-    else if (e.type === 'change') {
+    } else if (e.type === 'change') {
       search = e.target.value;
     }
 

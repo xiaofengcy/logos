@@ -89,8 +89,7 @@ export class Items extends React.Component {
 
     if (filter.showTags) {
       document.body.style.overflow = 'hidden';
-    }
-    else if (prevFilter.showTags && !filter.showTags) {
+    } else if (prevFilter.showTags && !filter.showTags) {
       document.body.style.overflow = 'auto';
     }
   }
@@ -138,11 +137,9 @@ export class Items extends React.Component {
 
     if (filter.tag) {
       logos = logos.filter(d => d.tags.includes(filter.tag));
-    }
-    else if (filter.category) {
+    } else if (filter.category) {
       logos = logos.filter(d => d.categories.includes(filter.category));
-    }
-    else if (filter.search) {
+    } else if (filter.search) {
       logos = logos.filter(d => d.name.includes(filter.search) || d.shortname.includes(filter.search));
     }
 
@@ -186,8 +183,7 @@ export class Items extends React.Component {
       this.setState({
         scrollable: true,
       });
-    }
-    else if (e.target.body.scrollTop < 1000 && this.state.scrollable) {
+    } else if (e.target.body.scrollTop < 1000 && this.state.scrollable) {
       this.setState({
         scrollable: false,
       });
@@ -278,11 +274,9 @@ export class Items extends React.Component {
 
       if (filter.category) {
         output.filteredTitle = `[${filter.category}]`;
-      }
-      else if (filter.tag) {
+      } else if (filter.tag) {
         output.filteredTitle = `#${filter.tag}`;
-      }
-      else if (filter.search) {
+      } else if (filter.search) {
         output.filteredTitle = `results for: ${filter.search}`;
       }
 
@@ -291,8 +285,7 @@ export class Items extends React.Component {
           <span>{output.filteredTitle} ({logos.length})</span>
           <a href="#remove" onClick={this.handleCleanFilter}><i className="i-times-circle" /></a>
         </h2>);
-      }
-      else if (filter.view !== 'all' && filter.view !== 'latest') {
+      } else if (filter.view !== 'all' && filter.view !== 'latest') {
         output.title = (
           <h2>
             <span>{this.viewTypes[filter.view]} ({logos.length})</span>

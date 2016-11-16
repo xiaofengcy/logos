@@ -77,8 +77,7 @@ export default class Toolbar extends React.Component {
     if (e.type === 'click') {
       e.preventDefault();
       e.currentTarget.parentNode.previousSibling.focus();
-    }
-    else if (e.type === 'change') {
+    } else if (e.type === 'change') {
       search = e.target.value;
     }
 

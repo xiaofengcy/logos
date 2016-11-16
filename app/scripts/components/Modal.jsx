@@ -65,8 +65,7 @@ class Modal extends React.Component {
   toggleModal() {
     if (this.props.show) {
       this.$modal.modal('show');
-    }
-    else {
+    } else {
       this.$modal.modal('hide');
     }
   }
@@ -121,8 +120,7 @@ class Modal extends React.Component {
         if (threshold < 250 && scrollable) {
           scrollable = false;
           $el.parent().removeClass('scrollable');
-        }
-        else if (threshold > 250 && !scrollable) {
+        } else if (threshold > 250 && !scrollable) {
           scrollable = true;
           $el.parent().addClass('scrollable');
         }

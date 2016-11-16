@@ -13,8 +13,7 @@ export async function signInWithPopup(provider) {
 
   if (provider === 'facebook') {
     AuthProvider = new firebase.auth.FacebookAuthProvider();
-  }
-  else {
+  } else {
     AuthProvider = new firebase.auth.GithubAuthProvider();
   }
   AuthProvider.addScope('email');
@@ -160,8 +159,7 @@ export function updateItems(payload) {
           const tagExist = tags[newTag];
           if (tagExist) {
             updates[`/tags/${tagExist.id}`] = { name: tagExist.name, count: tagExist.count + 1 };
-          }
-          else {
+          } else {
             const newTagKey = await database.ref().child('tags').push().key;
             updates[`/tags/${newTagKey}`] = { name: newTag, count: 1 };
           }
@@ -175,8 +173,7 @@ export function updateItems(payload) {
           if (tagExist) {
             if (tagExist.count === 1) {
               updates[`/tags/${tagExist.id}`] = null;
-            }
-            else {
+            } else {
               updates[`/tags/${tagExist.id}`] = { name: tagExist.name, count: tagExist.count - 1 };
             }
           }
@@ -195,8 +192,7 @@ export function updateItems(payload) {
           const catExist = categories[newCategory];
           if (catExist) {
             updates[`/categories/${catExist.id}`] = { name: catExist.name, count: catExist.count + 1 };
-          }
-          else {
+          } else {
             const newCategoryKey = await database.ref().child('categories').push().key;
             updates[`/categories/${newCategoryKey}`] = { name: newCategory, count: 1 };
           }
@@ -210,8 +206,7 @@ export function updateItems(payload) {
           if (catExist) {
             if (catExist.count === 1) {
               updates[`/categories/${catExist.id}`] = null;
-            }
-            else {
+            } else {
               updates[`/categories/${catExist.id}`] = { name: catExist.name, count: catExist.count - 1 };
             }
           }
@@ -222,8 +217,7 @@ export function updateItems(payload) {
     try {
       await database.ref().update(updates);
       resolve();
-    }
-    catch (error) {
+    } catch (error) {
       reject();
     }
   });

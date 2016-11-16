@@ -18,8 +18,7 @@ export function* initLogos() {
   try {
     yield call(connectLogos);
     yield put({ type: ActionTypes.CONNECT_LOGOS_SUCCESS });
-  }
-  catch (error) {
+  } catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.CONNECT_LOGOS_FAILURE,
@@ -35,8 +34,7 @@ export function* initTags() {
   try {
     yield call(connectTags);
     yield put({ type: ActionTypes.CONNECT_TAGS_SUCCESS });
-  }
-  catch (error) {
+  } catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.CONNECT_TAGS_FAILURE,
@@ -52,8 +50,7 @@ export function* initCategories() {
   try {
     yield call(connectCategories);
     yield put({ type: ActionTypes.CONNECT_CATEGORIES_SUCCESS });
-  }
-  catch (error) {
+  } catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.CONNECT_CATEGORIES_FAILURE,
@@ -76,8 +73,7 @@ export function* initFirebase() {
     yield put({
       type: ActionTypes.CONNECT_FIREBASE_SUCCESS,
     });
-  }
-  catch (error) {
+  } catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.CONNECT_FIREBASE_FAILURE,
@@ -95,8 +91,7 @@ export function* updateLogo(action) {
     yield call(updateItems, action.payload);
     yield put({ type: ActionTypes.UPDATE_LOGOS_SUCCESS });
     yield call(action.meta.callback);
-  }
-  catch (error) {
+  } catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.UPDATE_LOGOS_FAILURE,
