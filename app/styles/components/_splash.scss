@@ -30,19 +30,23 @@
   opacity: 1;
 
   .app__logo {
-    transform: translateY(0);
+    svg {
+      overflow: visible;
+    }
+
+    path {
+      transform: scale(1);
+    }
   }
 
   &.splash__animation-leave-active {
     opacity: 0;
     transition: opacity 1.5s ease-in;
 
-    .app__logo {
-      svg {
-        opacity: 0;
-        transform: scale(20);
-        transition: all 1s ease-in;
-      }
+    .app__logo path {
+      opacity: 0;
+      transform: scale(20) translate(-62%, -50%);
+      transition: all 1s ease-in;
     }
   }
 }
