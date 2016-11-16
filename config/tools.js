@@ -3,7 +3,7 @@ const path = require('path');
 const exec = require('child_process').exec;
 const del = require('del');
 const chalk = require('chalk');
-const ghPages = require('gh-pages');
+const Rsync = require('rsync');
 
 const args = process.argv.slice(2);
 
@@ -17,42 +17,29 @@ if (!args[0]) {
   );
 }
 
-function getCommit() {
-  console.log(chalk.blue('Getting the last commit...'));
-  return new Promise((resolve, reject) => {
-    exec('git log -1 --pretty=%s && git log -1 --pretty=%b', (err, stdout) => {
-      if (err) {
-        return reject(err);
-      }
-
-      const parts = stdout.replace('\n\n', '').split('\n');
-
-      return resolve(`${(parts[0] ? parts[0] : 'Auto-generated commit')} ${new Date().toISOString()}`);
-    });
-  });
-}
 
 function publish() {
   console.log(chalk.blue('Publishing...'));
-  getCommit()
-    .then(commit => {
-      exec('cp README.md dist/', errCopy => {
-        if (errCopy) {
-          console.log(errCopy);
-          return;
-        }
-        ghPages.publish(path.join(__dirname, '../dist'), {
-          message: commit,
-        }, error => {
-          if (error) {
-            console.log(chalk.red('Something went wrong...', error));
-            return;
-          }
 
-          console.log(chalk.green('Published'));
-        });
-      });
-    });
+  const destination = 'svgporn@svgporn.com:/home/svgporn/public_html/v2';
+
+  const rsync = Rsync.build({
+    exclude: ['.DS_Store'],
+    progress: true,
+    source: path.join(__dirname, '..', 'dist/'),
+    flags: 'avzu',
+    shell: 'ssh',
+    destination,
+  });
+
+  rsync.execute((error, code, cmd) => {
+    if (error) {
+      console.log(chalk.red('Something went wrong...', error, code, cmd));
+      process.exit(1);
+    }
+
+    console.log(chalk.green('Published'));
+  });
 }
 
 if (args[0] === 'publish') {
@@ -62,7 +49,7 @@ if (args[0] === 'publish') {
 if (args[0] === 'deploy') {
   const start = Date.now();
   console.log(chalk.green('Bundling...'));
-  exec('npm run build:pages', errBuild => {
+  exec('npm run build', errBuild => {
     if (errBuild) {
       console.log(chalk.red(errBuild));
       process.exit(1);
@@ -124,7 +111,7 @@ if (args[0] === 'commits') {
     });
 
     const base = new Promise((resolve, reject) => {
-      exec('git rev-parse @ @{u}', (err, stdout) => {
+      exec('git merge-base @ @{u}', (err, stdout) => {
         if (err) {
           return reject(err);
         }
@@ -134,15 +121,17 @@ if (args[0] === 'commits') {
 
     Promise.all([local, remote, base])
       .then(values => {
-        const [$local, , $base] = values;
+        const [$local, $remote, $base] = values;
 
-        if ($local === $base) {
-          console.error(chalk.red('⊘ Error: There are new commits.'));
+        if ($local === $remote) {
+          console.log(chalk.green('✔ Repo is up-to-date!'));
+        } else if ($local === $base) {
+          console.error(chalk.red('⊘ Error: You need to pull, there are new commits.'));
           process.exit(1);
         }
       })
       .catch(err => {
-        console.log(chalk.red('commits'), err);
+        console.log(chalk.red('⊘ Error: Commits failed'), err);
       });
   });
 }
