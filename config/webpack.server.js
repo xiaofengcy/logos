@@ -108,7 +108,7 @@ compiler.plugin('emit', function(compilation, callback) {
 });
 
 new WebpackDevServer(compiler, {
-  contentBase: path.join(__dirname, '../assets'),
+  contentBase: path.join(__dirname, '..', 'assets'),
   noInfo: true,
   hot: true,
   historyApiFallback: true,
