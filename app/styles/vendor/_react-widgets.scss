@@ -2,7 +2,7 @@
 $rw-font-path: '~react-widgets/lib/fonts';
 $rw-img-path: '~react-widgets/lib/img';
 
-@import '../../../node_modules/react-widgets/lib/scss/react-widgets';
+@import '~react-widgets/lib/scss/react-widgets';
 
 .rw-multiselect-wrapper {
   display: flex;
