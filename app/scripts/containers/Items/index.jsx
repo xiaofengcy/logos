@@ -17,8 +17,6 @@ export class Items extends React.Component {
   constructor(props) {
     super(props);
 
-    this.imagePath = `${location.origin}/logos/`;
-
     this.viewTypes = {
       all: 'All Logos',
       favorites: 'Favorites',

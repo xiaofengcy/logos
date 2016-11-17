@@ -16,6 +16,7 @@ const config = {
     storageBucket: '',
   },
   startReactotron: false,
+  imagePath: 'https://s3-us-west-2.amazonaws.com/svgporn.com/logos/',
 };
 
 export default config;

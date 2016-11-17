@@ -9,6 +9,8 @@ import momentLocalizer from 'react-widgets/lib/localizers/moment';
 
 import { shouldComponentUpdate } from 'utils/helpers';
 import { diffArrays } from 'utils/data';
+
+import config from 'config';
 import { updateLogos } from 'actions';
 
 import InputSwitch from 'components/InputSwitch';
@@ -94,7 +96,7 @@ export class FormItem extends React.Component {
     let tagComponent;
 
     if (name === 'files') {
-      tagComponent = val => (<div><img src={`/logos/${val.item}`} alt={val.item} /></div>);
+      tagComponent = val => (<div><img src={`${config.imagePath}${val.item}`} alt={val.item} /></div>);
     }
 
     return (

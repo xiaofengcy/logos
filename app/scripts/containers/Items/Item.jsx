@@ -1,7 +1,8 @@
 import React from 'react';
-import { trackEvent } from '../../utils/helpers';
+import { trackEvent } from 'utils/helpers';
 
-const imagePath = `${location.origin}/logos/`;
+import config from 'config';
+
 const onClickItem = e => {
   trackEvent('logo', 'click', e.currentTarget.dataset.shortname);
 };
@@ -15,7 +16,7 @@ const Item = ({ data, handleClickTag, index }) => (
       data-shortname={data.shortname}
       onClick={onClickItem}
     >
-      <img src={`${imagePath}${data.files[index]}`} alt={data.name} className={data.shortname} />
+      <img src={`${config.imagePath}${data.files[index]}`} alt={data.name} className={data.shortname} />
     </a>
 
     <div className="app__images__info">
@@ -28,7 +29,7 @@ const Item = ({ data, handleClickTag, index }) => (
       }</div>
       <div className="app__images__download">
         <a
-          href={`${imagePath}${data.files[index]}`}
+          href={`${config.imagePath}${data.files[index]}`}
           className="btn btn-sm btn-outline-secondary btn-icon"
           download={true}
         >
