@@ -96,7 +96,7 @@ export class FormItem extends React.Component {
     let tagComponent;
 
     if (name === 'files') {
-      tagComponent = val => (<div><img src={`${config.imagePath}${val.item}`} alt={val.item} /></div>);
+      tagComponent = val => (<div><img src={`${config.imagePath}${encodeURIComponent(val.item)}`} alt={val.item} /></div>);
     }
 
     return (

@@ -313,7 +313,7 @@ export class CMS extends React.Component {
           (<tr key={d.id}>
             <td>
               <div className="app__cms__img">
-                <a href={d.url} target="_blank"><img src={`${config.imagePath}${d.files[0]}`} alt={d.shortname} /></a>
+                <a href={d.url} target="_blank"><img src={`${config.imagePath}${encodeURIComponent(d.files[0])}`} alt={d.shortname} /></a>
               </div>
             </td>
             <td data-filter-value={d.shortname} data-sort-value={d.shortname}>
@@ -322,7 +322,7 @@ export class CMS extends React.Component {
             </td>
             <td>
               <div className="app__cms__files">
-                {d.files.map((f, i) => (<a key={i} href={`${config.imagePath}${f}`} target="_blank">{f}</a>))}
+                {d.files.map((f, i) => (<a key={i} href={`${config.imagePath}${encodeURIComponent(f)}`} target="_blank">{f}</a>))}
               </div>
             </td>
             <td>
