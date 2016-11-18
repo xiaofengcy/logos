@@ -78,7 +78,7 @@ export class Items extends React.Component {
       prevFilter.view !== filter.view
       || (filter.tag || prevFilter.tag !== filter.tag)
       || (filter.category || prevFilter.category !== filter.category)
-      || (filter.search || prevFilter.category !== filter.category)
+      || (filter.search || prevFilter.search !== filter.search)
     ) {
       this.setState({
         page: 1,
