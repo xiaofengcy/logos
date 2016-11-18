@@ -6,7 +6,6 @@ import { shouldComponentUpdate, trackEvent, ScaleLog } from 'utils/helpers';
 import { filterItems } from 'actions';
 import Combobox from 'react-widgets/lib/Combobox';
 
-
 @autobind
 export default class Toolbar extends React.Component {
   constructor(props) {
@@ -236,16 +235,44 @@ export default class Toolbar extends React.Component {
             }
           </span>
         </div>
-        <div className="app__toolbar__groups">
+        <div className="app__toolbar__views">
           <span>
             Sort by
-            <a href="#name" data-value="all" onClick={this.handleClickChangeView}>name</a>,
-            <a href="#name" data-value="latest" onClick={this.handleClickChangeView}>latest</a>
+            <a
+              href="#name"
+              className={cx({ active: filter.view === 'latest' })}
+              data-value="latest"
+              onClick={this.handleClickChangeView}
+            >
+              latest
+            </a>,
+            <a
+              href="#name"
+              className={cx({ active: filter.view === 'all' })}
+              data-value="all"
+              onClick={this.handleClickChangeView}
+            >
+              name
+            </a>
           </span>
           <span>
           Filter by
-            <a href="#name" data-value="favorites" onClick={this.handleClickChangeView}>favorites</a>,
-            <a href="#name" data-value="vectorized" onClick={this.handleClickChangeView}>vectorized</a>
+            <a
+              href="#name"
+              className={cx({ active: filter.view === 'favorites' })}
+              data-value="favorites"
+              onClick={this.handleClickChangeView}
+            >
+              favorites
+            </a>,
+            <a
+              href="#name"
+              className={cx({ active: filter.view === 'vectorized' })}
+              data-value="vectorized"
+              onClick={this.handleClickChangeView}
+            >
+              vectorized
+            </a>
           </span>
         </div>
         <ul className="app__toolbar__menu">
