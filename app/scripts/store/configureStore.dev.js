@@ -1,8 +1,9 @@
 import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import { browserHistory } from 'react-router';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
-import { reducer as formReducer } from 'redux-form';
+import { reducer as reduxFormReducer } from 'redux-form';
 import createLogger from 'redux-logger';
 
 import Reactotron from 'reactotron-react-js';
@@ -12,10 +13,11 @@ import rootSagas from 'sagas';
 import rootReducer from 'reducers';
 import { ActionTypes } from 'constants/index';
 
-const reducer = combineReducers(Object.assign({}, rootReducer, {
-  form: formReducer,
+const reducer = combineReducers({
+  ...rootReducer,
+  form: reduxFormReducer,
   routing: routerReducer,
-}));
+});
 const sagaMiddleware = createSagaMiddleware();
 
 const logger = createLogger({
@@ -26,9 +28,9 @@ const logger = createLogger({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 /* istanbul ignore next */
-const newStore = (initialState = {}) => {
+export default (initialState = {}) => {
   const createStoreWithMiddleware = composeEnhancers(
-    applyMiddleware(sagaMiddleware, routerMiddleware(browserHistory), logger),
+    applyMiddleware(thunk, sagaMiddleware, routerMiddleware(browserHistory), logger),
     createReactotronTrackingEnhancer(Reactotron, {
       isActionImportant: action => action.type === ActionTypes.USER_LOGIN_SUCCESS,
     })
@@ -45,5 +47,3 @@ const newStore = (initialState = {}) => {
 
   return store;
 };
-
-export default newStore;
