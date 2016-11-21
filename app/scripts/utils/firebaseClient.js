@@ -223,6 +223,65 @@ export function updateItems(payload) {
   });
 }
 
+export function updateTaxonomies() {
+  const { firebase: { logos, categories, tags } } = getState();
+  const updates = {};
+  const tagsCount = {};
+  const categoriesCount = {};
+
+  return new Promise(async(resolve, reject) => {
+    logos.data.forEach(l => {
+      l.tags.forEach(t => {
+        if (!tagsCount[t]) {
+          tagsCount[t] = 0;
+        }
+
+        tagsCount[t]++;
+      });
+
+      l.categories.forEach(t => {
+        if (!categoriesCount[t]) {
+          categoriesCount[t] = 0;
+        }
+
+        categoriesCount[t]++;
+      });
+    });
+
+    tags.data.forEach(t => {
+      if (t.count !== tagsCount[t.name]) {
+        if (tagsCount[t.name]) {
+          updates[`/tags/${t.id}`] = { name: t.name, count: tagsCount[t.name] };
+        } else {
+          updates[`/tags/${t.id}`] = null;
+        }
+      }
+    });
+
+    categories.data.forEach(c => {
+      if (c.count !== categoriesCount[c.name]) {
+        if (categoriesCount[c.name]) {
+          updates[`/categories/${c.id}`] = { name: c.name, count: categoriesCount[c.name] };
+        } else {
+          updates[`/categories/${c.id}`] = null;
+        }
+      }
+    });
+
+    if (!updates) {
+      resolve();
+      return;
+    }
+
+    try {
+      await database.ref().update(updates);
+      resolve();
+    } catch (error) {
+      reject();
+    }
+  });
+}
+
 export default {
   auth,
   database,

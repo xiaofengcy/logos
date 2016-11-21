@@ -6,7 +6,7 @@ import { autobind, debounce } from 'core-decorators';
 import { shouldComponentUpdate } from 'utils/helpers';
 
 import config from 'config';
-import { goTo, logOut } from 'actions';
+import { goTo, logOut, updateTaxonomies } from 'actions';
 
 import Logo from 'components/Logo';
 import Loader from 'components/Loader';
@@ -152,6 +152,13 @@ export class CMS extends React.Component {
       item,
       showModal: true,
     });
+  }
+
+  handleClickUpdate(e) {
+    e.preventDefault();
+    const { dispatch } = this.props;
+
+    dispatch(updateTaxonomies());
   }
 
   handleHideModal() {
@@ -360,7 +367,7 @@ export class CMS extends React.Component {
     let categories = [];
 
     if (firebase.ready) {
-      output.create = (
+      output.toolbar = (
         <div className="app__cms__toolbar">
           <a
             href="#create"
@@ -369,6 +376,14 @@ export class CMS extends React.Component {
           >
             <i className="i-plus" />
             <span>NEW</span>
+          </a>
+          <a
+            href="#update"
+            className="btn btn-lg btn-primary btn-icon"
+            onClick={this.handleClickUpdate}
+          >
+            <i className="i-recycle" />
+            <span>UPDATE</span>
           </a>
         </div>
       );
@@ -414,7 +429,7 @@ export class CMS extends React.Component {
           </div>
         </header>
         <div className="app__container">
-          {output.create}
+          {output.toolbar}
           {output.table}
           <Modal show={state.showModal} onHide={this.handleHideModal}>
             {output.form}

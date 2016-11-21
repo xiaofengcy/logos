@@ -9,7 +9,14 @@ import { takeEvery } from 'redux-saga';
 import { put, call, fork } from 'redux-saga/effects';
 
 import { ActionTypes } from 'constants/index';
-import { connectLogos, connectTags, connectCategories, connectRoles, updateItems } from 'utils/firebaseClient';
+import {
+  connectLogos,
+  connectTags,
+  connectCategories,
+  connectRoles,
+  updateItems,
+  updateTaxonomies
+} from 'utils/firebaseClient';
 
 /**
  * Init Logos
@@ -100,6 +107,26 @@ export function* updateLogo(action) {
   }
 }
 
+/**
+ * Update Logo
+ * @param {Object} action
+ */
+export function* updateTaxonomiesSaga(action) {
+  try {
+    yield call(updateTaxonomies, action.payload);
+    yield put({ type: ActionTypes.UPDATE_TAXONOMIES_SUCCESS });
+    if (typeof action.meta.callback === 'function') {
+      yield call(action.meta.callback);
+    }
+  } catch (error) {
+    /* istanbul ignore next */
+    yield put({
+      type: ActionTypes.UPDATE_TAXONOMIES_FAILURE,
+      payload: { error },
+    });
+  }
+}
+
 function* watchInitLogos() {
   yield* takeEvery(ActionTypes.CONNECT_LOGOS_REQUEST, initLogos);
 }
@@ -116,6 +143,10 @@ function* watchUpdateLogo() {
   yield* takeEvery(ActionTypes.UPDATE_LOGOS_REQUEST, updateLogo);
 }
 
+function* watchUpdateTaxonomies() {
+  yield* takeEvery(ActionTypes.UPDATE_TAXONOMIES_REQUEST, updateTaxonomiesSaga);
+}
+
 function* watchInitFirebase() {
   yield* takeEvery(ActionTypes.CONNECT_FIREBASE_REQUEST, initFirebase);
 }
@@ -129,4 +160,5 @@ export default function* firebase() {
   yield fork(watchInitTags);
   yield fork(watchInitCategories);
   yield fork(watchUpdateLogo);
+  yield fork(watchUpdateTaxonomies);
 }

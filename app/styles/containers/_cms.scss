@@ -57,6 +57,10 @@
     align-items: center;
     display: flex;
     margin-bottom: $grid-gutter-width / 3;
+
+    a + a {
+      margin-left: $grid-gutter-width / 3;
+    }
   }
 
   h4 a {

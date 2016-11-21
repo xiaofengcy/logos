@@ -67,3 +67,19 @@ export function updateLogos(payload, callback) {
     },
   };
 }
+
+/**
+ * Update Taxonomies
+ *
+ * @param {function} [callback]
+ *
+ * @returns {Object}
+ */
+export function updateTaxonomies(callback) {
+  return {
+    type: ActionTypes.UPDATE_TAXONOMIES_REQUEST,
+    meta: {
+      callback,
+    },
+  };
+}

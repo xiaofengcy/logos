@@ -25,6 +25,7 @@ export const firebaseState = {
   ready: false,
   rehydrated: false,
   running: false,
+  updating: false,
 };
 
 export default {
@@ -87,6 +88,15 @@ export default {
     },
     [ActionTypes.CONNECT_FIREBASE_FAILURE](state) {
       return { ...state, ready: false, running: false };
+    },
+    [ActionTypes.UPDATE_TAXONOMIES_REQUEST](state) {
+      return { ...state, running: true, updating: true };
+    },
+    [ActionTypes.UPDATE_TAXONOMIES_SUCCESS](state) {
+      return { ...state, running: false, updating: false };
+    },
+    [ActionTypes.UPDATE_TAXONOMIES_FAILURE](state) {
+      return { ...state, running: false, updating: false };
     },
   }),
 };

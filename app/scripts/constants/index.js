@@ -50,6 +50,10 @@ export const ActionTypes = keyMirror({
   UPDATE_CATEGORIES_REQUEST: undefined,
   UPDATE_CATEGORIES_SUCCESS: undefined,
   UPDATE_CATEGORIES_FAILURE: undefined,
+// TAXONOMIES
+  UPDATE_TAXONOMIES_REQUEST: undefined,
+  UPDATE_TAXONOMIES_SUCCESS: undefined,
+  UPDATE_TAXONOMIES_FAILURE: undefined,
   FILTER_ITEMS: undefined,
   SHOW_ALERT: undefined,
   HIDE_ALERT: undefined,
