@@ -2,7 +2,7 @@ import React from 'react';
 import _map from 'lodash/map';
 import _reduce from 'lodash/reduce';
 import { connect } from 'react-redux';
-import { autobind } from 'core-decorators';
+import { autobind, debounce } from 'core-decorators';
 import { shouldComponentUpdate } from 'utils/helpers';
 
 import config from 'config';
@@ -13,13 +13,13 @@ import Loader from 'components/Loader';
 import Modal from 'components/Modal';
 import FormItem from 'components/FormItem';
 
+@autobind
 export class CMS extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       item: undefined,
-      ready: false,
       showModal: false,
     };
 
@@ -32,8 +32,6 @@ export class CMS extends React.Component {
       vectorized: false,
       updated: null,
     };
-
-    // TODO: Improve footable
 
     this.columns = [
       {
@@ -125,19 +123,16 @@ export class CMS extends React.Component {
     }
   }
 
-  @autobind
   handleClickLogo(e) {
     e.preventDefault();
     this.props.dispatch(goTo('/'));
   }
 
-  @autobind
   handleClickLogout(e) {
     e.preventDefault();
     this.props.dispatch(logOut());
   }
 
-  @autobind
   handleClickNew(e) {
     e.preventDefault();
 
@@ -147,7 +142,6 @@ export class CMS extends React.Component {
     });
   }
 
-  @autobind
   handleClickEdit(e) {
     e.preventDefault();
     const data = e.currentTarget.dataset;
@@ -159,7 +153,6 @@ export class CMS extends React.Component {
     });
   }
 
-  @autobind
   handleHideModal() {
     this.setState({
       item: undefined,
@@ -167,7 +160,6 @@ export class CMS extends React.Component {
     });
   }
 
-  @autobind
   handleClickFilter(e) {
     e.preventDefault();
     const data = e.currentTarget.dataset;
@@ -192,7 +184,7 @@ export class CMS extends React.Component {
     }, {});
   }
 
-  @autobind
+  @debounce(500)
   initTable() {
     if (this.table) {
       const { categories: { data: categories } } = this.props.firebase;
@@ -313,7 +305,12 @@ export class CMS extends React.Component {
           (<tr key={d.id}>
             <td>
               <div className="app__cms__img">
-                <a href={d.url} target="_blank"><img src={`${config.imagePath}${encodeURIComponent(d.files[0])}`} alt={d.shortname} /></a>
+                <a href={d.url} target="_blank">
+                  <img
+                    src={`${config.imagePath}${encodeURIComponent(d.files[0])}`}
+                    alt={d.shortname}
+                  />
+                </a>
               </div>
             </td>
             <td data-filter-value={d.shortname} data-sort-value={d.shortname}>
@@ -322,7 +319,8 @@ export class CMS extends React.Component {
             </td>
             <td>
               <div className="app__cms__files">
-                {d.files.map((f, i) => (<a key={i} href={`${config.imagePath}${encodeURIComponent(f)}`} target="_blank">{f}</a>))}
+                {d.files.map((f, i) => (
+                  <a key={i} href={`${config.imagePath}${encodeURIComponent(f)}`} target="_blank">{f}</a>))}
               </div>
             </td>
             <td>
