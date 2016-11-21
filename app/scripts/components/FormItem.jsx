@@ -182,7 +182,11 @@ export class FormItem extends React.Component {
           label="Updated"
           component={this.renderDateTimePicker}
         />
-
+        <Field
+          name="public"
+          label="Public"
+          component={this.renderInputSwitch}
+        />
         <div className="row">
           <div className="col-xs-12 col-sm-4">
             <Field

@@ -141,6 +141,8 @@ export class Items extends React.Component {
       logos = logos.filter(d => d.name.includes(filter.search) || d.shortname.includes(filter.search));
     }
 
+    logos = logos.filter(d => d.public);
+
     this.setState({
       logos,
     });

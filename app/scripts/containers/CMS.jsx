@@ -28,6 +28,7 @@ export class CMS extends React.Component {
       tags: [],
       files: [],
       favorite: false,
+      public: false,
       edited: false,
       vectorized: false,
       updated: null,
