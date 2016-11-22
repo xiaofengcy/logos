@@ -1,0 +1,32 @@
+SVG Logos
+====================
+#### A collection of 800+ svg vector logos.
+All the logos are optimized (removed duplicated paths / excessive grouping / empty defs, linting, etc).
+
+[View All](http://svgporn.com)
+
+## Contributing
+Since I optimize all the files manually I won't accept pull requests with new logos.
+Please add your requests in the issues preferably with links to the vector files.
+
+## Tips for SVGs
+* Always convert borders to paths. They use a fixed size and behave strangely when resized.
+* Join all the paths into one and use it as a background/mask. Or at least overlap your paths.
+
+*All logos appearing on the site are the property of their respective owners.*
+
+---
+### Latest logos
+
+{{#each this}}
+## <a href="{{url}}" target="_blank">{{name}}</a>{{#if edited}} *{{/if}}
+    {{#each files}}
+![{{../shortname}}](https://s3-us-west-2.amazonaws.com/svgporn.com/logos/{{this}})
+    {{/each}}
+{{/each}}
+
+---
+
+[View all on svgporn.com](http://svgporn.com)
+
+\* Converted from raster image, svg font or adapted from complex files.
