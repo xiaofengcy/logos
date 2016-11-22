@@ -1,5 +1,4 @@
-/*eslint-disable no-var, one-var, func-names, indent, prefer-arrow-callback, object-shorthand, no-console, newline-per-chained-call, one-var-declaration-per-line, prefer-template, vars-on-top  */
-var fs = require('fs');
+/*eslint-disable no-var, one-var, comma-dangle, func-names, indent, prefer-arrow-callback, object-shorthand, no-console, newline-per-chained-call, one-var-declaration-per-line, prefer-template, vars-on-top  */
 var exec = require('child_process').exec;
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
@@ -9,6 +8,7 @@ var del = require('del');
 var request = require('sync-request');
 var merge = require('merge-stream');
 var vinylPaths = require('vinyl-paths');
+var runSequence = require('run-sequence');
 
 var commitMessage;
 
@@ -45,20 +45,24 @@ gulp.task('gh-master', function() {
   var clean,
     push;
 
-  clean = gulp.src('.master/.DS_Store')
+  clean = gulp.src('../.master/.DS_Store')
     .pipe(vinylPaths(del));
 
   push = gulp.src([
-    'logos/**/*.svg',
-    'README.md',
-    'LICENSE.txt',
-  ], { base: './' })
+    '../logos/**/*.svg',
+    '../README.md',
+    '../LICENSE.txt',
+  ], { base: '../' })
     .pipe($.ghPages({
       branch: 'master',
-      cacheDir: '.master',
+      cacheDir: '../.master',
       message: commitMessage,
-      force: true,
+      force: true
     }));
 
   return merge(clean, push);
+});
+
+gulp.task('deploy-master', function(cb) {
+  runSequence(['get-commit', 'readme'], 'gh-master', cb);
 });

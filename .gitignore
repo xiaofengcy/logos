@@ -4,6 +4,5 @@ documentation
 node_modules
 reports
 .tmp
-.sass-cache
-.publish
+.master
 webpack.stats.json

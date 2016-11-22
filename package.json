@@ -118,6 +118,7 @@
     "redux-logger": "^2.7",
     "redux-mock-store": "1.2",
     "rsync": "^0.5",
+    "run-sequence": "^1.2",
     "sass-loader": "^4.0",
     "script-loader": "^0.7",
     "selenium-server-standalone-jar": "^3.0",
