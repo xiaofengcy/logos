@@ -21,7 +21,7 @@ if (!args[0]) {
 function publish() {
   console.log(chalk.blue('Publishing...'));
 
-  const destination = 'svgporn@svgporn.com:/home/svgporn/public_html/v2';
+  const destination = 'svgporn@svgporn.com:/home/svgporn/public_html';
 
   const rsync = Rsync.build({
     exclude: ['.DS_Store'],
