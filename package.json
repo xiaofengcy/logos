@@ -149,6 +149,8 @@
     "deploy": "node config/tools deploy",
     "publish": "node config/tools publish",
     "docs": "node config/tools docs",
+    "readme": "gulp --gulpfile config/gulpfile.js readme",
+    "deploy-master": "gulp --gulpfile config/gulpfile.js deploy-master",
     "precommit": "node config/tools commits && npm run lint && npm run lint:styles && npm test",
     "postmerge": "node config/tools update && npm update"
   },
