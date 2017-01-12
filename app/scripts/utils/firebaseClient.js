@@ -1,6 +1,8 @@
 import firebase from 'firebase';
 import config from 'config';
 import { dispatch, getState } from 'store';
+import { getUnixtime } from 'utils/helpers';
+
 import { ActionTypes } from 'constants/index';
 
 firebase.initializeApp(config.firebase);
@@ -50,12 +52,12 @@ export function connectLogos() {
 
       dispatch({
         type: ActionTypes.CONNECT_LOGOS_UPDATE,
-        payload: { data: data.reverse(), updated: Date.now() },
+        payload: { data: data.reverse(), updated: getUnixtime() },
       });
     }, error => {
       dispatch({
         type: ActionTypes.CONNECT_LOGOS_FAILURE,
-        payload: { error, updated: Date.now() },
+        payload: { error, updated: getUnixtime() },
       });
       reject();
     });
@@ -76,12 +78,12 @@ export function connectTags() {
 
       dispatch({
         type: ActionTypes.CONNECT_TAGS_UPDATE,
-        payload: { data, updated: Date.now() },
+        payload: { data, updated: getUnixtime() },
       });
     }, error => {
       dispatch({
         type: ActionTypes.CONNECT_TAGS_FAILURE,
-        payload: { error, updated: Date.now() },
+        payload: { error, updated: getUnixtime() },
       });
       reject();
     });
@@ -102,12 +104,12 @@ export function connectCategories() {
 
       dispatch({
         type: ActionTypes.CONNECT_CATEGORIES_UPDATE,
-        payload: { data, updated: Date.now() },
+        payload: { data, updated: getUnixtime() },
       });
     }, error => {
       dispatch({
         type: ActionTypes.CONNECT_CATEGORIES_FAILURE,
-        payload: { error, updated: Date.now() },
+        payload: { error, updated: getUnixtime() },
       });
       reject();
     });

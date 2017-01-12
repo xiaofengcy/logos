@@ -115,3 +115,12 @@ export class ScaleLog {
     return (qty === this.min ? this.minSize : ((qty / this.max) * (this.maxSize - this.minSize)) + this.minSize).toFixed(2) + this.unit;
   }
 }
+
+/**
+ * Get Unix timestamp in seconds.
+ *
+ * @returns {number}
+ */
+export function getUnixtime() {
+  return Math.floor(Date.now() / 1000);
+}

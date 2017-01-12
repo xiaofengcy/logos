@@ -1,5 +1,13 @@
 import { initFirebase, connectLogos, connectCategories, connectTags, updateLogos } from 'actions';
 
+jest.mock('utils/helpers', () => {
+  const utils = require.requireActual('utils/helpers');
+  return {
+    ...utils,
+    getUnixtime: () => 123456789,
+  };
+});
+
 describe('Firebase', () => {
   it('initFirebase should return an action to connect to firebase', () => {
     expect(initFirebase()).toMatchSnapshot();

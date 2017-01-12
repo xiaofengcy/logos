@@ -4,6 +4,7 @@
  */
 
 import { ActionTypes } from 'constants/index';
+import { getUnixtime } from 'utils/helpers';
 
 /**
  * Init Firebase
@@ -64,6 +65,7 @@ export function updateLogos(payload, callback) {
     payload,
     meta: {
       callback,
+      updated: getUnixtime(),
     },
   };
 }
@@ -80,6 +82,7 @@ export function updateTaxonomies(callback) {
     type: ActionTypes.UPDATE_TAXONOMIES_REQUEST,
     meta: {
       callback,
+      updated: getUnixtime(),
     },
   };
 }

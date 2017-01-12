@@ -101,13 +101,14 @@ export class CMS extends React.Component {
       this.setProperties();
     }
 
-    if (
-      (firebase.logos.updated !== nextProps.firebase.logos.updated)
-      || (firebase.categories.updated !== nextProps.firebase.categories.updated)
-      || (firebase.tags.updated !== nextProps.firebase.tags.updated)
+    /*if (
+      firebase.ready &&
+      (firebase.logos.updated !== nextProps.firebase.logos.updated
+      || firebase.categories.updated !== nextProps.firebase.categories.updated
+      || firebase.tags.updated !== nextProps.firebase.tags.updated)
     ) {
-      this.updateTable();
-    }
+      this.destroyTable();
+    }*/
   }
 
   componentDidUpdate(prevProps) {
@@ -195,6 +196,7 @@ export class CMS extends React.Component {
   @debounce(500)
   initTable() {
     if (this.table) {
+      console.log('initTable');
       const { categories: { data: categories } } = this.props.firebase;
       const $table = $(this.table);
 
@@ -271,7 +273,8 @@ export class CMS extends React.Component {
     }
   }
 
-  updateTable() {
+  destroyTable() {
+    console.log('destroy');
     const footable = $(this.table).data('__FooTable__');
 
     if (footable) {
@@ -282,7 +285,7 @@ export class CMS extends React.Component {
   renderTable() {
     const { logos } = this.props.firebase;
 
-    return (<table ref={c => (this.table = c)} className="table">
+    return (<table key={logos.updated} ref={c => (this.table = c)} className="table">
       <thead>
         <tr>
           <th data-type="html" data-sortable="false">Image</th>

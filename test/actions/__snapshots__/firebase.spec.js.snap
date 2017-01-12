@@ -22,6 +22,7 @@ exports[`Firebase updateLogos should return an action to update logos to the sto
 Object {
   "meta": Object {
     "callback": undefined,
+    "updated": 123456789,
   },
   "payload": undefined,
   "type": "UPDATE_LOGOS_REQUEST",

@@ -92,10 +92,35 @@ export default {
     [ActionTypes.UPDATE_TAXONOMIES_REQUEST](state) {
       return { ...state, running: true, updating: true };
     },
-    [ActionTypes.UPDATE_TAXONOMIES_SUCCESS](state) {
-      return { ...state, running: false, updating: false };
+    [ActionTypes.UPDATE_TAXONOMIES_SUCCESS](state, action) {
+      return {
+        ...state,
+        running: false,
+        updating: false,
+        logos: {
+          ...state.logos,
+          updated: action.meta.updated,
+        },
+      };
     },
     [ActionTypes.UPDATE_TAXONOMIES_FAILURE](state) {
+      return { ...state, running: false, updating: false };
+    },
+    [ActionTypes.UPDATE_LOGOS_REQUEST](state) {
+      return { ...state, running: true, updating: true };
+    },
+    [ActionTypes.UPDATE_LOGOS_SUCCESS](state, action) {
+      return {
+        ...state,
+        running: false,
+        updating: false,
+        logos: {
+          ...state.logos,
+          updated: action.meta.updated,
+        },
+      };
+    },
+    [ActionTypes.UPDATE_LOGOS_FAILURE](state) {
       return { ...state, running: false, updating: false };
     },
   }),

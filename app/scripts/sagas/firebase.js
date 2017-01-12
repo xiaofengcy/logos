@@ -93,10 +93,15 @@ export function* initFirebase() {
  * Update Logo
  * @param {Object} action
  */
-export function* updateLogo(action) {
+export function* updateLogos(action) {
   try {
     yield call(updateItems, action.payload);
-    yield put({ type: ActionTypes.UPDATE_LOGOS_SUCCESS });
+    yield put({
+      type: ActionTypes.UPDATE_LOGOS_SUCCESS,
+      meta: {
+        updated: action.meta.updated,
+      },
+    });
     yield call(action.meta.callback);
   } catch (error) {
     /* istanbul ignore next */
@@ -114,7 +119,12 @@ export function* updateLogo(action) {
 export function* updateTaxonomiesSaga(action) {
   try {
     yield call(updateTaxonomies, action.payload);
-    yield put({ type: ActionTypes.UPDATE_TAXONOMIES_SUCCESS });
+    yield put({
+      type: ActionTypes.UPDATE_TAXONOMIES_SUCCESS,
+      meta: {
+        updated: action.meta.updated,
+      },
+    });
     if (typeof action.meta.callback === 'function') {
       yield call(action.meta.callback);
     }
@@ -140,7 +150,7 @@ function* watchInitCategories() {
 }
 
 function* watchUpdateLogo() {
-  yield* takeEvery(ActionTypes.UPDATE_LOGOS_REQUEST, updateLogo);
+  yield* takeEvery(ActionTypes.UPDATE_LOGOS_REQUEST, updateLogos);
 }
 
 function* watchUpdateTaxonomies() {

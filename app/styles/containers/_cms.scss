@@ -80,4 +80,13 @@
       color: #fff;
     }
   }
+
+  .table {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+
+    &.footable {
+      opacity: 1;
+    }
+  }
 }
