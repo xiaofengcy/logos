@@ -17,28 +17,3 @@
     text-transform: uppercase;
   }
 }
-
-.label {
-  @extend .tag;
-
-  &-default {
-    @extend .tag-default;
-  }
-}
-
-.pagination {
-  > li {
-    @extend .page-item;
-
-    &.active {
-      a {
-        background-color: $brand-primary;
-        color: #fff;
-      }
-    }
-
-    > a {
-      @extend .page-link;
-    }
-  }
-}

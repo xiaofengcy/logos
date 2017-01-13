@@ -296,7 +296,7 @@ export class Items extends React.PureComponent {
 
       output.logos = (
         <ul
-          className={cx(`app__images col-${filter.columns}`, {
+          className={cx(`app__images app__images--${filter.columns}`, {
             empty: options.empty,
           })}
         >

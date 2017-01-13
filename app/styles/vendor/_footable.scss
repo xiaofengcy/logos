@@ -6,7 +6,7 @@
 * @license Released under the GPLv3 license.
 */
 
-/* stylelint-disable selector-max-compound-selectors, selector-max-specificity, unit-blacklist */
+/* stylelint-disable selector-max-compound-selectors, selector-max-specificity, max-nesting-depth, unit-blacklist */
 table.footable,
 table.footable-details {
   border-collapse: collapse;
@@ -140,15 +140,40 @@ table.footable {
     > tr.footable-paging > td {
       text-align: center;
 
-      > ul.pagination {
+      .pagination {
+        display: inline-flex;
         margin: 10px 0 0;
+
+        > li {
+          @extend .page-item;
+
+          &.active {
+            a {
+              background-color: $brand-primary;
+              color: #fff;
+            }
+          }
+
+          > a {
+            @extend .page-link;
+          }
+        }
       }
 
-      > span.label {
+      .divider {
+        height: 1rem;
+      }
+
+      .label {
+        @extend .badge;
         background-color: #fff;
         border: 0.1rem solid $brand-primary;
-        margin: 0 0 10px;
         padding: 4px 10px;
+
+        &-default {
+          @extend .badge-default;
+          color: $brand-primary;
+        }
       }
     }
   }

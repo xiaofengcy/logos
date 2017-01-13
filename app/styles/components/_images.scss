@@ -130,7 +130,7 @@
     margin-top: $grid-gutter-width / 3;
   }
 
-  &.col-1 {
+  &--1 {
     > li {
       @include im {
         width: 100% !important;
@@ -149,7 +149,7 @@
     }
   }
 
-  &.col-2 {
+  &--2 {
     > li {
       @include md {
         width: percentage(1 / 2) !important;
@@ -168,7 +168,7 @@
     }
   }
 
-  &.col-3 {
+  &--3 {
     > li {
       @include md {
         padding-bottom: 12rem;
@@ -188,7 +188,7 @@
     }
   }
 
-  &.col-4 {
+  &--4 {
     > li {
       @include im {
         padding-bottom: 15rem;
@@ -197,7 +197,7 @@
     }
   }
 
-  &.col-5 {
+  &--5 {
     > li {
       @include im {
         padding-bottom: 15rem;

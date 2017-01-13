@@ -198,7 +198,13 @@
         }
 
         &.tag-size {
+          &-0 {
+            color: lighten($tag-color, 5);
+          }
+
           &-1 {
+            $color: adjust-hue(lighten($tag-color, 16), $tag-step);
+
             background-color: adjust-hue(lighten($tag-color, 16), $tag-step);
             font-size: 1.4rem;
           }
