@@ -89,7 +89,7 @@ var config = {
       },
       {
         test: /\.modernizrrc$/,
-        loader: 'modernizr',
+        loader: 'expose?Modernizr!modernizr!json',
       },
       {
         test: /\.md$/,

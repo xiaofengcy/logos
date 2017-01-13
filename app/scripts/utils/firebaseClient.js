@@ -20,22 +20,22 @@ export async function signInWithPopup(provider) {
   }
   AuthProvider.addScope('email');
 
-  return await auth.signInWithPopup(AuthProvider);
+  return auth.signInWithPopup(AuthProvider);
 }
 
 export async function link(provider) {
-  return await auth.currentUser.linkWithPopup(provider);
+  return auth.currentUser.linkWithPopup(provider);
 }
 
 export async function signOut() {
-  return await auth.signOut();
+  return auth.signOut();
 }
 
 export async function signInWithCredential() {
   const { user } = getState();
   const credential = await firebase.auth.GithubAuthProvider.credential(user.credential);
 
-  return await auth.signInWithCredential(credential);
+  return auth.signInWithCredential(credential);
 }
 
 export function connectLogos() {

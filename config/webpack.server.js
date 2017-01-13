@@ -68,6 +68,9 @@ var config = merge.smart(webpackConfig, {
     new webpack.NamedModulesPlugin(),
     envPlugin,
   ],
+  performance: {
+    hints: false,
+  },
 });
 
 var compiler = webpack(config);

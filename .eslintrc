@@ -67,6 +67,7 @@
     "no-trailing-spaces": 1,
     "no-underscore-dangle": 0,
     "no-unused-vars": 1,
+    "no-await-in-loop": 0,
     "object-shorthand": [1, "always"],
     "one-var": 1,
     "padded-blocks": 1,
@@ -125,6 +126,7 @@
     "react/jsx-key": 1,
     "react/jsx-max-props-per-line": [1, { "maximum": 4 }],
     "react/jsx-no-target-blank": 0,
+    "react/no-array-index-key": 0,
     "react/no-danger": 0,
     "react/no-did-mount-set-state": 1,
     "react/no-did-update-set-state": 1,
@@ -136,6 +138,7 @@
     "react/no-unescaped-entities": 0,
     "react/prefer-stateless-function": 0,
     "react/prop-types": 2,
+    "react/require-default-props": 0,
     "react/sort-prop-types": 1,
     "react/sort-comp": [
       1,
