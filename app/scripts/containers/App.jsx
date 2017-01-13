@@ -1,17 +1,14 @@
 import React from 'react';
 import { autobind, debounce } from 'core-decorators';
 import { connect } from 'react-redux';
-import { shouldComponentUpdate } from 'utils/helpers';
 
 import { initFirebase, detectMobile } from 'actions';
 
-export class App extends React.Component {
+export class App extends React.PureComponent {
   static propTypes = {
     children: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired,
   };
-
-  shouldComponentUpdate = shouldComponentUpdate;
 
   componentWillMount() {
     this.props.dispatch(initFirebase());

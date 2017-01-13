@@ -1,13 +1,13 @@
 import React from 'react';
 import { autobind, debounce } from 'core-decorators';
 import cx from 'classnames';
-import { shouldComponentUpdate, trackEvent, ScaleLog } from 'utils/helpers';
+import { trackEvent, ScaleLog } from 'utils/helpers';
 
 import { filterItems } from 'actions';
 import Combobox from 'react-widgets/lib/Combobox';
 
 @autobind
-export default class Toolbar extends React.Component {
+export default class Toolbar extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -24,8 +24,6 @@ export default class Toolbar extends React.Component {
     handleChangeColumns: React.PropTypes.func.isRequired,
     handleClickTag: React.PropTypes.func.isRequired,
   };
-
-  shouldComponentUpdate = shouldComponentUpdate;
 
   componentWillMount() {
     const { app: { filter }, firebase: { tags } } = this.props;

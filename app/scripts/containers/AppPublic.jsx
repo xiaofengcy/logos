@@ -1,22 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Transition from 'react-addons-css-transition-group';
-import { shouldComponentUpdate } from 'utils/helpers';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Splash from 'components/Splash';
 import SystemNotifications from 'components/SystemNotifications';
 
-export class AppPublic extends React.Component {
+export class AppPublic extends React.PureComponent {
   static propTypes = {
     app: React.PropTypes.object.isRequired,
     children: React.PropTypes.node.isRequired,
     dispatch: React.PropTypes.func.isRequired,
     firebase: React.PropTypes.object.isRequired,
   };
-
-  shouldComponentUpdate = shouldComponentUpdate;
 
   render() {
     const { app, firebase, dispatch } = this.props;

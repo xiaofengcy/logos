@@ -1,18 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { shouldComponentUpdate } from 'utils/helpers';
 import { restore } from 'actions';
 
 import SystemNotifications from 'components/SystemNotifications';
 
-export class AppPrivate extends React.Component {
+export class AppPrivate extends React.PureComponent {
   static propTypes = {
     children: React.PropTypes.node.isRequired,
     dispatch: React.PropTypes.func.isRequired,
     user: React.PropTypes.object.isRequired,
   };
-
-  shouldComponentUpdate = shouldComponentUpdate;
 
   componentWillMount() {
     if (!this.props.user.authenticated) {

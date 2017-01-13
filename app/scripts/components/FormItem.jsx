@@ -7,7 +7,6 @@ import Multiselect from 'react-widgets/lib/Multiselect';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 import momentLocalizer from 'react-widgets/lib/localizers/moment';
 
-import { shouldComponentUpdate } from 'utils/helpers';
 import { diffArrays } from 'utils/data';
 
 import config from 'config';
@@ -18,7 +17,7 @@ import InputSwitch from 'components/InputSwitch';
 momentLocalizer(moment);
 
 @autobind()
-export class FormItem extends React.Component {
+export class FormItem extends React.PureComponent {
   static propTypes = {
     categories: React.PropTypes.array.isRequired,
     dispatch: React.PropTypes.func.isRequired,
@@ -32,8 +31,6 @@ export class FormItem extends React.Component {
     submitting: React.PropTypes.bool.isRequired,
     tags: React.PropTypes.array.isRequired,
   };
-
-  shouldComponentUpdate = shouldComponentUpdate;
 
   componentWillMount() {
     const { initialize, item } = this.props;

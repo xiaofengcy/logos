@@ -2,13 +2,13 @@ import React from 'react';
 import { autobind, debounce } from 'core-decorators';
 import cx from 'classnames';
 import Transition from 'react-addons-css-transition-group';
-import { shouldComponentUpdate, trackEvent } from 'utils/helpers';
+import { trackEvent } from 'utils/helpers';
 
 import { filterItems } from 'actions';
 
 import Logo from 'components/Logo';
 
-export default class Header extends React.Component {
+export default class Header extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -22,8 +22,6 @@ export default class Header extends React.Component {
     app: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired,
   };
-
-  shouldComponentUpdate = shouldComponentUpdate;
 
   componentWillMount() {
     const { app: { filter } } = this.props;

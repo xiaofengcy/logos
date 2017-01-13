@@ -3,7 +3,6 @@ import _map from 'lodash/map';
 import _reduce from 'lodash/reduce';
 import { connect } from 'react-redux';
 import { autobind, debounce } from 'core-decorators';
-import { shouldComponentUpdate } from 'utils/helpers';
 
 import config from 'config';
 import { goTo, logOut, updateTaxonomies } from 'actions';
@@ -14,7 +13,7 @@ import Modal from 'components/Modal';
 import FormItem from 'components/FormItem';
 
 @autobind
-export class CMS extends React.Component {
+export class CMS extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -81,8 +80,6 @@ export class CMS extends React.Component {
     user: React.PropTypes.object.isRequired,
   };
 
-  shouldComponentUpdate = shouldComponentUpdate;
-
   componentWillMount() {
     if (this.props.firebase.ready) {
       this.setProperties();
@@ -100,15 +97,6 @@ export class CMS extends React.Component {
     if (!firebase.ready && nextProps.firebase.ready) {
       this.setProperties();
     }
-
-    /*if (
-      firebase.ready &&
-      (firebase.logos.updated !== nextProps.firebase.logos.updated
-      || firebase.categories.updated !== nextProps.firebase.categories.updated
-      || firebase.tags.updated !== nextProps.firebase.tags.updated)
-    ) {
-      this.destroyTable();
-    }*/
   }
 
   componentDidUpdate(prevProps) {
@@ -196,7 +184,6 @@ export class CMS extends React.Component {
   @debounce(500)
   initTable() {
     if (this.table) {
-      console.log('initTable');
       const { categories: { data: categories } } = this.props.firebase;
       const $table = $(this.table);
 
@@ -273,15 +260,6 @@ export class CMS extends React.Component {
     }
   }
 
-  destroyTable() {
-    console.log('destroy');
-    const footable = $(this.table).data('__FooTable__');
-
-    if (footable) {
-      footable.destroy();
-    }
-  }
-
   renderTable() {
     const { logos } = this.props.firebase;
 
@@ -330,24 +308,24 @@ export class CMS extends React.Component {
             </td>
             <td>
               <div className="app__cms__files">
-                {d.files.map((f, i) => (
-                  <a key={i} href={`${config.imagePath}${encodeURIComponent(f)}`} target="_blank">{f}</a>))}
+                {d.files.map(f => (
+                  <a key={f} href={`${config.imagePath}${encodeURIComponent(f)}`} target="_blank">{f}</a>))}
               </div>
             </td>
             <td>
               <div className="app__cms__categories">
-                {d.categories.map((c, i) =>
+                {d.categories.map(c =>
                   (<a
                     href="#filter"
-                    key={i} data-name={c}
+                    key={c} data-name={c}
                     onClick={this.handleClickFilter}
                   >
                     {`${c} (${this.categories[c]})`}
                   </a>))}
               </div>
               <div className="app__cms__tags">
-                {d.tags.map((t, i) =>
-                  (<a href="#filter" key={i} data-name={t} onClick={this.handleClickFilter}>
+                {d.tags.map(t =>
+                  (<a href="#filter" key={t} data-name={t} onClick={this.handleClickFilter}>
                     {`${t} (${this.tags[t]})`}
                   </a>)
                 )}

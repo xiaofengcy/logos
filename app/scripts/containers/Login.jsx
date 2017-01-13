@@ -1,17 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
-import { shouldComponentUpdate } from 'utils/helpers';
 
 import { login } from 'actions';
 
-export class Login extends React.Component {
+export class Login extends React.PureComponent {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     user: React.PropTypes.object.isRequired,
   };
-
-  shouldComponentUpdate = shouldComponentUpdate;
 
   @autobind
   onClickLogin(e) {

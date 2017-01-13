@@ -5,7 +5,7 @@ import cx from 'classnames';
 import _reduce from 'lodash/reduce';
 import _orderBy from 'lodash/orderBy';
 import Waypoint from 'react-waypoint';
-import { shouldComponentUpdate, trackEvent } from 'utils/helpers';
+import { trackEvent } from 'utils/helpers';
 
 import { filterItems } from 'actions';
 
@@ -13,7 +13,7 @@ import ItemsHeader from './Header';
 import Item from './Item';
 
 @autobind
-export class Items extends React.Component {
+export class Items extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -39,8 +39,6 @@ export class Items extends React.Component {
     dispatch: React.PropTypes.func.isRequired,
     firebase: React.PropTypes.object.isRequired,
   };
-
-  shouldComponentUpdate = shouldComponentUpdate;
 
   componentWillMount() {
     if (this.props.firebase.ready) {
