@@ -1,4 +1,4 @@
-/*eslint-disable no-console, no-prototype-builtins, no-continue */
+/*eslint-disable no-console, no-prototype-builtins, no-continue, no-multi-assign */
 Object.defineProperty(window.location, 'href', {
   writable: true,
   value: 'http://localhost:3000/',

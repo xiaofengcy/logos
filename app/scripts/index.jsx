@@ -21,6 +21,11 @@ import '../styles/main.scss';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
+/* istanbul ignore next */
+if (process.env.production) {
+  require('offline-plugin/runtime').install();
+}
+
 function renderApp(RootComponent) {
   const target = document.getElementById('react');
   /* istanbul ignore if  */
