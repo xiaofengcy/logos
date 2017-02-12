@@ -88,7 +88,9 @@ export class FormItem extends React.PureComponent {
     );
   }
 
-  renderMultiselect({ input, label, name, data }) {
+  renderMultiselect({ input, label, data }) {
+    const name = input.name;
+
     input.value = input.value || [];
     let tagComponent;
 

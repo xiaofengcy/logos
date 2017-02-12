@@ -134,9 +134,12 @@ class Modal extends React.Component {
       modalClassName: ['modal'],
     };
 
-    if (animation) {
-      opts.modalClassName = opts.modalClassName.concat('fade');
-    }
+    // TODO: Re-enable after it is fixed in bootstrap (Modal is transitioning)
+    /*
+     if (animation) {
+     opts.modalClassName = opts.modalClassName.concat('fade');
+     }
+     */
 
     if (show) {
       opts.modalClassName = opts.modalClassName.concat('in');
