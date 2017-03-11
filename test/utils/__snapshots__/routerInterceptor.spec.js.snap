@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`routerInterceptor with anon user checkStatus should dispatch an goTo \`/login\` action 1`] = `
 Object {
   "payload": Object {

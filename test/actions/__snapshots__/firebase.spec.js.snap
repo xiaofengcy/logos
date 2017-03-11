@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Firebase connectCategories should return an action to connect categories to the store 1`] = `
 Object {
   "type": "CONNECT_CATEGORIES_REQUEST",

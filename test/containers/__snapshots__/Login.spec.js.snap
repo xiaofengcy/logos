@@ -1,1 +1,3 @@
-exports[`Login should render properly 1`] = `"<div class=\"app__login app__route\"><div class=\"app__container\"><div class=\"app__login__wrapper\"><a href=\"#login\" class=\"btn btn-lg btn-primary btn-icon\" data-provider=\"github\"><i class=\"i-github\"></i><span>Login</span></a><a href=\"#login\" class=\"btn btn-lg btn-primary btn-icon\" data-provider=\"facebook\"><i class=\"i-facebook\"></i><span>Login</span></a></div></div></div>"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should render properly 1`] = `"<div class=\\"app__login app__route\\"><div class=\\"app__container\\"><div class=\\"app__login__wrapper\\"><a href=\\"#login\\" class=\\"btn btn-lg btn-primary btn-icon\\" data-provider=\\"github\\"><i class=\\"i-github\\"></i><span>Login</span></a><a href=\\"#login\\" class=\\"btn btn-lg btn-primary btn-icon\\" data-provider=\\"facebook\\"><i class=\\"i-facebook\\"></i><span>Login</span></a></div></div></div>"`;
