@@ -160,10 +160,8 @@ export class CMS extends React.PureComponent {
   handleClickFilter(e) {
     e.preventDefault();
     const data = e.currentTarget.dataset;
-    if (!this.filtering) {
-      this.filtering = FooTable.get(this.table).use(FooTable.Filtering);
-    }
 
+    this.filtering = FooTable.get(this.table).use(FooTable.Filtering);
     this.filtering.addFilter('search', `"${data.name}"`);
     this.filtering.filter();
   }
@@ -263,79 +261,81 @@ export class CMS extends React.PureComponent {
   renderTable() {
     const { logos } = this.props.firebase;
 
-    return (<table key={logos.updated} ref={c => (this.table = c)} className="table">
-      <thead>
-        <tr>
-          <th data-type="html" data-sortable="false">Image</th>
-          <th data-type="html">Name</th>
-          <th
-            data-type="html"
-            data-sortable="false"
-            data-filterable="false"
-            data-breakpoints="xs sm"
-          >
-            Files
-          </th>
-          <th data-type="html" data-sortable="false" data-breakpoints="xs sm">Metadata</th>
-          <th
-            data-breakpoints="xs"
-            data-type="date"
-            data-format-string="YYYY-MM-DD"
-            data-filterable="false"
-            data-sorted="true"
-            data-direction="DESC"
-          >
-            Date
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {logos.data.map(d =>
-          (<tr key={d.id}>
-            <td>
-              <div className="app__cms__img">
-                <a href={d.url} target="_blank">
-                  <img
-                    src={`${config.imagePath}${encodeURIComponent(d.files[0])}`}
-                    alt={d.shortname}
-                  />
-                </a>
-              </div>
-            </td>
-            <td data-filter-value={d.shortname} data-sort-value={d.shortname}>
-              <h4><a href={d.url} target="_blank">{d.name}</a></h4>
-              <a href="#edit" onClick={this.handleClickEdit} data-id={d.id}>edit</a>
-            </td>
-            <td>
-              <div className="app__cms__files">
-                {d.files.map(f => (
-                  <a key={f} href={`${config.imagePath}${encodeURIComponent(f)}`} target="_blank">{f}</a>))}
-              </div>
-            </td>
-            <td>
-              <div className="app__cms__categories">
-                {d.categories.map(c =>
-                  (<a
-                    href="#filter"
-                    key={c} data-name={c}
-                    onClick={this.handleClickFilter}
-                  >
-                    {`${c} (${this.categories[c]})`}
-                  </a>))}
-              </div>
-              <div className="app__cms__tags">
-                {d.tags.map(t =>
-                  (<a href="#filter" key={t} data-name={t} onClick={this.handleClickFilter}>
-                    {`${t} (${this.tags[t]})`}
-                  </a>)
-                )}
-              </div>
-            </td>
-            <td>{d.updated}</td>
-          </tr>)
-        )}
-      </tbody>
-    </table>);
+    return (
+      <table key={logos.updated} ref={c => (this.table = c)} className="table">
+        <thead>
+          <tr>
+            <th data-type="html" data-sortable="false">Image</th>
+            <th data-type="html">Name</th>
+            <th
+              data-type="html"
+              data-sortable="false"
+              data-filterable="false"
+              data-breakpoints="xs sm"
+            >
+              Files
+            </th>
+            <th data-type="html" data-sortable="false" data-breakpoints="xs sm">Metadata</th>
+            <th
+              data-breakpoints="xs"
+              data-type="date"
+              data-format-string="YYYY-MM-DD"
+              data-filterable="false"
+              data-sorted="true"
+              data-direction="DESC"
+            >
+              Date
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {logos.data.map(d =>
+            (<tr key={d.id}>
+              <td>
+                <div className="app__cms__img">
+                  <a href={d.url} target="_blank">
+                    <img
+                      src={`${config.imagePath}${encodeURIComponent(d.files[0])}`}
+                      alt={d.shortname}
+                    />
+                  </a>
+                </div>
+              </td>
+              <td data-filter-value={d.shortname} data-sort-value={d.shortname}>
+                <h4><a href={d.url} target="_blank">{d.name}</a></h4>
+                <a href="#edit" onClick={this.handleClickEdit} data-id={d.id}>edit</a>
+              </td>
+              <td>
+                <div className="app__cms__files">
+                  {d.files.map(f => (
+                    <a key={f} href={`${config.imagePath}${encodeURIComponent(f)}`} target="_blank">{f}</a>))}
+                </div>
+              </td>
+              <td>
+                <div className="app__cms__categories">
+                  {d.categories.map(c =>
+                    (<a
+                      href="#filter"
+                      key={c} data-name={c}
+                      onClick={this.handleClickFilter}
+                    >
+                      {`${c} (${this.categories[c]})`}
+                    </a>))}
+                </div>
+                <div className="app__cms__tags">
+                  {d.tags.map(t =>
+                    (<a href="#filter" key={t} data-name={t} onClick={this.handleClickFilter}>
+                      {`${t} (${this.tags[t]})`}
+                    </a>)
+                  )}
+                </div>
+              </td>
+              <td>{d.updated}</td>
+            </tr>)
+          )}
+        </tbody>
+      </table>
+    );
   }
 
   render() {
