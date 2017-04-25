@@ -18,6 +18,8 @@ Please add your requests in the issues preferably with links to the vector files
 ---
 ### Latest logos
 
+## <a href="https://containership.io/" target="_blank">ContainerShip</a>
+![containership](https://s3-us-west-2.amazonaws.com/svgporn.com/logos/containership.svg)
 ## <a href="https://chime.aws/" target="_blank">Amazon Chime</a>
 ![amazon-chime](https://s3-us-west-2.amazonaws.com/svgporn.com/logos/amazon-chime.svg)
 ## <a href="https://aws.amazon.com/connect/" target="_blank">Amazon Connect</a>
@@ -116,8 +118,6 @@ Please add your requests in the issues preferably with links to the vector files
 ![graphcool](https://s3-us-west-2.amazonaws.com/svgporn.com/logos/graphcool.svg)
 ## <a href="https://www.keycdn.com/" target="_blank">KeyCDN</a>
 ![keycdn](https://s3-us-west-2.amazonaws.com/svgporn.com/logos/keycdn.svg)
-## <a href="https://www.torus.sh/" target="_blank">Torus</a>
-![torus](https://s3-us-west-2.amazonaws.com/svgporn.com/logos/torus.svg)
 
 ---
 
