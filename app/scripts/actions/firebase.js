@@ -14,6 +14,7 @@ import { getUnixtime } from 'utils/helpers';
 export function initFirebase() {
   return {
     type: ActionTypes.CONNECT_FIREBASE_REQUEST,
+    payload: {},
   };
 }
 
@@ -25,6 +26,7 @@ export function initFirebase() {
 export function connectLogos() {
   return {
     type: ActionTypes.CONNECT_LOGOS_REQUEST,
+    payload: {},
   };
 }
 
@@ -36,6 +38,7 @@ export function connectLogos() {
 export function connectTags() {
   return {
     type: ActionTypes.CONNECT_TAGS_REQUEST,
+    payload: {},
   };
 }
 
@@ -47,9 +50,9 @@ export function connectTags() {
 export function connectCategories() {
   return {
     type: ActionTypes.CONNECT_CATEGORIES_REQUEST,
+    payload: {},
   };
 }
-
 
 /**
  * Update Logos
@@ -80,6 +83,7 @@ export function updateLogos(payload, callback) {
 export function updateTaxonomies(callback) {
   return {
     type: ActionTypes.UPDATE_TAXONOMIES_REQUEST,
+    payload: {},
     meta: {
       callback,
       updated: getUnixtime(),

@@ -26,6 +26,7 @@ export function login(provider) {
 export function restore() {
   return {
     type: ActionTypes.USER_RESTORE_REQUEST,
+    payload: {},
   };
 }
 
@@ -37,5 +38,6 @@ export function restore() {
 export function logOut() {
   return {
     type: ActionTypes.USER_LOGOUT_REQUEST,
+    payload: {},
   };
 }
