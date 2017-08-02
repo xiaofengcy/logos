@@ -9,7 +9,7 @@
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: 1050;
+  z-index: nth($zIndex, 6);
 
   svg {
     path {
@@ -18,35 +18,37 @@
   }
 }
 
-.splash__animation-enter {
-  opacity: 1;
-
-  &.splash__animation-enter-active {
+.splash__animation {
+  &-enter {
     opacity: 1;
-  }
-}
 
-.splash__animation-leave {
-  opacity: 1;
-
-  .app__logo {
-    svg {
-      overflow: visible;
-    }
-
-    path {
-      transform: scale(1);
+    &.splash__animation-enter-active {
+      opacity: 1;
     }
   }
 
-  &.splash__animation-leave-active {
-    opacity: 0;
-    transition: opacity 1.5s ease-in;
+  &-exit {
+    opacity: 1;
 
-    .app__logo path {
+    .app__logo {
+      svg {
+        overflow: visible;
+      }
+
+      path {
+        transform: scale(1);
+      }
+    }
+
+    &.splash__animation-exit-active {
       opacity: 0;
-      transform: scale(20) translate(-62%, -50%);
-      transition: all 1s ease-in;
+      transition: opacity 1.5s ease-in;
+
+      .app__logo path {
+        opacity: 0;
+        transform: scale(20) translate(-62%, -50%);
+        transition: all 1s ease-in;
+      }
     }
   }
 }

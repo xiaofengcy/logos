@@ -29,18 +29,20 @@
 // *** Layout
 @import 'layout/global';
 @import 'layout/app';
+@import 'layout/transitions';
 
 // *** Components
-@import 'components/form';
+@import 'components/alert';
 @import 'components/footer';
+@import 'components/form';
 @import 'components/header';
 @import 'components/images';
 @import 'components/input-switch';
 @import 'components/loader';
 @import 'components/logo';
 @import 'components/splash';
+@import 'components/system-alerts';
 @import 'components/toolbar';
-@import 'components/system-notifications';
 
 // *** Containers
 @import 'containers/cms';

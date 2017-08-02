@@ -1,0 +1,137 @@
+.app__alert {
+  align-items: center;
+  background-color: $white;
+  border-color: $gray-30;
+  border-radius: 0.5rem;
+  border-style: solid;
+  border-width: 0.1rem;
+  display: flex;
+  overflow: hidden;
+  pointer-events: all;
+  position: relative;
+
+  > * {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+  }
+
+  &__icon {
+    background-color: $gray-30;
+    color: $white;
+    font-size: 3.2rem;
+    padding: $grid-gutter-width / 2;
+
+    i {
+      display: inline-block;
+      text-align: center;
+      width: 3.2rem;
+    }
+  }
+
+  &__content {
+    color: $gray-30;
+    flex: 1;
+    flex-direction: column;
+    font-size: $font-size-sm;
+    justify-content: center;
+    line-height: 1.4;
+    padding: ($grid-gutter-width / 3) ($grid-gutter-width / 2);
+    padding-right: $grid-gutter-width / 1.5;
+    text-align: left;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &__close {
+    color: $gray-30;
+    font-size: $font-size-xs;
+    line-height: 1;
+    padding: ($grid-gutter-width / 6) ($grid-gutter-width / 6) ($grid-gutter-width / 3) ($grid-gutter-width / 3);
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &.is-error {
+    border-color: $red;
+
+    .app__alert__icon {
+      background-color: $red;
+    }
+
+    .app__alert__content {
+      color: $red;
+
+      a {
+        color: $red;
+      }
+    }
+  }
+
+  &.is-success {
+    border-color: $green;
+
+    .app__alert__icon {
+      background-color: $green;
+    }
+
+    .app__alert__content {
+      color: $green;
+
+      a {
+        color: $green;
+      }
+    }
+  }
+
+  &.is-warning {
+    border-color: $orange;
+
+    .app__alert__icon {
+      background-color: $orange;
+    }
+
+    .app__alert__content {
+      color: $orange;
+
+      a {
+        color: $orange;
+      }
+    }
+  }
+
+  &.is-info {
+    border-color: $blue;
+
+    .app__alert__icon {
+      background-color: $blue;
+    }
+
+    .app__alert__content {
+      color: $blue;
+
+      a {
+        color: $blue;
+      }
+    }
+  }
+
+  &.is-black {
+    border-color: $black;
+
+    .app__alert__icon {
+      background-color: $black;
+    }
+
+    .app__alert__content {
+      color: $black;
+
+      a {
+        color: $black;
+      }
+    }
+  }
+}

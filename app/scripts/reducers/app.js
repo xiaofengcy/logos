@@ -1,3 +1,8 @@
+/**
+ * @module Reducers/App
+ * @desc App Reducer
+ */
+import immutable from 'immutability-helper';
 import { REHYDRATE } from 'redux-persist/constants';
 import { createReducer } from 'utils/helpers';
 
@@ -5,12 +10,7 @@ import { ActionTypes } from 'constants/index';
 
 export const appState = {
   isMobile: false,
-  notifications: {
-    visible: false,
-    message: '',
-    status: '',
-    withTimeout: true,
-  },
+  alerts: [],
   filter: {
     category: '',
     columns: 3,
@@ -36,24 +36,14 @@ export default {
       };
     },
     [ActionTypes.SHOW_ALERT](state, action) {
-      const notifications = {
-        ...state.notifications,
-        visible: true,
-        message: action.message,
-        status: action.status,
-        withTimeout: action.withTimeout === true,
-      };
-
-      return { ...state, notifications };
+      return immutable(state, {
+        alerts: { $push: [action.payload] },
+      });
     },
-    [ActionTypes.HIDE_ALERT](state) {
-      const notifications = {
-        ...state.notifications,
-        visible: false,
-        withTimeout: true,
-      };
-
-      return { ...state, notifications };
+    [ActionTypes.HIDE_ALERT](state, action) {
+      return immutable(state, {
+        alerts: { $set: state.alerts.filter(d => d.id !== action.payload.id) },
+      });
     },
     [ActionTypes.DETECT_MOBILE](state, action) {
       const { payload } = action;

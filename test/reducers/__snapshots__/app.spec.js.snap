@@ -1,41 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should handle HIDE_ALERT 1`] = `
-Object {
-  "message": "",
-  "status": "",
-  "visible": false,
-  "withTimeout": true,
-}
-`;
+exports[`App should handle HIDE_ALERT 1`] = `undefined`;
 
-exports[`App should handle SHOW_ALERT 1`] = `
-Object {
-  "message": "hello",
-  "status": "success",
-  "visible": true,
-  "withTimeout": true,
-}
-`;
+exports[`App should handle SHOW_ALERT 1`] = `undefined`;
 
 exports[`App should handle persist/REHYDRATE with payload 1`] = `
 Object {
+  "alerts": Array [],
   "filter": Object {
     "showTags": false,
   },
   "isMobile": false,
-  "notifications": Object {
-    "message": "",
-    "status": "",
-    "visible": false,
-    "withTimeout": true,
-  },
+  "notifications": undefined,
   "rehydrated": true,
 }
 `;
 
 exports[`App should handle persist/REHYDRATE without payload 1`] = `
 Object {
+  "alerts": Array [],
   "filter": Object {
     "category": "",
     "columns": 3,
@@ -46,18 +29,14 @@ Object {
     "viewBefore": "",
   },
   "isMobile": false,
-  "notifications": Object {
-    "message": "",
-    "status": "",
-    "visible": false,
-    "withTimeout": true,
-  },
+  "notifications": undefined,
   "rehydrated": true,
 }
 `;
 
 exports[`App should return the initial state 1`] = `
 Object {
+  "alerts": Array [],
   "filter": Object {
     "category": "",
     "columns": 3,
@@ -68,12 +47,6 @@ Object {
     "viewBefore": "",
   },
   "isMobile": false,
-  "notifications": Object {
-    "message": "",
-    "status": "",
-    "visible": false,
-    "withTimeout": true,
-  },
   "rehydrated": false,
 }
 `;
