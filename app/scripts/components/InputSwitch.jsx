@@ -1,5 +1,6 @@
 import React from 'react';
-import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 function InputSwitch(props) {
   const handleClick = () => {
@@ -8,7 +9,7 @@ function InputSwitch(props) {
     }
   };
 
-  const className = classnames('u-switch', {
+  const className = cx('u-switch', {
     'is-checked': props.value,
   }, props.className);
 
@@ -33,10 +34,10 @@ InputSwitch.defaultProps = {
 };
 
 InputSwitch.propTypes = {
-  className: React.PropTypes.string,
-  name: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func,
-  value: React.PropTypes.bool.isRequired,
+  className: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  value: PropTypes.bool.isRequired,
 };
 
 export default InputSwitch;

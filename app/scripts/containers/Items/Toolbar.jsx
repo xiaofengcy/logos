@@ -1,12 +1,12 @@
 import React from 'react';
-import { autobind, debounce } from 'core-decorators';
+import PropTypes from 'prop-types';
+import { Debounce } from 'lodash-decorators';
 import cx from 'classnames';
 import { trackEvent, ScaleLog } from 'utils/helpers';
 
 import { filterItems } from 'actions';
 import Combobox from 'react-widgets/lib/Combobox';
 
-@autobind
 export default class Toolbar extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -18,11 +18,11 @@ export default class Toolbar extends React.PureComponent {
   }
 
   static propTypes = {
-    app: React.PropTypes.object.isRequired,
-    dispatch: React.PropTypes.func.isRequired,
-    firebase: React.PropTypes.object.isRequired,
-    handleChangeColumns: React.PropTypes.func.isRequired,
-    handleClickTag: React.PropTypes.func.isRequired,
+    app: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    firebase: PropTypes.object.isRequired,
+    handleChangeColumns: PropTypes.func.isRequired,
+    handleClickTag: PropTypes.func.isRequired,
   };
 
   componentWillMount() {
@@ -67,8 +67,7 @@ export default class Toolbar extends React.PureComponent {
     this.setState(newState);
   }
 
-  @autobind
-  handleSearch(e) {
+  handleSearch = (e) => {
     let search = '';
 
     if (e.type === 'click') {
@@ -80,24 +79,24 @@ export default class Toolbar extends React.PureComponent {
 
     this.setState({ search });
     this.executeSearch(search);
-  }
+  };
 
-  @debounce(300)
-  executeSearch(search) {
+  @Debounce(300)
+  executeSearch = (search) => {
     this.props.dispatch(filterItems({ search }));
 
     if (search) {
       trackEvent('search', 'submit', search);
     }
-  }
+  };
 
-  handleSelectCategory(data) {
+  handleSelectCategory = (data) => {
     this.props.dispatch(filterItems({ category: data.name !== 'Categories' ? data.name : '' }));
 
     trackEvent('category', 'click', data.name);
-  }
+  };
 
-  handleClickTags(e) {
+  handleClickTags = (e) => {
     const { app: { filter }, dispatch } = this.props;
     if (e) {
       e.preventDefault();
@@ -110,23 +109,23 @@ export default class Toolbar extends React.PureComponent {
     if (!filter.showTags) {
       trackEvent('tag-cloud', 'click');
     }
-  }
+  };
 
-  handleClickColumns(e) {
+  handleClickColumns = (e) => {
     e.preventDefault();
     const { app: { filter }, handleChangeColumns } = this.props;
 
     handleChangeColumns((filter.columns || 3) + Number(e.currentTarget.dataset.column));
-  }
+  };
 
-  handleClickChangeView(e) {
+  handleClickChangeView = (e) => {
     e.preventDefault();
 
     const { value: view } = e.currentTarget.dataset;
 
     this.props.dispatch(filterItems({ view }));
     trackEvent('view', 'click', view);
-  }
+  };
 
   render() {
     const { category, search } = this.state;
@@ -225,11 +224,11 @@ export default class Toolbar extends React.PureComponent {
             onChange={this.handleSearch}
           />
           <span className="input-icon">
-            {filter.search ?
-             (<a href="#clean" onClick={this.handleSearch}>
-               <i className="i-remove" />
-             </a>)
-              : <i className="i-search" />
+            {filter.search
+              ? (<a href="#clean" onClick={this.handleSearch}>
+                <i className="i-remove" />
+              </a>)
+              : (<i className="i-search" />)
             }
           </span>
         </div>

@@ -1,28 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { autobind } from 'core-decorators';
 
 import { login } from 'actions';
 
 export class Login extends React.PureComponent {
   static propTypes = {
-    dispatch: React.PropTypes.func.isRequired,
-    user: React.PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
   };
 
-  @autobind
-  onClickLogin(e) {
+  handleClickLogin = (e) => {
     e.preventDefault();
     const { provider } = e.currentTarget.dataset;
 
     this.props.dispatch(login(provider));
-  }
+  };
 
   render() {
     const { user } = this.props;
     let message;
 
-    if (user.authenticated && !user.isAdmin) {
+    if (user.isAuthenticated && !user.isAdmin) {
       message = (<div>Invalid credentials</div>);
     }
 
@@ -32,7 +31,7 @@ export class Login extends React.PureComponent {
           <div className="app__login__wrapper">
             <a
               href="#login"
-              onClick={this.onClickLogin}
+              onClick={this.handleClickLogin}
               className="btn btn-lg btn-primary btn-icon"
               data-provider="github"
             >
@@ -42,7 +41,7 @@ export class Login extends React.PureComponent {
 
             <a
               href="#login"
-              onClick={this.onClickLogin}
+              onClick={this.handleClickLogin}
               className="btn btn-lg btn-primary btn-icon"
               data-provider="facebook"
             >

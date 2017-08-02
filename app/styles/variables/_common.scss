@@ -1,10 +1,32 @@
 $media-path: '../../assets/media/';
 $font-path: '../../assets/fonts/';
 
+$app-easing: cubic-bezier(0.35, 0.01, 0.77, 0.34);
 $header-height: 7rem;
 $footer-height: 5.6rem;
 
 $brand-secondary: #ff4556;
+
+$gray-10: #e6e6e6;
+$gray-20: #ccc;
+$gray-30: #b3b3b3;
+$gray-40: #999;
+$gray-50: #808080;
+$gray-60: #666;
+$gray-70: #4d4d4d;
+$gray-80: #333;
+$gray-90: #1a1a1a;
+
+$red: #f65547;
+$blue: #5179d0;
+$orange: #f58e23;
+$green: #24d004;
+
+$facebook: #3b5998;
+$google-plus: #dd4b39;
+$messenger: #0084ff;
+$twitter: #1da1f2;
+$whatsapp: #25d366;
 
 $tag-color: adjust-hue($brand-primary, 10);
 $tag-hue: hue($tag-color);
@@ -13,3 +35,4 @@ $tag-lightness: lightness($tag-color);
 $tag-step: -4;
 
 $main-padding: $header-height + $footer-height + ($grid-gutter-width * 2);
+$zIndex: (100, 250, 500, 1000, 1500, 2500);

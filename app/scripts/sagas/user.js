@@ -4,13 +4,11 @@
  * @module Sagas/User
  * @desc User
  */
-
-import { takeEvery } from 'redux-saga';
-import { put, call, fork } from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { connectRoles, signInWithPopup, signInWithCredential, signOut } from 'utils/firebaseClient';
 
 import { ActionTypes } from 'constants/index';
 import { goTo } from 'actions';
-import { connectRoles, signInWithPopup, signInWithCredential, signOut } from 'utils/firebaseClient';
 
 /**
  * Login
@@ -24,7 +22,6 @@ export function* login(action) {
     yield put({
       type: ActionTypes.USER_LOGIN_SUCCESS,
       payload: {
-        authenticated: true,
         credential: auth.credential,
         data: {
           uid: auth.user.uid,
@@ -35,7 +32,6 @@ export function* login(action) {
         },
       },
     });
-    yield put(goTo('/cms'));
   } catch (error) {
     /* istanbul ignore next */
     yield put({
@@ -85,22 +81,24 @@ export function* logout() {
 }
 
 function* watchLogin() {
-  yield* takeEvery(ActionTypes.USER_LOGIN_REQUEST, login);
+  yield takeLatest(ActionTypes.USER_LOGIN_REQUEST, login);
 }
 
 function* watchRestore() {
-  yield* takeEvery(ActionTypes.USER_RESTORE_REQUEST, restore);
+  yield takeLatest(ActionTypes.USER_RESTORE_REQUEST, restore);
 }
 
 function* watchLogout() {
-  yield* takeEvery(ActionTypes.USER_LOGOUT_REQUEST, logout);
+  yield takeLatest(ActionTypes.USER_LOGOUT_REQUEST, logout);
 }
 
 /**
  * User Sagas
  */
 export default function* user() {
-  yield fork(watchLogin);
-  yield fork(watchRestore);
-  yield fork(watchLogout);
+  yield all([
+    watchLogin(),
+    watchRestore(),
+    watchLogout(),
+  ]);
 }

@@ -150,7 +150,7 @@ table.footable {
           &.active {
             a {
               background-color: $brand-primary;
-              color: #fff;
+              color: $white;
             }
           }
 
@@ -166,7 +166,7 @@ table.footable {
 
       .label {
         @extend .badge;
-        background-color: #fff;
+        background-color: $white;
         border: 0.1rem solid $brand-primary;
         padding: 4px 10px;
 

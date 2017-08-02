@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
@@ -14,17 +15,17 @@ class Modal extends React.Component {
   }
 
   static propTypes = {
-    animation: React.PropTypes.bool,
-    backdrop: React.PropTypes.bool,
-    blurify: React.PropTypes.bool,
-    children: React.PropTypes.node,
-    className: React.PropTypes.string,
-    onHide: React.PropTypes.func,
-    onShow: React.PropTypes.func,
-    show: React.PropTypes.bool,
-    showFooter: React.PropTypes.bool,
-    style: React.PropTypes.object,
-    title: React.PropTypes.string,
+    animation: PropTypes.bool,
+    backdrop: PropTypes.bool,
+    blurify: PropTypes.bool,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    onHide: PropTypes.func,
+    onShow: PropTypes.func,
+    show: PropTypes.bool,
+    showFooter: PropTypes.bool,
+    style: PropTypes.object,
+    title: PropTypes.string,
   };
 
   static defaultProps = {

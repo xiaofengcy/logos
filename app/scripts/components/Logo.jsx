@@ -1,5 +1,6 @@
 import React from 'react';
-import Isvg from 'react-inlinesvg';
+import PropTypes from 'prop-types';
+import SVG from 'react-inlinesvg';
 
 import config from 'config';
 
@@ -7,14 +8,14 @@ const Logo = ({ icon }) => {
   let html;
 
   if (icon) {
-    html = (<Isvg key="icon" className="app__logo__icon" src={require('assets/media/brand/icon.svg')}>
+    html = (<SVG key="icon" className="app__logo__icon" src={require('assets/media/brand/icon.svg')}>
       <img src={require('assets/media/brand/icon.png')} alt={config.title} />
-    </Isvg>);
+    </SVG>);
   } else {
     html = (
-      <Isvg key="full" className="app__logo__full" src={require('assets/media/brand/logo.svg')}>
+      <SVG key="full" className="app__logo__full" src={require('assets/media/brand/logo.svg')}>
         <img src={require('assets/media/brand/logo.png')} alt={config.title} />
-      </Isvg>);
+      </SVG>);
   }
 
   return (<div className="app__logo">
@@ -23,7 +24,7 @@ const Logo = ({ icon }) => {
 };
 
 Logo.propTypes = {
-  icon: React.PropTypes.bool,
+  icon: PropTypes.bool,
 };
 
 Logo.defaultProps = {

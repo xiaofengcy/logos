@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Debounce } from 'lodash-decorators';
 import _map from 'lodash/map';
 import _reduce from 'lodash/reduce';
-import { connect } from 'react-redux';
-import { autobind, debounce } from 'core-decorators';
 
 import config from 'config';
 import { goTo, logOut, updateTaxonomies } from 'actions';
@@ -12,7 +13,6 @@ import Loader from 'components/Loader';
 import Modal from 'components/Modal';
 import FormItem from 'components/FormItem';
 
-@autobind
 export class CMS extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -74,27 +74,23 @@ export class CMS extends React.PureComponent {
   }
 
   static propTypes = {
-    app: React.PropTypes.object.isRequired,
-    dispatch: React.PropTypes.func.isRequired,
-    firebase: React.PropTypes.object.isRequired,
-    user: React.PropTypes.object.isRequired,
+    app: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    firebase: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
   };
 
-  componentWillMount() {
-    if (this.props.firebase.ready) {
-      this.setProperties();
-    }
-  }
-
   componentDidMount() {
-    if (this.props.firebase.ready) {
+    if (this.props.firebase.isReady) {
+      this.setProperties();
       this.initTable();
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const { firebase } = this.props;
-    if (!firebase.ready && nextProps.firebase.ready) {
+
+    if (!firebase.isReady && nextProps.firebase.isReady) {
       this.setProperties();
     }
   }
@@ -104,7 +100,7 @@ export class CMS extends React.PureComponent {
     const { firebase } = this.props;
 
     if (
-      (!prevFirebase.ready && firebase.ready)
+      (!prevFirebase.isReady && firebase.isReady)
       || (prevFirebase.logos.updated !== firebase.logos.updated)
       || (prevFirebase.categories.updated !== firebase.categories.updated)
       || (prevFirebase.tags.updated !== firebase.tags.updated)
@@ -113,26 +109,26 @@ export class CMS extends React.PureComponent {
     }
   }
 
-  handleClickLogo(e) {
+  handleClickLogo = (e) => {
     e.preventDefault();
     this.props.dispatch(goTo('/'));
-  }
+  };
 
-  handleClickLogout(e) {
+  handleClickLogout = (e) => {
     e.preventDefault();
     this.props.dispatch(logOut());
-  }
+  };
 
-  handleClickNew(e) {
+  handleClickNew = (e) => {
     e.preventDefault();
 
     this.setState({
       item: this.initialValues,
       showModal: true,
     });
-  }
+  };
 
-  handleClickEdit(e) {
+  handleClickEdit = (e) => {
     e.preventDefault();
     const data = e.currentTarget.dataset;
     const item = this.props.firebase.logos.data.find(d => d.id === data.id);
@@ -141,30 +137,30 @@ export class CMS extends React.PureComponent {
       item,
       showModal: true,
     });
-  }
+  };
 
-  handleClickUpdate(e) {
+  handleClickUpdate = (e) => {
     e.preventDefault();
     const { dispatch } = this.props;
 
     dispatch(updateTaxonomies());
-  }
+  };
 
-  handleHideModal() {
+  handleHideModal = () => {
     this.setState({
       item: undefined,
       showModal: false,
     });
-  }
+  };
 
-  handleClickFilter(e) {
+  handleClickFilter = (e) => {
     e.preventDefault();
     const data = e.currentTarget.dataset;
 
     this.filtering = FooTable.get(this.table).use(FooTable.Filtering);
     this.filtering.addFilter('search', `"${data.name}"`);
     this.filtering.filter();
-  }
+  };
 
   setProperties() {
     const { categories, tags } = this.props.firebase;
@@ -179,7 +175,7 @@ export class CMS extends React.PureComponent {
     }, {});
   }
 
-  @debounce(500)
+  @Debounce(500)
   initTable() {
     if (this.table) {
       const { categories: { data: categories } } = this.props.firebase;
@@ -209,7 +205,7 @@ export class CMS extends React.PureComponent {
           });
         },
         _onStatusDropdownChanged(e) {
-          const self = e.data.self;
+          const { self } = e.data;
           const selected = $(this).val();
           if (selected !== self.def) {
             self.addFilter('categories', selected);
@@ -339,7 +335,7 @@ export class CMS extends React.PureComponent {
   }
 
   render() {
-    const state = this.state;
+    const { item, showModal } = this.state;
     const { app: { isMobile }, firebase, user } = this.props;
     const output = {
       table: (<Loader />),
@@ -347,7 +343,7 @@ export class CMS extends React.PureComponent {
     let tags = [];
     let categories = [];
 
-    if (firebase.ready) {
+    if (firebase.isReady) {
       output.toolbar = (
         <div className="app__cms__toolbar">
           <a
@@ -374,10 +370,10 @@ export class CMS extends React.PureComponent {
       categories = _map(firebase.categories.data, d => d.name);
     }
 
-    if (state.showModal) {
+    if (showModal) {
       output.form = (
         <FormItem
-          item={state.item}
+          item={item}
           categories={categories}
           tags={tags}
           hideModal={this.handleHideModal}
@@ -412,7 +408,7 @@ export class CMS extends React.PureComponent {
         <div className="app__container">
           {output.toolbar}
           {output.table}
-          <Modal show={state.showModal} onHide={this.handleHideModal}>
+          <Modal show={showModal} onHide={this.handleHideModal}>
             {output.form}
           </Modal>
         </div>

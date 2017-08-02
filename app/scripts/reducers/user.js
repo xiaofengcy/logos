@@ -4,12 +4,11 @@ import { createReducer } from 'utils/helpers';
 import { ActionTypes } from 'constants/index';
 
 export const userState = {
-  authenticated: false,
+  isAuthenticated: false,
   credential: {},
   isAdmin: false,
   data: {},
-  running: false,
-  ready: false,
+  isRunning: false,
   rehydrated: false,
 };
 
@@ -23,10 +22,18 @@ export default {
       };
     },
     [ActionTypes.USER_LOGIN_REQUEST](state) {
-      return { ...state, running: true };
+      return { ...state, isRunning: true };
     },
     [ActionTypes.USER_LOGIN_SUCCESS](state, action) {
-      return { ...state, ...action.payload, running: false, ready: true };
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: true,
+        isRunning: false,
+      };
+    },
+    [ActionTypes.USER_LOGIN_FAILURE](state, action) {
+      return { ...userState, rehydrated: true };
     },
     [ActionTypes.USER_PERMISSIONS](state, action) {
       return { ...state, ...action.payload };

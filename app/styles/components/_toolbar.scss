@@ -52,7 +52,7 @@
 
     a {
       @include center-child();
-      background-color: #fff;
+      background-color: $white;
       border-radius: 50%;
       font-size: $font-size-sm;
       height: 3.4rem;
@@ -61,7 +61,7 @@
       width: 3.4rem;
 
       &.disabled {
-        color: #ccc;
+        color: $gray-20;
       }
 
       &:last-child {
@@ -82,7 +82,7 @@
     }
 
     a {
-      color: #fff;
+      color: $white;
       display: inline-block;
       font-weight: 700;
       margin-left: 0.3rem;
@@ -153,7 +153,7 @@
     top: $header-height;
     transition: opacity 0.5s, visibility 0.2s;
     visibility: hidden;
-    z-index: 20;
+    z-index: nth($zIndex, 2);
 
     &.visible {
       opacity: 1;
@@ -181,7 +181,7 @@
       a {
         background-color: lighten($tag-color, 24);
         border-radius: 0.5rem;
-        color: #fff;
+        color: $white;
         display: inline-block;
         font-size: 1.2rem;
         margin: 0.5rem;

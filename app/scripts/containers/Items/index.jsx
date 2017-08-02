@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { autobind } from 'core-decorators';
 import cx from 'classnames';
 import _reduce from 'lodash/reduce';
 import _orderBy from 'lodash/orderBy';
@@ -12,7 +12,6 @@ import { filterItems } from 'actions';
 import ItemsHeader from './Header';
 import Item from './Item';
 
-@autobind
 export class Items extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -35,13 +34,13 @@ export class Items extends React.PureComponent {
   }
 
   static propTypes = {
-    app: React.PropTypes.object.isRequired,
-    dispatch: React.PropTypes.func.isRequired,
-    firebase: React.PropTypes.object.isRequired,
+    app: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    firebase: PropTypes.object.isRequired,
   };
 
   componentWillMount() {
-    if (this.props.firebase.ready) {
+    if (this.props.firebase.isReady) {
       this.setProperties();
       this.setLogos();
     }
@@ -52,16 +51,16 @@ export class Items extends React.PureComponent {
     document.body.addEventListener('keydown', this.handleKeyboard);
     window.addEventListener('scroll', this.handleScroll);
 
-    if (!this.props.firebase.ready && this.$app) {
+    if (!this.props.firebase.isReady && this.$app) {
       document.querySelector('.app--public').classList.add('app--loading');
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    const { app: { filter: prevFilter }, firebase: prevData } = this.props;
+    const { app: { filter: prevFilter }, firebase: prevFirebase } = this.props;
     const { app: { filter }, firebase } = nextProps;
 
-    if (!prevData.ready && firebase.ready) {
+    if (!prevFirebase.isReady && firebase.isReady) {
       this.setProperties();
       this.setLogos();
 
@@ -146,7 +145,7 @@ export class Items extends React.PureComponent {
     });
   }
 
-  scrollTo(element = document.body, to = 0, duration = document.body.scrollTop) {
+  scrollTo = (element = document.body, to = 0, duration = document.body.scrollTop) => {
     const newDuration = duration / 10 < 500 ? duration : 500;
 
     const difference = to - element.scrollTop;
@@ -166,16 +165,16 @@ export class Items extends React.PureComponent {
       }
       this.scrollTo(element, to, newDuration - 10);
     }, 10);
-  }
+  };
 
-  scrollTop(e) {
+  scrollTop = (e) => {
     e.preventDefault();
 
     this.scrollTo(document.body, 0, window.scrollY / 10 < 500 ? window.scrollY / 10 : 500);
     trackEvent('scroll', 'click');
-  }
+  };
 
-  handleScroll(e) {
+  handleScroll = (e) => {
     const { app: { filter } } = this.props;
     if ((document.body.scrollTop >= 1000 && document.body.clientHeight > 4000) && !filter.showTags && !this.state.scrollable) {
       this.setState({
@@ -186,13 +185,13 @@ export class Items extends React.PureComponent {
         scrollable: false,
       });
     }
-  }
+  };
 
-  handleChangeColumns(num) {
+  handleChangeColumns = (num) => {
     this.props.dispatch(filterItems({ columns: num }));
-  }
+  };
 
-  handleKeyboard(e) {
+  handleKeyboard = (e) => {
     const { app: { filter } } = this.props;
     const intKey = (window.Event) ? e.which : e.keyCode;
     let action;
@@ -217,9 +216,9 @@ export class Items extends React.PureComponent {
     if (action) {
       trackEvent('keyboard', 'press', action);
     }
-  }
+  };
 
-  handleClickTag(e) {
+  handleClickTag = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -228,20 +227,20 @@ export class Items extends React.PureComponent {
 
     this.props.dispatch(filterItems({ tag: name }));
     trackEvent('tag', 'click', name);
-  }
+  };
 
-  handleCleanFilter(e) {
+  handleCleanFilter = (e) => {
     e.preventDefault();
     const { dispatch } = this.props;
 
     dispatch(filterItems({}));
-  }
+  };
 
-  handleWaypoint() {
+  handleWaypoint = () => {
     this.setState({
       page: this.state.page + 1,
     });
-  }
+  };
 
   renderWaypoint() {
     const { limit, logos, page } = this.state;
@@ -263,7 +262,7 @@ export class Items extends React.PureComponent {
     };
     const output = {};
 
-    if (firebase.ready) {
+    if (firebase.isReady) {
       const items = logos.slice(0, limit * page).map(d =>
         d.files.map((f, i) =>
           (<Item key={`${d.id}-${i}`} handleClickTag={this.handleClickTag} data={d} index={i} />)

@@ -6,23 +6,23 @@ import { ActionTypes } from 'constants/index';
 export const firebaseState = {
   logos: {
     data: [],
-    ready: false,
+    isReady: false,
     running: false,
     updated: '',
   },
   tags: {
     data: [],
-    ready: false,
+    isReady: false,
     running: false,
     updated: '',
   },
   categories: {
     data: [],
-    ready: false,
+    isReady: false,
     running: false,
     updated: '',
   },
-  ready: false,
+  isReady: false,
   rehydrated: false,
   running: false,
   updating: false,
@@ -41,14 +41,14 @@ export default {
       return { ...state, logos };
     },
     [ActionTypes.CONNECT_LOGOS_UPDATE](state, action) {
-      const logos = { ...state.logos, ...action.payload, ready: true };
+      const logos = { ...state.logos, ...action.payload, isReady: true };
 
       return { ...state, logos };
     },
     [ActionTypes.CONNECT_LOGOS_FAILURE](state, action) {
-      const logos = { ...state.logos, ...action.payload, ready: false, running: false };
+      const logos = { ...state.logos, ...action.payload, isReady: false, running: false };
 
-      return { ...state, logos, ready: false };
+      return { ...state, logos, isReady: false };
     },
     [ActionTypes.CONNECT_TAGS_REQUEST](state) {
       const tags = { ...state.tags, running: true };
@@ -56,14 +56,14 @@ export default {
       return { ...state, tags };
     },
     [ActionTypes.CONNECT_TAGS_UPDATE](state, action) {
-      const tags = { ...state.tags, ...action.payload, ready: true };
+      const tags = { ...state.tags, ...action.payload, isReady: true };
 
       return { ...state, tags };
     },
     [ActionTypes.CONNECT_TAGS_FAILURE](state, action) {
-      const tags = { ...state.tags, ...action.payload, ready: false, running: false };
+      const tags = { ...state.tags, ...action.payload, isReady: false, running: false };
 
-      return { ...state, tags, ready: false };
+      return { ...state, tags, isReady: false };
     },
     [ActionTypes.CONNECT_CATEGORIES_REQUEST](state) {
       const categories = { ...state.categories, running: true };
@@ -71,23 +71,23 @@ export default {
       return { ...state, categories };
     },
     [ActionTypes.CONNECT_CATEGORIES_UPDATE](state, action) {
-      const categories = { ...state.categories, ...action.payload, ready: true };
+      const categories = { ...state.categories, ...action.payload, isReady: true };
 
       return { ...state, categories };
     },
     [ActionTypes.CONNECT_CATEGORIES_FAILURE](state, action) {
-      const categories = { ...state.categories, ...action.payload, ready: false, running: false };
+      const categories = { ...state.categories, ...action.payload, isReady: false, running: false };
 
-      return { ...state, categories, ready: false };
+      return { ...state, categories, isReady: false };
     },
     [ActionTypes.CONNECT_FIREBASE_REQUEST](state) {
       return { ...state, running: true };
     },
     [ActionTypes.CONNECT_FIREBASE_SUCCESS](state) {
-      return { ...state, ready: true, running: false };
+      return { ...state, isReady: true, running: false };
     },
     [ActionTypes.CONNECT_FIREBASE_FAILURE](state) {
-      return { ...state, ready: false, running: false };
+      return { ...state, isReady: false, running: false };
     },
     [ActionTypes.UPDATE_TAXONOMIES_REQUEST](state) {
       return { ...state, running: true, updating: true };

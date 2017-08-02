@@ -52,5 +52,3 @@ Object {
   "SUCCESS": "SUCCESS",
 }
 `;
-
-exports[`Routes should match the snapshot 1`] = `3`;

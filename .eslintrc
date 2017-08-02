@@ -34,6 +34,7 @@
     "class-methods-use-this": 0,
     "comma-dangle": ["warn", {
       "arrays": "always-multiline",
+      "imports": "always-multiline",
       "objects": "always-multiline",
       "functions": "only-multiline"
     }],
@@ -43,6 +44,7 @@
     "indent": [1, 2, { "SwitchCase": 1 }],
     "max-len": 0,
     "newline-per-chained-call": [1, { "ignoreChainWithDepth": 5 }],
+    "no-await-in-loop": 0,
     "no-case-declarations": 1,
     "no-confusing-arrow": [1, { "allowParens": true }],
     "no-mixed-spaces-and-tabs": [1, "smart-tabs"],
@@ -63,15 +65,16 @@
       "LabeledStatement",
       "WithStatement"
     ],
+    "no-return-assign": [2, "except-parens"],
     "no-template-curly-in-string": 1,
     "no-trailing-spaces": 1,
     "no-underscore-dangle": 0,
     "no-unused-vars": 1,
-    "no-await-in-loop": 0,
     "object-shorthand": [1, "always"],
     "one-var": 1,
     "padded-blocks": 1,
     "prefer-const": 1,
+    "prefer-destructuring": 1,
     "prefer-template": 1,
     "quotes": [1, "single", "avoid-escape"],
     "require-jsdoc": [
@@ -92,6 +95,7 @@
           "-+"
         ],
         "markers": [
+          "eslint-enable",
           "eslint-disable",
           "eslint-disable-line"
         ]
@@ -110,13 +114,13 @@
     "flowtype/require-parameter-type": [0, { "excludeArrowFunctions": true }],
     "import/no-dynamic-require": 0,
     "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
-    "import/no-named-as-default": 0,
     "import/no-unresolved": 1,
     "import/no-webpack-loader-syntax": 0,
+    "import/no-named-as-default": 0,
     "import/prefer-default-export": 0,
+    "jsx-a11y/anchor-has-content": 0,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/no-static-element-interactions": 0,
-    // React
     "jsx-quotes": 1,
     "react/forbid-prop-types": 0,
     "react/jsx-closing-bracket-location": [1, "line-aligned"],

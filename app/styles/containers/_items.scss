@@ -1,11 +1,11 @@
 .app__items {
   position: relative;
-  z-index: 10;
+  z-index: nth($zIndex, 2);
 
   &__header {
     @include app-container();
-    background-color: #000;
-    color: #fff;
+    background-color: $black;
+    color: $white;
     padding-bottom: ($grid-gutter-width / 1.5);
     padding-top: 0;
 
@@ -39,7 +39,7 @@
         margin: 0 auto;
 
         path {
-          fill: #fff;
+          fill: $white;
         }
       }
     }

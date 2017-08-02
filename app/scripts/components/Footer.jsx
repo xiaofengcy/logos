@@ -16,11 +16,13 @@ const Footer = () => (
       </div>
       <div className="app__footer__github">
         <iframe
+          title="star-count"
           src="https://ghbtns.com/github-btn.html?user=gilbarbara&repo=logos&type=star&count=true"
           frameBorder="0"
           scrolling="0" width="110px" height="20px"
         />
         <iframe
+          title="follow-count"
           src="https://ghbtns.com/github-btn.html?user=gilbarbara&type=follow&count=true"
           frameBorder="0"
           scrolling="0" width="130px" height="20px"

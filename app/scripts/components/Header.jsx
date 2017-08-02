@@ -1,7 +1,8 @@
 import React from 'react';
-import { autobind, debounce } from 'core-decorators';
+import PropTypes from 'prop-types';
+import { Debounce } from 'lodash-decorators';
 import cx from 'classnames';
-import Transition from 'react-addons-css-transition-group';
+import Transition from 'components/Transition';
 import { trackEvent } from 'utils/helpers';
 
 import { filterItems } from 'actions';
@@ -19,8 +20,8 @@ export default class Header extends React.PureComponent {
   }
 
   static propTypes = {
-    app: React.PropTypes.object.isRequired,
-    dispatch: React.PropTypes.func.isRequired,
+    app: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
   };
 
   componentWillMount() {
@@ -50,14 +51,12 @@ export default class Header extends React.PureComponent {
     global.removeEventListener('scroll', this.handleScroll);
   }
 
-  @autobind
-  handleClickLogo(e) {
+  handleClickLogo = (e) => {
     e.preventDefault();
     this.props.dispatch(filterItems({}));
-  }
+  };
 
-  @autobind
-  handleScroll() {
+  handleScroll = () => {
     const innerHeader = document.querySelector('.app__items__header').getBoundingClientRect();
     const { scrolled } = this.state;
 
@@ -70,10 +69,9 @@ export default class Header extends React.PureComponent {
         scrolled: false,
       });
     }
-  }
+  };
 
-  @autobind
-  handleSearch(e) {
+  handleSearch = (e) => {
     let search = '';
 
     if (e.type === 'click') {
@@ -85,9 +83,9 @@ export default class Header extends React.PureComponent {
 
     this.setState({ search });
     this.executeSearch(search);
-  }
+  };
 
-  @debounce(300)
+  @Debounce(300)
   executeSearch(search) {
     this.props.dispatch(filterItems({ search }));
 
@@ -110,11 +108,11 @@ export default class Header extends React.PureComponent {
           onChange={this.handleSearch}
         />
         <span className="input-icon">
-          {filter.search ?
-           (<a href="#clean" onClick={this.handleSearch}>
-             <i className="i-remove" />
-           </a>)
-            : <i className="i-search" />
+          {filter.search
+            ? (<a href="#clean" onClick={this.handleSearch}>
+              <i className="i-remove" />
+            </a>)
+            : (<i className="i-search" />)
           }
         </span>
       </div>
@@ -128,13 +126,8 @@ export default class Header extends React.PureComponent {
           <a href="/" className="app__header__logo" onClick={this.handleClickLogo}>
             <Logo icon={isMobile ? scrolled : isMobile} />
           </a>
-          <Transition
-            component="div"
-            transitionName="transition__fade"
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={isMobile ? 0 : 1000}
-          >
-            { scrolled ? searchComponent : null}
+          <Transition>
+            {scrolled ? searchComponent : <div />}
           </Transition>
           <div className="app__header__social">
             <a href="https://twitter.com/intent/follow?screen_name=svgporn" target="_blank">

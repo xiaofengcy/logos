@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Toolbar from './Toolbar';
 
 const ItemsHeader = ({ app, dispatch, firebase, handleClickTag, handleChangeColumns }) => {
   let toolbar;
 
-  if (firebase.ready) {
+  if (firebase.isReady) {
     toolbar = (
       <Toolbar
         app={app}
@@ -18,18 +19,18 @@ const ItemsHeader = ({ app, dispatch, firebase, handleClickTag, handleChangeColu
 
   return (
     <div className="app__items__header">
-      <h1><span>{firebase.logos.data.length}</span>High-quality SVG logos</h1>
+      <h1>{firebase.logos.data.length > 0 && (<span>{firebase.logos.data.length}</span>)}High-quality SVG logos</h1>
       {toolbar}
     </div>
   );
 };
 
 ItemsHeader.propTypes = {
-  app: React.PropTypes.object.isRequired,
-  dispatch: React.PropTypes.func.isRequired,
-  firebase: React.PropTypes.object.isRequired,
-  handleChangeColumns: React.PropTypes.func.isRequired,
-  handleClickTag: React.PropTypes.func.isRequired,
+  app: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  firebase: PropTypes.object.isRequired,
+  handleChangeColumns: PropTypes.func.isRequired,
+  handleClickTag: PropTypes.func.isRequired,
 };
 
 export default ItemsHeader;

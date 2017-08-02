@@ -5,8 +5,7 @@
  * @desc Firebase
  */
 
-import { takeEvery } from 'redux-saga';
-import { put, call, fork } from 'redux-saga/effects';
+import { all, call, put, takeEvery } from 'redux-saga/effects';
 
 import { ActionTypes } from 'constants/index';
 import {
@@ -15,7 +14,7 @@ import {
   connectCategories,
   connectRoles,
   updateItems,
-  updateTaxonomies
+  updateTaxonomies,
 } from 'utils/firebaseClient';
 
 /**
@@ -71,12 +70,12 @@ export function* initCategories() {
  */
 export function* initFirebase() {
   try {
-    yield [
+    yield all([
       call(initLogos),
       call(initTags),
       call(initCategories),
       call(connectRoles),
-    ];
+    ]);
     yield put({
       type: ActionTypes.CONNECT_FIREBASE_SUCCESS,
     });
@@ -138,37 +137,39 @@ export function* updateTaxonomiesSaga(action) {
 }
 
 function* watchInitLogos() {
-  yield* takeEvery(ActionTypes.CONNECT_LOGOS_REQUEST, initLogos);
+  yield takeEvery(ActionTypes.CONNECT_LOGOS_REQUEST, initLogos);
 }
 
 function* watchInitTags() {
-  yield* takeEvery(ActionTypes.CONNECT_TAGS_REQUEST, initTags);
+  yield takeEvery(ActionTypes.CONNECT_TAGS_REQUEST, initTags);
 }
 
 function* watchInitCategories() {
-  yield* takeEvery(ActionTypes.CONNECT_CATEGORIES_REQUEST, initCategories);
+  yield takeEvery(ActionTypes.CONNECT_CATEGORIES_REQUEST, initCategories);
 }
 
 function* watchUpdateLogo() {
-  yield* takeEvery(ActionTypes.UPDATE_LOGOS_REQUEST, updateLogos);
+  yield takeEvery(ActionTypes.UPDATE_LOGOS_REQUEST, updateLogos);
 }
 
 function* watchUpdateTaxonomies() {
-  yield* takeEvery(ActionTypes.UPDATE_TAXONOMIES_REQUEST, updateTaxonomiesSaga);
+  yield takeEvery(ActionTypes.UPDATE_TAXONOMIES_REQUEST, updateTaxonomiesSaga);
 }
 
 function* watchInitFirebase() {
-  yield* takeEvery(ActionTypes.CONNECT_FIREBASE_REQUEST, initFirebase);
+  yield takeEvery(ActionTypes.CONNECT_FIREBASE_REQUEST, initFirebase);
 }
 
 /**
  * Firebase Sagas
  */
 export default function* firebase() {
-  yield fork(watchInitFirebase);
-  yield fork(watchInitLogos);
-  yield fork(watchInitTags);
-  yield fork(watchInitCategories);
-  yield fork(watchUpdateLogo);
-  yield fork(watchUpdateTaxonomies);
+  yield all([
+    watchInitFirebase(),
+    watchInitLogos(),
+    watchInitTags(),
+    watchInitCategories(),
+    watchUpdateLogo(),
+    watchUpdateTaxonomies(),
+  ]);
 }

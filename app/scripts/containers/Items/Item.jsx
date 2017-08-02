@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { trackEvent } from 'utils/helpers';
 
 import config from 'config';
@@ -42,9 +43,9 @@ const Item = ({ data, handleClickTag, index }) => (
 );
 
 Item.propTypes = {
-  data: React.PropTypes.object.isRequired,
-  handleClickTag: React.PropTypes.func.isRequired,
-  index: React.PropTypes.number.isRequired,
+  data: PropTypes.object.isRequired,
+  handleClickTag: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Item;

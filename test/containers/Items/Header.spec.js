@@ -2,9 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ItemsHeader from 'containers/Items/Header';
-import Toolbar from 'containers/Items/Toolbar';
-import { appState } from 'reducers/app';
-import { firebaseState } from 'reducers/firebase';
 
 const mockDispatch = jest.fn();
 const mockHandleChangeColumns = jest.fn();
@@ -12,9 +9,14 @@ const mockHandleClickTag = jest.fn();
 
 function setup() {
   const props = {
-    app: appState,
+    app: {},
     dispatch: mockDispatch,
-    firebase: firebaseState,
+    firebase: {
+      logos: {
+        data: [],
+      },
+      isReady: true,
+    },
     handleChangeColumns: mockHandleChangeColumns,
     handleClickTag: mockHandleClickTag,
   };
@@ -30,12 +32,8 @@ describe('ItemsHeader', () => {
   });
 
   it('should render properly', () => {
-    wrapper.setProps({
-      firebase: { ...firebaseState, ready: true },
-    });
-
     expect(wrapper.find('.app__items__header').length).toBe(1);
-    expect(wrapper.find(Toolbar).length).toBe(1);
+    expect(wrapper.find('Toolbar').length).toBe(1);
   });
 });
 

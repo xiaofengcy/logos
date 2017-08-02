@@ -32,14 +32,14 @@ $rw-img-path: '~react-widgets/lib/img';
   .rw-multiselect-taglist li {
     background-color: $brand-primary;
     border-color: $brand-primary;
-    color: #fff;
+    color: $white;
   }
 }
 
 .rw-multiselect.rw-widget[name='files'] {
   .rw-multiselect-taglist li {
-    background-color: #fff;
-    border-color: #ccc;
+    background-color: $white;
+    border-color: $gray-20;
     color: $body-color;
     position: relative;
 

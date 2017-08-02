@@ -47,7 +47,7 @@ export function connectLogos() {
       const data = [];
 
       snapshot.forEach(child => {
-        data.push({ id: child.getKey(), ...child.val() });
+        data.push({ id: child.key, ...child.val() });
       });
 
       dispatch({
@@ -73,7 +73,7 @@ export function connectTags() {
       const data = [];
 
       snapshot.forEach(child => {
-        data.push({ id: child.getKey(), ...child.val() });
+        data.push({ id: child.key, ...child.val() });
       });
 
       dispatch({
@@ -99,7 +99,7 @@ export function connectCategories() {
       const data = [];
 
       snapshot.forEach(child => {
-        data.push({ id: child.getKey(), ...child.val() });
+        data.push({ id: child.key, ...child.val() });
       });
 
       dispatch({

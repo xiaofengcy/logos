@@ -1,12 +1,12 @@
 .app__header {
-  background-color: #000;
-  color: #fff;
+  background-color: $black;
+  color: $white;
   height: $header-height;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 1020;
+  z-index: nth($zIndex, 3);
 
   > .app__container {
     align-items: center;
@@ -34,7 +34,7 @@
       }
 
       path {
-        fill: #fff;
+        fill: $white;
       }
     }
   }
@@ -80,7 +80,7 @@
     }
 
     a {
-      color: #fff;
+      color: $white;
       display: block;
       font-size: 2.4rem;
       line-height: 1;

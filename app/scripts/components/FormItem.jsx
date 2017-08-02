@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { reduxForm, Field, startSubmit } from 'redux-form';
-import { autobind } from 'core-decorators';
 import cx from 'classnames';
 import moment from 'moment';
 import Multiselect from 'react-widgets/lib/Multiselect';
@@ -16,20 +16,19 @@ import InputSwitch from 'components/InputSwitch';
 
 momentLocalizer(moment);
 
-@autobind()
 export class FormItem extends React.PureComponent {
   static propTypes = {
-    categories: React.PropTypes.array.isRequired,
-    dispatch: React.PropTypes.func.isRequired,
-    handleSubmit: React.PropTypes.func.isRequired,
-    hideModal: React.PropTypes.func.isRequired,
-    initialize: React.PropTypes.func.isRequired,
-    invalid: React.PropTypes.bool.isRequired,
-    item: React.PropTypes.object,
-    pristine: React.PropTypes.bool.isRequired,
-    reset: React.PropTypes.func.isRequired,
-    submitting: React.PropTypes.bool.isRequired,
-    tags: React.PropTypes.array.isRequired,
+    categories: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    hideModal: PropTypes.func.isRequired,
+    initialize: PropTypes.func.isRequired,
+    invalid: PropTypes.bool.isRequired,
+    item: PropTypes.object,
+    pristine: PropTypes.bool.isRequired,
+    reset: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired,
+    tags: PropTypes.array.isRequired,
   };
 
   componentWillMount() {
@@ -38,7 +37,7 @@ export class FormItem extends React.PureComponent {
     initialize(item);
   }
 
-  onSubmit(formData) {
+  handleSubmit = (formData) => {
     const { item, dispatch, reset, hideModal } = this.props;
 
     delete formData.id;
@@ -68,7 +67,7 @@ export class FormItem extends React.PureComponent {
         hideModal();
       }))
     );
-  }
+  };
 
   renderDateTimePicker({ input, label }) {
     const date = input.value ? moment(input.value).toDate() : null;
@@ -138,7 +137,7 @@ export class FormItem extends React.PureComponent {
     const { categories, handleSubmit, invalid, item, pristine, reset, submitting, tags } = this.props;
 
     return (
-      <form className="app__form" onSubmit={handleSubmit(this.onSubmit)}>
+      <form className="app__form" onSubmit={handleSubmit(this.handleSubmit)}>
         <h3>{item.id ? 'Edit Logo' : 'New Logo'}</h3>
         <Field
           name="name"

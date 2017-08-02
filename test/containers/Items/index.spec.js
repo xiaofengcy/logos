@@ -34,7 +34,7 @@ describe('Items', () => {
 
   it('should render images', () => {
     wrapper.setProps({
-      firebase: { ...firebaseState, ready: true },
+      firebase: { ...firebaseState, isReady: true },
     });
 
     expect(wrapper.find('.app__images').length).toBe(1);
