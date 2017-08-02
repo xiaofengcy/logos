@@ -11,18 +11,16 @@ import 'footable/compiled/footable';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from 'containers/Root';
-import { browserHistory } from 'react-router';
 import { AppContainer } from 'react-hot-loader';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { Provider } from 'react-redux';
 
 import store from 'store';
+
+import App from 'containers/App';
 import '../styles/main.scss';
 
-const history = syncHistoryWithStore(browserHistory, store);
-
 /* istanbul ignore next */
-if (process.env.production) {
+if (process.env.NODE_ENV === 'production') {
   require('offline-plugin/runtime').install();
 }
 
@@ -32,20 +30,21 @@ function renderApp(RootComponent) {
   if (target) {
     ReactDOM.render(
       <AppContainer>
-        <RootComponent store={store} history={history} />
+        <Provider store={store}>
+          <RootComponent />
+        </Provider>
       </AppContainer>,
       target
     );
   }
 }
 
-renderApp(Root);
+renderApp(App);
 
-/* istanbul ignore if  */
+/* istanbul ignore next  */
 if (module.hot) {
-  /* istanbul ignore next */
   module.hot.accept(
-    'containers/Root',
-    () => renderApp(require('containers/Root'))
+    'containers/App',
+    () => renderApp(require('containers/App').default)
   );
 }

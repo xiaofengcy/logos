@@ -22,8 +22,6 @@ if (process.env.NODE_ENV !== 'test') {
  * {dispatch: function, getState: function}
  */
 
-export const dispatch = store.dispatch;
-export const getState = store.getState;
-export const subscribe = store.subscribe;
+export const { dispatch, getState } = store;
 
 export default store;
