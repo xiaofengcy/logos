@@ -18,6 +18,10 @@ Please add your requests in the issues preferably with links to the vector files
 ---
 ### Latest logos
 
+## <a href="http://www.apache.org/" target="_blank">Apache</a>
+![apache](https://s3-us-west-2.amazonaws.com/svgporn.com/logos/apache.svg)
+## <a href="https://www.vagrantup.com/" target="_blank">Vagrant</a> *
+![vagrant](https://s3-us-west-2.amazonaws.com/svgporn.com/logos/vagrant.svg)
 ## <a href="https://aws.amazon.com/kinesis/" target="_blank">AWS Kinesis</a>
 ![aws-kinesis](https://s3-us-west-2.amazonaws.com/svgporn.com/logos/aws-kinesis.svg)
 ## <a href="http://www.armory.io/" target="_blank">Armory</a>
