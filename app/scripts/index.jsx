@@ -14,14 +14,38 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 
-import store from 'store';
+import store, { dispatch } from 'store';
+import { showAlert } from 'actions';
 
 import App from 'containers/App';
 import '../styles/main.scss';
 
 /* istanbul ignore next */
 if (process.env.NODE_ENV === 'production') {
-  require('offline-plugin/runtime').install();
+  const OfflinePlugin = require('offline-plugin/runtime');
+
+  OfflinePlugin.install({
+    onUpdateReady: () => {
+      OfflinePlugin.applyUpdate();
+    },
+    onUpdated: () => {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations()
+          .then(regs => {
+            const isCurrentSW = regs.find(d => d.active && d.active.scriptURL.includes('sw.js'));
+            if (isCurrentSW) {
+              dispatch(showAlert((
+                <div className="app__cache-reload">
+                  <p>Existe uma nova versão do site disponível. Por favor recarregue a página.</p>
+                  <button className="btn btn-sm btn-black" onClick={() => window.location.reload()}>Recarregar
+                  </button>
+                </div>
+              ), { type: 'black', icon: 'i-flash', timeout: 0 }));
+            }
+          });
+      }
+    },
+  });
 }
 
 function renderApp(RootComponent) {
