@@ -16,7 +16,19 @@
   <meta property="og:image" content="https://svgporn.com/media/og-image-v2.png" />
   <meta property="og:type" content="website" />
   <% require('assets/media/images/og-image-v2.png') %>
+  <meta name="apple-mobile-web-app-title" content="SVG PORN">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="theme-color" content="#333333">
   <link rel="shortcut icon" href="<%- require('assets/media/favicon.ico') %>">
+  <link rel="icon" type="image/png" href="<%- require('assets/media/icons/favicon-16x16.png') %>" sizes="16x16">
+  <link rel="icon" type="image/png" href="<%- require('assets/media/icons/favicon-32x32.png') %>" sizes="32x32">
+  <link rel="apple-touch-icon" sizes="180x180" href="<%- require('assets/media/icons/apple-touch-icon.png') %>">
+  <link rel="manifest" href="<%- require('assets/manifest.json') %>">
+  <% require('assets/media/icons/icon-96x96.png') %>
+  <% require('assets/media/icons/icon-144x144.png') %>
+  <% require('assets/media/icons/icon-192x192.png') %>
+  <% require('assets/media/icons/icon-512x512.png') %>
   <% for (var css in htmlWebpackPlugin.files.css) { %>
   <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
   <% } %>
