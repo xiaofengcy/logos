@@ -13,7 +13,6 @@ const webpackConfig = require('./webpack.config');
 
 const NPMPackage = require(paths.packageJson);
 
-console.log(paths);
 let GITHASH = '';
 const definePlugin = webpackConfig.plugins.find(d => d.constructor.name === 'DefinePlugin');
 if (definePlugin) {
@@ -35,7 +34,7 @@ const config = merge.smart(webpackConfig, {
   plugins: [
     new CleanPlugin(['dist'], { root: paths.root }),
     new CopyPlugin([
-      { from: '../assets/manifest.json' },
+      { from: '.htaccess' },
     ]),
     new ExtractText('styles/app.[git-hash].css'),
     new HtmlPlugin({

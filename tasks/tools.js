@@ -1,7 +1,7 @@
 /*eslint-disable no-console */
 const fs = require('fs');
 const path = require('path');
-const exec = require('child_process').exec;
+const { exec } = require('child_process');
 const del = require('del');
 const chalk = require('chalk');
 const Rsync = require('rsync');
@@ -60,7 +60,7 @@ function buildREADME() {
         return _take(logos.filter(d => d.public), 50);
       })
       .then(items => {
-        const source = fs.readFileSync(path.join(__dirname, 'README.hbs'));
+        const source = fs.readFileSync(path.join(__dirname, '..', 'config', 'README.hbs'));
         const template = handlebars.compile(source.toString());
         const output = template(items);
 

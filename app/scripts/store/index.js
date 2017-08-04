@@ -21,7 +21,6 @@ if (process.env.NODE_ENV !== 'test') {
 /**
  * {dispatch: function, getState: function}
  */
-
 export const { dispatch, getState } = store;
 
 export default store;
