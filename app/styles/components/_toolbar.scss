@@ -89,7 +89,7 @@
 
       &.active {
         pointer-events: none;
-        text-decoration: line-through;
+        text-decoration: underline;
       }
     }
 
@@ -230,6 +230,13 @@
           }
         }
       }
+    }
+  }
+
+  &__categories {
+    button {
+      border-left-color: $brand-primary !important;
+      color: $brand-primary;
     }
   }
 }

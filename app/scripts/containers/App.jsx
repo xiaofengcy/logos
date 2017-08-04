@@ -86,7 +86,7 @@ export class App extends React.PureComponent {
                 <Route component={NotFound} />
               </Switch>
             </main>
-            <Transition classNames="splash__animation">
+            <Transition classNames="splash__animation" timeout={1100}>
               {output.splash}
             </Transition>
             {isPublic && (<Footer dispatch={dispatch} />)}
