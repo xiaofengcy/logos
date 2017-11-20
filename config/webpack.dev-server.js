@@ -1,6 +1,6 @@
 /*eslint-disable func-names, prefer-arrow-callback, no-console */
 const paths = require('./paths');
-const errorOverlayMiddleware = require('react-error-overlay/middleware');
+const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
@@ -29,7 +29,7 @@ module.exports = function(proxy, allowedHost) {
     },
     stats: { colors: true },
     watchContentBase: true,
-    setup(app) {
+    before(app) {
       app.use(errorOverlayMiddleware());
     },
   };

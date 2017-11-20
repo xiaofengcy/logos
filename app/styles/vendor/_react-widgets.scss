@@ -13,10 +13,10 @@ $rw-img-path: '~react-widgets/lib/img';
   flex-wrap: wrap;
 
   > li {
-    background-color: lighten($brand-primary, 30);
-    border: 0.1rem solid lighten($brand-primary, 25);
+    background-color: lighten($app-color, 30);
+    border: 0.1rem solid lighten($app-color, 25);
     border-radius: 0.2rem;
-    color: $brand-primary;
+    color: $app-color;
     line-height: 1;
     margin: $grid-gutter-width / 6;
     padding: $grid-gutter-width / 6;
@@ -30,8 +30,8 @@ $rw-img-path: '~react-widgets/lib/img';
 
 .rw-multiselect.rw-widget[name='categories'] {
   .rw-multiselect-taglist li {
-    background-color: $brand-primary;
-    border-color: $brand-primary;
+    background-color: $app-color;
+    border-color: $app-color;
     color: $white;
   }
 }

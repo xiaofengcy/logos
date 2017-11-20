@@ -149,7 +149,7 @@ table.footable {
 
           &.active {
             a {
-              background-color: $brand-primary;
+              background-color: $app-color;
               color: $white;
             }
           }
@@ -167,12 +167,12 @@ table.footable {
       .label {
         @extend .badge;
         background-color: $white;
-        border: 0.1rem solid $brand-primary;
+        border: 0.1rem solid $app-color;
         padding: 4px 10px;
 
         &-default {
-          @extend .badge-default;
-          color: $brand-primary;
+          @extend .badge-secondary;
+          color: $app-color;
         }
       }
     }

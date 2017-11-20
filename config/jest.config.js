@@ -20,10 +20,12 @@ module.exports = {
     '^(expose|bundle)': '<rootDir>/test/__setup__/moduleMock.js',
   },
   setupFiles: [
+    '<rootDir>/test/__setup__/shim.js',
     '<rootDir>/test/__setup__/index.js',
   ],
   setupTestFrameworkScriptFile: '<rootDir>/node_modules/jest-enzyme/lib/index.js',
   testRegex: '/test/.*?\\.(test|spec)\\.js$',
+  testURL: 'http://localhost:3000',
   collectCoverage: false,
   collectCoverageFrom: [
     'app/scripts/**/*.{js,jsx}',

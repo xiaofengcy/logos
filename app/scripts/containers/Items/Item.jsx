@@ -17,17 +17,21 @@ const Item = ({ data, handleClickTag, index }) => (
       data-shortname={data.shortname}
       onClick={onClickItem}
     >
-      <img src={`${config.imagePath}${encodeURIComponent(data.files[index])}`} alt={data.name} className={data.shortname} />
+      <img
+        src={`${config.imagePath}${encodeURIComponent(data.files[index])}`}
+        alt={data.name}
+        className={data.shortname}
+      />
     </a>
 
     <div className="app__images__info">
       <h5><a href={data.url} target="_blank">{data.name}</a></h5>
 
-      <div className="app__images__tags">{
-        data.tags.map((t, i) =>
+      <div className="app__images__tags">
+        {data.tags.map((t, i) =>
           (<a key={i} href="#tag" onClick={handleClickTag} data-name={t}>{`#${t}`}</a>)
-        )
-      }</div>
+        )}
+      </div>
       <div className="app__images__download">
         <a
           href={`${config.imagePath}${encodeURIComponent(data.files[index])}`}

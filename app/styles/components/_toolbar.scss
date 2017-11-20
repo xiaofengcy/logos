@@ -54,6 +54,7 @@
       @include center-child();
       background-color: $white;
       border-radius: 50%;
+      color: $app-color;
       font-size: $font-size-sm;
       height: 3.4rem;
       padding: 0.8rem 1rem !important;
@@ -129,7 +130,7 @@
     }
 
     span {
-      color: $brand-primary;
+      color: $app-color;
       position: absolute;
       right: ($grid-gutter-width / 3);
       top: 50%;
@@ -137,7 +138,7 @@
     }
 
     a {
-      color: $brand-primary;
+      color: $app-color;
     }
   }
 
@@ -235,8 +236,8 @@
 
   &__categories {
     button {
-      border-left-color: $brand-primary !important;
-      color: $brand-primary;
+      border-left-color: $app-color !important;
+      color: $app-color;
     }
   }
 }

@@ -37,7 +37,7 @@ InputSwitch.propTypes = {
   className: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  value: PropTypes.bool.isRequired,
+  value: PropTypes.bool,
 };
 
 export default InputSwitch;

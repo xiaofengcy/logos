@@ -28,7 +28,7 @@ $messenger: #0084ff;
 $twitter: #1da1f2;
 $whatsapp: #25d366;
 
-$tag-color: adjust-hue($brand-primary, 10);
+$tag-color: adjust-hue($app-color, 10);
 $tag-hue: hue($tag-color);
 $tag-saturation: saturation($tag-color);
 $tag-lightness: lightness($tag-color);

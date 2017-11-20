@@ -6,14 +6,13 @@ import SystemAlerts from 'components/SystemAlerts';
 jest.useFakeTimers();
 
 const mockDispatch = jest.fn();
+const props = {
+  alerts: [],
+  dispatch: mockDispatch,
+};
 
-function setup() {
-  const props = {
-    alerts: [],
-    dispatch: mockDispatch,
-  };
-
-  return mount(<SystemAlerts {...props} />);
+function setup(ownProps = props) {
+  return mount(<SystemAlerts {...ownProps} />);
 }
 
 describe('SystemAlerts', () => {
@@ -24,7 +23,7 @@ describe('SystemAlerts', () => {
   });
 
   it('should render properly', () => {
-    expect(wrapper.find('.app__system-alerts').length).toBe(1);
+    expect(wrapper.find('.app__system-alerts')).toBePresent();
   });
 
   it('should handle `top` alerts', () => {
@@ -42,7 +41,7 @@ describe('SystemAlerts', () => {
 
     jest.runOnlyPendingTimers();
 
-    expect(wrapper.find('.app__system-alerts__top').length).toBe(1);
+    expect(wrapper.find('.app__system-alerts__top')).toBePresent();
     expect(mockDispatch.mock.calls[0][0]).toEqual({
       type: 'HIDE_ALERT',
       payload: { id: 'ABD10' },
@@ -64,7 +63,7 @@ describe('SystemAlerts', () => {
 
     jest.runOnlyPendingTimers();
 
-    expect(wrapper.find('.app__system-alerts__top-left').length).toBe(1);
+    expect(wrapper.find('.app__system-alerts__top-left')).toBePresent();
     expect(mockDispatch.mock.calls[1][0]).toEqual({
       type: 'HIDE_ALERT',
       payload: { id: 'ABD11' },
@@ -86,7 +85,7 @@ describe('SystemAlerts', () => {
 
     jest.runOnlyPendingTimers();
 
-    expect(wrapper.find('.app__system-alerts__top-right').length).toBe(1);
+    expect(wrapper.find('.app__system-alerts__top-right')).toBePresent();
     expect(mockDispatch.mock.calls[2][0]).toEqual({
       type: 'HIDE_ALERT',
       payload: { id: 'ABD12' },
@@ -108,7 +107,7 @@ describe('SystemAlerts', () => {
 
     jest.runOnlyPendingTimers();
 
-    expect(wrapper.find('.app__system-alerts__bottom').length).toBe(1);
+    expect(wrapper.find('.app__system-alerts__bottom')).toBePresent();
     expect(mockDispatch.mock.calls[3][0]).toEqual({
       type: 'HIDE_ALERT',
       payload: { id: 'ABD13' },
@@ -130,7 +129,7 @@ describe('SystemAlerts', () => {
 
     jest.runOnlyPendingTimers();
 
-    expect(wrapper.find('.app__system-alerts__bottom-left').length).toBe(1);
+    expect(wrapper.find('.app__system-alerts__bottom-left')).toBePresent();
     expect(mockDispatch.mock.calls[4][0]).toEqual({
       type: 'HIDE_ALERT',
       payload: { id: 'ABD14' },
@@ -152,11 +151,12 @@ describe('SystemAlerts', () => {
 
     jest.runOnlyPendingTimers();
 
-    expect(wrapper.find('.app__system-alerts__bottom-right').length).toBe(1);
+    expect(wrapper.find('.app__system-alerts__bottom-right')).toBePresent();
     expect(mockDispatch.mock.calls.length).toBe(5);
   });
 
   it('should handle click to close', () => {
+    wrapper.update();
     wrapper.find('.app__alert__close').simulate('click');
 
     expect(mockDispatch.mock.calls[5][0]).toEqual({

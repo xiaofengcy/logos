@@ -46,7 +46,6 @@ export class Items extends React.PureComponent {
     }
   }
 
-
   componentDidMount() {
     document.body.addEventListener('keydown', this.handleKeyboard);
     window.addEventListener('scroll', this.handleScroll);
@@ -278,10 +277,12 @@ export class Items extends React.PureComponent {
       }
 
       if (filter.category || filter.tag || filter.search) {
-        output.title = (<h2>
-          <span>{output.filteredTitle} ({logos.length})</span>
-          <a href="#remove" onClick={this.handleCleanFilter}><i className="i-times-circle" /></a>
-        </h2>);
+        output.title = (
+          <h2>
+            <span>{output.filteredTitle} ({logos.length})</span>
+            <a href="#remove" onClick={this.handleCleanFilter}><i className="i-times-circle" /></a>
+          </h2>
+        );
       } else if (filter.view !== 'all' && filter.view !== 'latest') {
         output.title = (
           <h2>

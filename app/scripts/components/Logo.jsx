@@ -8,19 +8,24 @@ const Logo = ({ icon }) => {
   let html;
 
   if (icon) {
-    html = (<SVG key="icon" className="app__logo__icon" src={require('assets/media/brand/icon.svg')}>
-      <img src={require('assets/media/brand/icon.png')} alt={config.title} />
-    </SVG>);
+    html = (
+      <SVG key="icon" className="app__logo__icon" src={require('assets/media/brand/icon.svg')}>
+        <img src={require('assets/media/brand/icon.png')} alt={config.title} />
+      </SVG>
+    );
   } else {
     html = (
       <SVG key="full" className="app__logo__full" src={require('assets/media/brand/logo.svg')}>
         <img src={require('assets/media/brand/logo.png')} alt={config.title} />
-      </SVG>);
+      </SVG>
+    );
   }
 
-  return (<div className="app__logo">
-    {html}
-  </div>);
+  return (
+    <div className="app__logo">
+      {html}
+    </div>
+  );
 };
 
 Logo.propTypes = {

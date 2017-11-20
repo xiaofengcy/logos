@@ -12,7 +12,7 @@ Transition.propTypes = {
   appear: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  classNames: PropTypes.string.isRequired,
+  classNames: PropTypes.string,
   enter: PropTypes.bool,
   exit: PropTypes.bool,
   style: PropTypes.object,

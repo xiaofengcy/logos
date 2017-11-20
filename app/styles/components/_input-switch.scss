@@ -38,7 +38,7 @@
 
   &.is-checked {
     .track {
-      background-color: lighten($brand-primary, 10%);
+      background-color: lighten($app-color, 10%);
     }
 
     .button {

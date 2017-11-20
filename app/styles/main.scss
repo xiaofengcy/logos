@@ -15,7 +15,6 @@
 
 // *** Bootstrap
 @import 'vendor/bootstrap';
-@import 'vendor/bootstrap-theme';
 
 // *** Base
 @import 'base/animations';
@@ -28,6 +27,7 @@
 
 // *** Layout
 @import 'layout/global';
+@import 'layout/buttons';
 @import 'layout/app';
 @import 'layout/transitions';
 

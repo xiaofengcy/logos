@@ -22,11 +22,11 @@ export const ActionTypes = keyMirror({
   USER_LOGOUT_SUCCESS: undefined,
   USER_LOGOUT_FAILURE: undefined,
   USER_PERMISSIONS: undefined,
-// DATA
+  // DATA
   CONNECT_FIREBASE_REQUEST: undefined,
   CONNECT_FIREBASE_SUCCESS: undefined,
   CONNECT_FIREBASE_FAILURE: undefined,
-// LOGOS
+  // LOGOS
   CONNECT_LOGOS_REQUEST: undefined,
   CONNECT_LOGOS_SUCCESS: undefined,
   CONNECT_LOGOS_UPDATE: undefined,
@@ -34,7 +34,7 @@ export const ActionTypes = keyMirror({
   UPDATE_LOGOS_REQUEST: undefined,
   UPDATE_LOGOS_SUCCESS: undefined,
   UPDATE_LOGOS_FAILURE: undefined,
-// TAGS
+  // TAGS
   CONNECT_TAGS_REQUEST: undefined,
   CONNECT_TAGS_SUCCESS: undefined,
   CONNECT_TAGS_UPDATE: undefined,
@@ -42,7 +42,7 @@ export const ActionTypes = keyMirror({
   UPDATE_TAGS_REQUEST: undefined,
   UPDATE_TAGS_SUCCESS: undefined,
   UPDATE_TAGS_FAILURE: undefined,
-// CATEGORIES
+  // CATEGORIES
   CONNECT_CATEGORIES_REQUEST: undefined,
   CONNECT_CATEGORIES_SUCCESS: undefined,
   CONNECT_CATEGORIES_UPDATE: undefined,
@@ -50,7 +50,7 @@ export const ActionTypes = keyMirror({
   UPDATE_CATEGORIES_REQUEST: undefined,
   UPDATE_CATEGORIES_SUCCESS: undefined,
   UPDATE_CATEGORIES_FAILURE: undefined,
-// TAXONOMIES
+  // TAXONOMIES
   UPDATE_TAXONOMIES_REQUEST: undefined,
   UPDATE_TAXONOMIES_SUCCESS: undefined,
   UPDATE_TAXONOMIES_FAILURE: undefined,

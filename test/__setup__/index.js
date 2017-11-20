@@ -1,5 +1,10 @@
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
 import 'vendor/polyfills';
 import NPMPackage from '../../package.json';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 global.VERSION = NPMPackage.version;
 

@@ -60,7 +60,7 @@
     }
 
     span {
-      color: $brand-primary;
+      color: $app-color;
       position: absolute;
       right: ($grid-gutter-width / 2) + ($grid-gutter-width / 3);
       top: 50%;
@@ -68,7 +68,7 @@
     }
 
     a {
-      color: $brand-primary;
+      color: $app-color;
     }
   }
 

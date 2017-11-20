@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Debounce } from 'lodash-decorators';
 import cx from 'classnames';
-import { trackEvent, ScaleLog } from 'utils/helpers';
+import { trackEvent } from 'utils/helpers';
 
 import { filterItems } from 'actions';
 import Combobox from 'react-widgets/lib/Combobox';
@@ -46,7 +46,6 @@ export default class Toolbar extends React.PureComponent {
 
     this.setState({
       category: filter.category || 'Categories',
-      fontScale: new ScaleLog(fScale),
       search: filter.search,
     });
   }
@@ -213,6 +212,15 @@ export default class Toolbar extends React.PureComponent {
       </li>
     );
 
+    output.inputIcon = <i className="i-search" />;
+    if (filter.search) {
+      output.inputIcon = (
+        <a href="#clean" onClick={this.handleSearch}>
+          <i className="i-remove" />
+        </a>
+      );
+    }
+
     return (
       <div className="app__toolbar">
         <div className="app__toolbar__search">
@@ -223,14 +231,7 @@ export default class Toolbar extends React.PureComponent {
             placeholder="Search logos"
             onChange={this.handleSearch}
           />
-          <span className="input-icon">
-            {filter.search
-              ? (<a href="#clean" onClick={this.handleSearch}>
-                <i className="i-remove" />
-              </a>)
-              : (<i className="i-search" />)
-            }
-          </span>
+          <span className="input-icon">{output.inputIcon}</span>
         </div>
         <div className="app__toolbar__views">
           <span>

@@ -1,9 +1,10 @@
 import React from 'react';
 import Logo from 'components/Logo';
 
-const Splash = () =>
-  (<div className="app__splash">
+const Splash = () => (
+  <div className="app__splash">
     <Logo icon={false} />
-  </div>);
+  </div>
+);
 
 export default Splash;

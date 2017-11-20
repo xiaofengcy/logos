@@ -97,6 +97,15 @@ export default class Header extends React.PureComponent {
   render() {
     const { search, scrolled } = this.state;
     const { app: { filter, isMobile } } = this.props;
+    let inputIcon = <i className="i-search" />;
+
+    if (filter.search) {
+      inputIcon = (
+        <a href="#clean" onClick={this.handleSearch}>
+          <i className="i-remove" />
+        </a>
+      );
+    }
 
     const searchComponent = (
       <div className="app__header__search">
@@ -107,14 +116,7 @@ export default class Header extends React.PureComponent {
           placeholder="Search..."
           onChange={this.handleSearch}
         />
-        <span className="input-icon">
-          {filter.search
-            ? (<a href="#clean" onClick={this.handleSearch}>
-              <i className="i-remove" />
-            </a>)
-            : (<i className="i-search" />)
-          }
-        </span>
+        <span className="input-icon">{inputIcon}</span>
       </div>
     );
 

@@ -35,7 +35,7 @@ describe('Item', () => {
   const wrapper = setup();
 
   it('should be a StatelessComponent', () => {
-    expect(wrapper.instance().constructor.name).toBe('StatelessComponent');
+    expect(wrapper.instance()).toBeNull();
   });
 
   it('should render properly', () => {

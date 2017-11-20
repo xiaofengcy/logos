@@ -1,9 +1,12 @@
 .btn-black {
-  @include button-variant(#fff, #000, #000);
+  @include button-variant($black, $black);
+  box-shadow: none !important;
 }
 
 .btn-white {
-  @include button-variant($brand-primary, #fff, #fff);
+  @include button-variant($white, $white);
+  box-shadow: none !important;
+  color: $app-color;
 }
 
 .btn-icon {

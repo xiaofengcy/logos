@@ -285,8 +285,8 @@ export class CMS extends React.PureComponent {
           </tr>
         </thead>
         <tbody>
-          {logos.data.map(d =>
-            (<tr key={d.id}>
+          {logos.data.map(d => (
+            <tr key={d.id}>
               <td>
                 <div className="app__cms__img">
                   <a href={d.url} target="_blank">
@@ -309,26 +309,27 @@ export class CMS extends React.PureComponent {
               </td>
               <td>
                 <div className="app__cms__categories">
-                  {d.categories.map(c =>
-                    (<a
+                  {d.categories.map(c => (
+                    <a
                       href="#filter"
                       key={c} data-name={c}
                       onClick={this.handleClickFilter}
                     >
                       {`${c} (${this.categories[c]})`}
-                    </a>))}
+                    </a>
+                  ))}
                 </div>
                 <div className="app__cms__tags">
-                  {d.tags.map(t =>
-                    (<a href="#filter" key={t} data-name={t} onClick={this.handleClickFilter}>
+                  {d.tags.map(t => (
+                    <a href="#filter" key={t} data-name={t} onClick={this.handleClickFilter}>
                       {`${t} (${this.tags[t]})`}
-                    </a>)
-                  )}
+                    </a>
+                  ))}
                 </div>
               </td>
               <td>{d.updated}</td>
-            </tr>)
-          )}
+            </tr>
+          ))}
         </tbody>
       </table>
     );

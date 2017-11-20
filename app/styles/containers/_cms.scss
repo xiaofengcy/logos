@@ -30,10 +30,10 @@
     flex-wrap: wrap;
 
     a {
-      background-color: lighten($brand-primary, 45);
-      border: 0.1rem solid lighten($brand-primary, 40);
+      background-color: lighten($app-color, 45);
+      border: 0.1rem solid lighten($app-color, 40);
       border-radius: 0.2rem;
-      color: $brand-primary;
+      color: $app-color;
       display: block;
       font-size: $font-size-sm;
       line-height: 1;
@@ -47,8 +47,8 @@
     margin-bottom: $grid-gutter-width / 3;
 
     a {
-      background-color: $brand-primary;
-      border-color: $brand-primary;
+      background-color: $app-color;
+      border-color: $app-color;
       color: $white;
     }
   }
