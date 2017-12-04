@@ -17,7 +17,7 @@ const config = {
     messagingSenderId: '1043723852393',
   },
   startReactotron: false,
-  imagePath: 'https://s3-us-west-2.amazonaws.com/svgporn.com/logos/',
+  cdnURL: 'https://cdn.svgporn.com/logos/',
 };
 
 export default config;

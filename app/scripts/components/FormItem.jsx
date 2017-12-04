@@ -94,7 +94,7 @@ export class FormItem extends React.PureComponent {
     let tagComponent;
 
     if (name === 'files') {
-      tagComponent = val => (<div><img src={`${config.imagePath}${encodeURIComponent(val.item)}`} alt={val.item} /></div>);
+      tagComponent = val => (<div><img src={`${config.cdnURL}${encodeURIComponent(val.item)}`} alt={val.item} /></div>);
     }
 
     return (

@@ -291,7 +291,7 @@ export class CMS extends React.PureComponent {
                 <div className="app__cms__img">
                   <a href={d.url} target="_blank">
                     <img
-                      src={`${config.imagePath}${encodeURIComponent(d.files[0])}`}
+                      src={`${config.cdnURL}${encodeURIComponent(d.files[0])}`}
                       alt={d.shortname}
                     />
                   </a>
@@ -304,7 +304,7 @@ export class CMS extends React.PureComponent {
               <td>
                 <div className="app__cms__files">
                   {d.files.map(f => (
-                    <a key={f} href={`${config.imagePath}${encodeURIComponent(f)}`} target="_blank">{f}</a>))}
+                    <a key={f} href={`${config.cdnURL}${encodeURIComponent(f)}`} target="_blank">{f}</a>))}
                 </div>
               </td>
               <td>

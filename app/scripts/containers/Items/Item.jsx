@@ -18,7 +18,7 @@ const Item = ({ data, handleClickTag, index }) => (
       onClick={onClickItem}
     >
       <img
-        src={`${config.imagePath}${encodeURIComponent(data.files[index])}`}
+        src={`${config.cdnURL}${encodeURIComponent(data.files[index])}`}
         alt={data.name}
         className={data.shortname}
       />
@@ -34,7 +34,7 @@ const Item = ({ data, handleClickTag, index }) => (
       </div>
       <div className="app__images__download">
         <a
-          href={`${config.imagePath}${encodeURIComponent(data.files[index])}`}
+          href={`${config.cdnURL}${encodeURIComponent(data.files[index])}`}
           className="btn btn-sm btn-outline-secondary btn-icon"
           download={true}
         >
