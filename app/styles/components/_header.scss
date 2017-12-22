@@ -97,7 +97,7 @@
 
   &--scrolled {
     .app__header__logo {
-      @include is-only {
+      @include sm-only {
         width: 4rem;
 
         svg {
