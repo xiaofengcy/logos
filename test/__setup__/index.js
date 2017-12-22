@@ -4,49 +4,13 @@ import Adapter from 'enzyme-adapter-react-16';
 import 'vendor/polyfills';
 import NPMPackage from '../../package.json';
 
+global.$ = require('jquery');
+
+global.jQuery = $;
+
 Enzyme.configure({ adapter: new Adapter() });
 
 global.VERSION = NPMPackage.version;
-
-Object.defineProperty(window.location, 'protocol', {
-  writable: true,
-  value: 'http:',
-});
-
-Object.defineProperty(window.location, 'host', {
-  writable: true,
-  value: 'localhost:3000',
-});
-
-Object.defineProperty(window.location, 'pathname', {
-  writable: true,
-  value: '/',
-});
-
-Object.defineProperty(window.location, 'href', {
-  writable: true,
-  value: 'http://localhost:3000/',
-});
-
-Object.defineProperty(window.location, 'search', {
-  writable: true,
-  value: '',
-});
-
-Object.defineProperty(window, 'pageYOffset', {
-  writable: true,
-  value: '',
-});
-
-Object.defineProperty(window, 'innerWidth', {
-  writable: true,
-  value: 1024,
-});
-
-Object.defineProperty(window, 'open', {
-  writable: true,
-  value: '',
-});
 
 const react = document.createElement('div');
 react.id = 'react';

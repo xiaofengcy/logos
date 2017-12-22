@@ -1,12 +1,29 @@
 {
   "presets": [
-    "latest",
+    [
+      "env", {
+      "targets": {
+        "browsers": [
+          "last 2 versions",
+          "ie >= 10",
+          "ie_mob >= 10",
+          "ff >= 46",
+          "chrome >= 52",
+          "safari >= 7",
+          "opera >= 42",
+          "ios >= 7",
+          "android >= 4.4",
+          "bb >= 10"
+        ]
+      },
+      "modules": false
+    }
+    ],
     "react",
     "stage-1"
   ],
   "plugins": [
     "transform-decorators-legacy",
-    "transform-object-assign",
     [
       "transform-runtime", {
       "polyfill": false,
@@ -17,19 +34,7 @@
   "compact": "true",
   "env": {
     "production": {
-      "presets": [
-        [
-          "latest", {
-          "es2015": {
-            "modules": false
-          }
-        }
-        ],
-        "react",
-        "stage-1"
-      ],
       "plugins": [
-        "lodash",
         "transform-flow-strip-types",
         "transform-decorators-legacy",
         "transform-object-assign",
@@ -47,6 +52,10 @@
       ]
     },
     "test": {
+      "plugins": [
+        "dynamic-import-node",
+        "transform-es2015-modules-commonjs"
+      ],
       "sourceMaps": "both"
     }
   }

@@ -22,6 +22,7 @@
     "indentation": [2, { "ignore": ["value"] }],
     "max-nesting-depth": 5,
     "no-duplicate-selectors": true,
+    "no-descending-specificity": null,
     "no-empty-source": [true, { "severity": "warning" }],
     "no-missing-end-of-source-newline": true,
     "number-max-precision": 4,
