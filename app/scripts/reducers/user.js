@@ -32,7 +32,7 @@ export default {
         isRunning: false,
       };
     },
-    [ActionTypes.USER_LOGIN_FAILURE](state, action) {
+    [ActionTypes.USER_LOGIN_FAILURE]() {
       return { ...userState, rehydrated: true };
     },
     [ActionTypes.USER_PERMISSIONS](state, action) {

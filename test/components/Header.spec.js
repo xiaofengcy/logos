@@ -26,11 +26,12 @@ describe('Header', () => {
   });
 
   it('should render properly', () => {
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.find('.app__header__logo')).toBePresent();
   });
 
   it('should handle clicks', () => {
     wrapper.find('.app__header__logo').simulate('click');
+
     expect(mockDispatch.mock.calls[0][0]).toEqual({
       type: 'FILTER_ITEMS',
       payload: {},

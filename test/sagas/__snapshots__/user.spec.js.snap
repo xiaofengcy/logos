@@ -8,7 +8,7 @@ Object {
       "github",
     ],
     "context": null,
-    "fn": [Function],
+    "fn": [MockFunction],
   },
 }
 `;
@@ -19,7 +19,7 @@ Object {
   "CALL": Object {
     "args": Array [],
     "context": null,
-    "fn": [Function],
+    "fn": [MockFunction],
   },
 }
 `;
@@ -54,7 +54,7 @@ Object {
   "CALL": Object {
     "args": Array [],
     "context": null,
-    "fn": [Function],
+    "fn": [MockFunction],
   },
 }
 `;

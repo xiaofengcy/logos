@@ -5,25 +5,22 @@ import SVG from 'react-inlinesvg';
 import config from 'config';
 
 const Logo = ({ icon }) => {
-  let html;
-
-  if (icon) {
-    html = (
-      <SVG key="icon" className="app__logo__icon" src={require('assets/media/brand/icon.svg')}>
-        <img src={require('assets/media/brand/icon.png')} alt={config.title} />
-      </SVG>
-    );
-  } else {
-    html = (
-      <SVG key="full" className="app__logo__full" src={require('assets/media/brand/logo.svg')}>
-        <img src={require('assets/media/brand/logo.png')} alt={config.title} />
-      </SVG>
-    );
-  }
+  const type = icon ? 'icon' : 'full';
+  const images = [
+    require('assets/media/brand/icon.svg'),
+    require('assets/media/brand/icon.png'),
+  ];
 
   return (
     <div className="app__logo">
-      {html}
+      <SVG
+        key={type}
+        className={`app__logo__${type}`}
+        src={images[0]}
+        cacheGetRequests={true}
+      >
+        <img src={images[1]} alt={config.title} />
+      </SVG>
     </div>
   );
 };

@@ -3,6 +3,22 @@ $loader-speed: 1s;
 $width: 10rem;
 
 .app__loader {
+  &--grow {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    height: auto !important;
+    justify-content: center;
+    left: 0;
+    margin: 0 !important;
+    pointer-events: none;
+    position: absolute !important;
+    right: 0;
+    top: 0;
+    width: auto !important;
+    z-index: nth($zIndex, 6);
+  }
+
   &--rotate {
     height: $width;
     left: 50%;

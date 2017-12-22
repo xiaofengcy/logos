@@ -1,40 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-const Loader = ({ pulse }) => {
+const Loader = ({ grow, pulse }) => {
   let html;
 
   if (pulse) {
-    html = (
-      <div className="app__loader app__loader--pulse">
-        <div />
-      </div>
-    );
+    html = (<div />);
   } else {
     html = (
-      <div className="app__loader app__loader--rotate">
-        <svg className="loader__svg">
-          <circle
-            className="loader__circle"
-            cx="50"
-            cy="50"
-            r="20"
-            fill="none"
-            strokeWidth="2"
-          />
-        </svg>
-      </div>
+      <svg className="loader__svg">
+        <circle
+          className="loader__circle"
+          cx="50"
+          cy="50"
+          r="20"
+          fill="none"
+          strokeWidth="2"
+        />
+      </svg>
     );
   }
 
-  return html;
+  return (
+    <div
+      className={cx('app__loader', {
+        'app__loader--pulse': pulse,
+        'app__loader--rotate': !pulse,
+        'app__loader--grow': grow,
+      })}
+    >
+      {html}
+    </div>
+  );
 };
 
 Loader.propTypes = {
-  pulse: PropTypes.bool.isRequired,
+  grow: PropTypes.bool,
+  pulse: PropTypes.bool,
 };
 
 Loader.defaultProps = {
+  grow: false,
   pulse: true,
 };
 
