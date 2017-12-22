@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
+import Loadable from 'react-loadable';
 import { Debounce } from 'lodash-decorators';
 import history from 'modules/history';
 import RedirectProtected from 'modules/RedirectProtected';
@@ -10,7 +11,6 @@ import RedirectPublic from 'modules/RedirectPublic';
 
 import { initFirebase, detectMobile, restore } from 'actions';
 
-import CMS from 'containers/CMS';
 import Home from 'containers/Home';
 import Login from 'containers/Login';
 import NotFound from 'containers/NotFound';
@@ -23,11 +23,17 @@ import SystemAlerts from 'components/SystemAlerts';
 import Toolbar from 'components/Toolbar';
 import Transition from 'components/Transition';
 
+const AsyncCMS = Loadable({
+  loader: () => import(/* webpackChunkName:"cms" */ './CMS'),
+  loading: () => (<Loader grow={true} type="logo" />),
+});
+
 export class App extends React.PureComponent {
   static propTypes = {
     app: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     firebase: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired,
   };
 
@@ -85,7 +91,7 @@ export class App extends React.PureComponent {
                 />
                 <RedirectProtected
                   path="/cms"
-                  component={CMS}
+                  component={AsyncCMS}
                   isAuthenticated={user.isAuthenticated}
                 />
                 <Route component={NotFound} />
@@ -114,6 +120,7 @@ function mapStateToProps(state) {
   return {
     app: state.app,
     firebase: state.firebase,
+    router: state.router,
     user: state.user,
   };
 }

@@ -1,9 +1,13 @@
 // @flow
-
 /**
  * Helper functions
  * @module Helpers
  */
+import { detect } from 'detect-browser';
+import ExecutionEnvironment from 'exenv';
+import scroll from 'scroll';
+
+export const { canUseDOM } = ExecutionEnvironment;
 
 /**
  * Generate reducer.
@@ -76,6 +80,28 @@ export function trackEvent(category, type, label) {
   } else {
     console.log('trackEvent', options); //eslint-disable-line no-console
   }
+}
+
+/**
+ * Get DOM document scrolling element
+ * @returns {Element}
+ */
+export function getScrollingElement() {
+  const browser = detect();
+  const { scrollingElement } = document;
+
+  if (!scrollingElement) {
+    return ['ie', 'firefox'].indexOf(browser.name) > -1 ? document.documentElement : document.body;
+  }
+
+  return scrollingElement;
+}
+
+export function scrollTo(to = 0) {
+  const root = getScrollingElement();
+  const duration = root.scrollTop / 10 < 500 ? root.scrollTop / 10 : 500;
+
+  scroll.top(root, to, { duration });
 }
 
 /**

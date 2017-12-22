@@ -4,11 +4,6 @@ import 'isomorphic-fetch';
 import 'classlist-polyfill';
 import 'vendor/polyfills';
 
-import 'expose?$!expose?jQuery!jquery';
-import 'expose?Util!exports?Util!bootstrap/js/dist/util';
-import 'bootstrap/js/dist/modal';
-import 'footable/compiled/footable';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';

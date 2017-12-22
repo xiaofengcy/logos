@@ -40,12 +40,13 @@
 @import 'components/input-switch';
 @import 'components/loader';
 @import 'components/logo';
+@import 'components/portal';
 @import 'components/splash';
 @import 'components/system-alerts';
 @import 'components/toolbar';
 
 // *** Containers
 @import 'containers/cms';
+@import 'containers/home';
 @import 'containers/login';
-@import 'containers/items';
 @import 'containers/not-found';

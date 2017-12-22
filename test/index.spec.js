@@ -1,9 +1,5 @@
 import { ActionTypes, XHR } from 'constants/index';
 
-jest.mock('expose?$!expose?jQuery!jquery', () => {});
-jest.mock('bootstrap/js/dist/modal', () => {});
-jest.mock('footable/compiled/footable', () => {});
-
 require('index.jsx');
 
 describe('Constants:ActionTypes', () => {

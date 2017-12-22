@@ -1,4 +1,35 @@
 .app__form {
+  background-color: $white;
+  border-radius: 1rem;
+  max-width: 68rem;
+  padding: $grid-gutter-width / 2;
+
+  @include ix {
+    padding: $grid-gutter-width;
+  }
+
+  &__content {
+    display: flex;
+
+    @include sm-only {
+      flex-direction: column;
+    }
+
+    > div {
+      width: 100%;
+
+      @include ix {
+        width: 29rem;
+      }
+
+      + div {
+        @include md {
+          margin-left: $grid-gutter-width;
+        }
+      }
+    }
+  }
+
   &__actions {
     border-top: 0.1rem solid $app-color;
     margin-top: $grid-gutter-width;

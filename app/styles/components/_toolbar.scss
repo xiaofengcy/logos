@@ -1,28 +1,140 @@
 .app__toolbar {
+  background-color: $black;
+  color: $white;
+  padding-top: $header-height;
+  z-index: nth($zIndex, 3);
+
+  > .app__container {
+    padding-bottom: $grid-gutter-width;
+    padding-top: $grid-gutter-width / 2;
+
+    > * {
+      max-width: 40rem;
+
+      @include md {
+        max-width: 52rem;
+      }
+    }
+  }
+
+  &__heading {
+    margin: 0 auto $grid-gutter-width;
+
+    h1 {
+      margin-bottom: 0;
+      text-align: center;
+
+      @include md-only {
+        font-size: $h3-font-size;
+        line-height: 1.4;
+      }
+
+      @include md {
+        margin-bottom: $grid-gutter-width;
+      }
+
+      span {
+        color: $brand-secondary;
+        margin-right: $grid-gutter-width / 6;
+
+        @include sm-only {
+          display: block;
+          font-size: $h1-font-size;
+          line-height: 1;
+        }
+      }
+    }
+  }
+
+  &__search {
+    margin: 0 auto ($grid-gutter-width / 3);
+    position: relative;
+
+    @include im {
+      max-width: 52rem;
+    }
+
+    input {
+      appearance: none;
+      border: 0;
+      border-radius: 0.5rem;
+      box-shadow: none;
+      outline: none;
+      padding: 1rem 3rem 1rem 1.5rem;
+      width: 100%;
+    }
+
+    span {
+      color: $app-color;
+      position: absolute;
+      right: ($grid-gutter-width / 3);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    a {
+      color: $app-color;
+    }
+  }
+
+  &__views {
+    margin: 0 auto $grid-gutter-width;
+
+    @include ix {
+      text-align: center;
+    }
+
+    a {
+      color: $white;
+      display: inline-block;
+      font-weight: 700;
+      margin-left: 0.3rem;
+
+      &.active {
+        pointer-events: none;
+        text-decoration: underline;
+      }
+    }
+
+    span {
+      display: block;
+      text-align: center;
+
+      @include ix {
+        display: inline-block;
+        text-align: left;
+      }
+
+      &:last-child {
+        @include ix {
+          margin-left: $grid-gutter-width;
+        }
+      }
+    }
+  }
+
   &__menu {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     list-style-type: none;
-    margin-top: $grid-gutter-width / 2;
+    margin: 0 auto;
     padding: 0;
 
     @include md {
-      flex-direction: row;
-      justify-content: space-between;
+      max-width: 100rem !important;
     }
 
     > li {
       @include md {
-        min-width: 23rem;
+        min-width: 20rem;
       }
 
       &:first-child {
-        padding-right: $grid-gutter-width / 2;
         width: 60%;
 
-        @include md {
+        @include sm {
           width: auto;
         }
       }
@@ -72,73 +184,6 @@
 
     [class^=i-] {
       margin-top: 0.1rem;
-    }
-  }
-
-  &__views {
-    @include ix {
-      margin: 0 auto;
-      max-width: 60rem;
-      text-align: center;
-    }
-
-    a {
-      color: $white;
-      display: inline-block;
-      font-weight: 700;
-      margin-left: 0.3rem;
-
-      &.active {
-        pointer-events: none;
-        text-decoration: underline;
-      }
-    }
-
-    span {
-      display: block;
-      text-align: center;
-
-      @include ix {
-        display: inline-block;
-        text-align: left;
-      }
-
-      &:last-child {
-        @include ix {
-          margin-left: $grid-gutter-width;
-        }
-      }
-    }
-  }
-
-  &__search {
-    margin: 0 auto ($grid-gutter-width / 6);
-    position: relative;
-
-    @include md {
-      max-width: 60rem;
-    }
-
-    input {
-      appearance: none;
-      border: 0;
-      border-radius: 0.5rem;
-      box-shadow: none;
-      outline: none;
-      padding: 1rem 3rem 1rem 1.5rem;
-      width: 100%;
-    }
-
-    span {
-      color: $app-color;
-      position: absolute;
-      right: ($grid-gutter-width / 3);
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    a {
-      color: $app-color;
     }
   }
 
@@ -235,9 +280,16 @@
   }
 
   &__categories {
-    button {
+    .rw-input {
+      height: auto;
+      padding: 0.75rem 1rem;
+    }
+
+    .rw-btn {
       border-left-color: $app-color !important;
       color: $app-color;
+      line-height: 1;
+      padding: 0.75rem 1rem;
     }
   }
 }

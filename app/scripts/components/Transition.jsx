@@ -16,23 +16,17 @@ Transition.propTypes = {
   enter: PropTypes.bool,
   exit: PropTypes.bool,
   style: PropTypes.object,
-  timeout: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape({
-      enter: PropTypes.number,
-      exit: PropTypes.number,
-    }),
-  ]),
+  timeout: PropTypes.number,
   transitionName: PropTypes.string,
 };
 
 Transition.defaultProps = {
-  appear: true,
+  appear: false,
   className: 'app__transition',
   classNames: 'transition-fade',
   enter: true,
   exit: true,
-  style: { position: 'relative' },
+  style: null,
   timeout: 300,
 };
 

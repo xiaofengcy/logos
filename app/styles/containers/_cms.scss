@@ -76,8 +76,9 @@
   }
 
   .app__header {
-    a {
-      color: $white;
+    svg {
+      height: 6rem;
+      width: auto;
     }
   }
 

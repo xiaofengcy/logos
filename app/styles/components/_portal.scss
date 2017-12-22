@@ -1,0 +1,96 @@
+.app__portal {
+  align-items: center;
+  animation: 0.5s portal-hide reverse paused;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  visibility: hidden;
+  z-index: nth($zIndex, 6);
+
+  &__overlay {
+    background-color: rgba(lighten($black, 10), 0.8);
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 0.5s;
+  }
+
+  &__close {
+    color: $white;
+    font-size: $font-size-lg;
+    height: 3rem;
+    line-height: 1;
+    pointer-events: all;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3rem;
+    z-index: nth($zIndex, 2);
+  }
+
+  &__content {
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: $grid-gutter-width ($grid-gutter-width / 3);
+    position: relative;
+    width: 100%;
+    z-index: nth($zIndex, 1);
+
+    @include ix {
+      padding: $grid-gutter-width;
+    }
+  }
+
+  &--is-open {
+    animation-fill-mode: forwards;
+    animation-name: portal-show;
+
+    .app__portal__overlay {
+      opacity: 1;
+    }
+  }
+
+  &--is-closed {
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+  }
+
+  .app__transition {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@keyframes portal-hide {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes portal-show {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
