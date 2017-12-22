@@ -1,0 +1,33 @@
+.app__home {
+  position: relative;
+  z-index: nth($zIndex, 2);
+
+  &__heading {
+    @include app-container();
+    padding-top: $grid-gutter-width;
+
+    &:empty {
+      display: none;
+    }
+
+    h2 {
+      align-items: center;
+      display: flex;
+      font-size: $font-size-h4;
+      justify-content: center;
+      line-height: 1;
+      margin-bottom: 0;
+
+      > * {
+        line-height: 1.1;
+      }
+
+      a {
+        color: $body-color;
+        font-size: $font-size-base;
+        margin-left: $grid-gutter-width / 6;
+        margin-top: 0.2rem;
+      }
+    }
+  }
+}

@@ -11,7 +11,7 @@ import RedirectPublic from 'modules/RedirectPublic';
 import { initFirebase, detectMobile, restore } from 'actions';
 
 import CMS from 'containers/CMS';
-import Items from 'containers/Items';
+import Home from 'containers/Home';
 import Login from 'containers/Login';
 import NotFound from 'containers/NotFound';
 
@@ -20,6 +20,7 @@ import Header from 'components/Header';
 import Loader from 'components/Loader';
 import Splash from 'components/Splash';
 import SystemAlerts from 'components/SystemAlerts';
+import Toolbar from 'components/Toolbar';
 import Transition from 'components/Transition';
 
 export class App extends React.PureComponent {
@@ -53,8 +54,9 @@ export class App extends React.PureComponent {
   };
 
   render() {
-    const { app, firebase, dispatch, user } = this.props;
-    const isPublic = location.pathname !== '/cms';
+    const { app, firebase, dispatch, router, user } = this.props;
+    const isPublic = router.location ? router.location.pathname === '/' : true;
+
     const output = {
       html: (<Loader type="logo" grow={true} />),
       splash: [],
@@ -69,9 +71,12 @@ export class App extends React.PureComponent {
         <ConnectedRouter history={history}>
           <div className="app">
             {isPublic && <Header app={app} dispatch={dispatch} firebase={firebase} />}
+            {isPublic && firebase.isReady && (
+              <Toolbar app={app} firebase={firebase} dispatch={dispatch} />
+            )}
             <main className="app__main">
               <Switch>
-                <Route exact path="/" component={Items} />
+                <Route exact path="/" component={Home} />
                 <RedirectPublic
                   exact
                   path="/login"

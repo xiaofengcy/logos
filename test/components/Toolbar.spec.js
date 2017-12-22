@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Toolbar from 'containers/Items/Toolbar';
+import Toolbar from 'components/Toolbar';
 import { appState } from 'reducers/app';
 import { firebaseState } from 'reducers/firebase';
 

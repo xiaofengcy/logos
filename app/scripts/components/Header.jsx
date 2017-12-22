@@ -57,7 +57,7 @@ export default class Header extends React.PureComponent {
   };
 
   handleScroll = () => {
-    const innerHeader = document.querySelector('.app__items__header').getBoundingClientRect();
+    const innerHeader = document.querySelector('.app__header').getBoundingClientRect();
     const { scrolled } = this.state;
 
     if (global.scrollY >= innerHeader.height + 30 && !scrolled) {
@@ -120,13 +120,14 @@ export default class Header extends React.PureComponent {
       </div>
     );
 
-    return (
+    return [
       <header
+        key="Header"
         className={cx('app__header', { 'app__header--scrolled': scrolled })}
       >
         <div className="app__container">
           <a href="/" className="app__header__logo" onClick={this.handleClickLogo}>
-            <Logo icon={isMobile ? scrolled : isMobile} />
+            <Logo icon={isMobile && scrolled} />
           </a>
           <Transition>
             {scrolled ? searchComponent : <div />}
@@ -143,7 +144,7 @@ export default class Header extends React.PureComponent {
             </a>
           </div>
         </div>
-      </header>
-    );
+      </header>,
+    ];
   }
 }

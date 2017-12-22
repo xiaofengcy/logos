@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Item from 'containers/Items/Item';
+import Item from 'containers/Home/Item';
 
 const mockHandleClickTag = jest.fn();
 

@@ -5,14 +5,13 @@ import cx from 'classnames';
 import _reduce from 'lodash/reduce';
 import _orderBy from 'lodash/orderBy';
 import Waypoint from 'react-waypoint';
-import { trackEvent } from 'utils/helpers';
+import { scrollTo, trackEvent } from 'utils/helpers';
 
 import { filterItems } from 'actions';
 
-import ItemsHeader from './Header';
 import Item from './Item';
 
-export class Items extends React.PureComponent {
+export class Home extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -47,7 +46,6 @@ export class Items extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.body.addEventListener('keydown', this.handleKeyboard);
     window.addEventListener('scroll', this.handleScroll);
 
     if (!this.props.firebase.isReady && this.$app) {
@@ -144,35 +142,6 @@ export class Items extends React.PureComponent {
     });
   }
 
-  scrollTo = (element = document.body, to = 0, duration = document.body.scrollTop) => {
-    const newDuration = duration / 10 < 500 ? duration : 500;
-
-    const difference = to - element.scrollTop;
-    const perTick = difference / (duration * 10);
-    let timeout;
-
-    if (newDuration < 0) {
-      clearTimeout(timeout);
-      return;
-    }
-
-    timeout = setTimeout(() => {
-      element.scrollTop += perTick;
-
-      if (element.scrollTop === to) {
-        clearTimeout(timeout);
-      }
-      this.scrollTo(element, to, newDuration - 10);
-    }, 10);
-  };
-
-  scrollTop = (e) => {
-    e.preventDefault();
-
-    this.scrollTo(document.body, 0, window.scrollY / 10 < 500 ? window.scrollY / 10 : 500);
-    trackEvent('scroll', 'click');
-  };
-
   handleScroll = (e) => {
     const { app: { filter } } = this.props;
     if ((document.body.scrollTop >= 1000 && document.body.clientHeight > 4000) && !filter.showTags && !this.state.scrollable) {
@@ -186,43 +155,12 @@ export class Items extends React.PureComponent {
     }
   };
 
-  handleChangeColumns = (num) => {
-    this.props.dispatch(filterItems({ columns: num }));
-  };
-
-  handleKeyboard = (e) => {
-    const { app: { filter } } = this.props;
-    const intKey = (window.Event) ? e.which : e.keyCode;
-    let action;
-
-    if ((intKey === 189 || intKey === 109) && filter.columns > 1) {
-      this.handleChangeColumns(filter.columns - 1);
-      action = 'column-down';
-    }
-
-    if ((intKey === 187 || intKey === 107) && filter.columns < 5) {
-      this.handleChangeColumns(filter.columns + 1);
-      action = 'column-up';
-    }
-    if (intKey === 27) {
-      if (filter.showTags) {
-        this.props.dispatch(filterItems({ showTags: false }));
-      }
-
-      action = 'escape';
-    }
-
-    if (action) {
-      trackEvent('keyboard', 'press', action);
-    }
-  };
-
   handleClickTag = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
     const { name } = e.currentTarget.dataset;
-    this.scrollTo(document.body, 0, window.scrollY / 10 < 500 ? window.scrollY / 10 : 500);
+    scrollTo();
 
     this.props.dispatch(filterItems({ tag: name }));
     trackEvent('tag', 'click', name);
@@ -253,16 +191,12 @@ export class Items extends React.PureComponent {
 
   render() {
     const { limit, logos, page } = this.state;
-    const { app, firebase, dispatch } = this.props;
+    const { app, firebase } = this.props;
     const { filter } = app;
-    const options = {
-      empty: false,
-      hidden: [],
-    };
     const output = {};
 
     if (firebase.isReady) {
-      const items = logos.slice(0, limit * page).map(d =>
+      output.items = logos.slice(0, limit * page).map(d =>
         d.files.map((f, i) =>
           (<Item key={`${d.id}-${i}`} handleClickTag={this.handleClickTag} data={d} index={i} />)
         )
@@ -291,29 +225,22 @@ export class Items extends React.PureComponent {
       }
 
       output.heading = (
-        <div className="app__items__heading">{output.title}</div>
+        <div className="app__home__heading">{output.title}</div>
       );
 
       output.logos = (
         <ul
           className={cx(`app__images app__images--${filter.columns}`, {
-            empty: options.empty,
+            empty: !logos.length,
           })}
         >
-          {items}
+          {output.items}
         </ul>
       );
     }
 
     return (
-      <div key="Items" className="app__items app__route">
-        <ItemsHeader
-          app={app}
-          dispatch={dispatch}
-          firebase={firebase}
-          handleClickTag={this.handleClickTag}
-          handleChangeColumns={this.handleChangeColumns}
-        />
+      <div key="Home" className="app__home app__route">
         {output.heading}
         {output.logos}
         {this.renderWaypoint()}
@@ -330,4 +257,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Items);
+export default connect(mapStateToProps)(Home);

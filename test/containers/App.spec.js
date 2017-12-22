@@ -10,10 +10,15 @@ const props = {
   },
   dispatch: () => {},
   firebase: {
-    isReady: false,
+    isReady: true,
   },
   user: {
     isAuthenticated: false,
+  },
+  router: {
+    location: {
+      pathname: '/',
+    },
   },
 };
 
@@ -36,7 +41,7 @@ describe('App', () => {
     expect(wrapper.find('Loader').length).toBe(1);
   });
 
-  it('should render some the UI', () => {
+  it('should render public the UI', () => {
     wrapper.setProps({
       app: {
         ...instance.props.app,
@@ -46,6 +51,7 @@ describe('App', () => {
 
     expect(wrapper.find('ConnectedRouter').length).toBe(1);
     expect(wrapper.find('Header').length).toBe(1);
+    expect(wrapper.find('Toolbar').length).toBe(1);
     expect(wrapper.find('main').length).toBe(1);
     expect(wrapper.find('Footer').length).toBe(1);
     expect(wrapper.find('SystemAlerts').length).toBe(1);
