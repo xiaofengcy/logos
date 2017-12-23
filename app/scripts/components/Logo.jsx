@@ -6,20 +6,26 @@ import config from 'config';
 
 const Logo = ({ icon }) => {
   const type = icon ? 'icon' : 'full';
-  const images = [
-    require('assets/media/brand/icon.svg'),
-    require('assets/media/brand/icon.png'),
-  ];
+  const images = {
+    icon: [
+      require('assets/media/brand/icon.svg'),
+      require('assets/media/brand/icon.png'),
+    ],
+    full: [
+      require('assets/media/brand/logo.svg'),
+      require('assets/media/brand/logo.png'),
+    ],
+  };
 
   return (
     <div className="app__logo">
       <SVG
         key={type}
         className={`app__logo__${type}`}
-        src={images[0]}
+        src={images[type][0]}
         cacheGetRequests={true}
       >
-        <img src={images[1]} alt={config.title} />
+        <img src={images[type][1]} alt={config.title} />
       </SVG>
     </div>
   );

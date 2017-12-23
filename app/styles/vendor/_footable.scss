@@ -74,8 +74,9 @@ table.footable {
 
   > thead {
     > tr.footable-filtering > th {
-      border-bottom-width: 1px;
+      border: 0;
       font-weight: normal;
+      padding: 0 0 ($grid-gutter-width / 2);
       text-align: right;
 
       .form-group {
@@ -87,13 +88,17 @@ table.footable {
         }
 
         + .form-group {
-          margin-left: 2rem;
-          margin-top: 5px;
+          margin-top: $grid-gutter-width / 3;
 
-          @include md {
+          @include sm {
+            margin-left: 2rem;
             margin-top: 0;
           }
         }
+      }
+
+      .form-inline {
+        justify-content: space-between;
       }
 
       .input-group {
